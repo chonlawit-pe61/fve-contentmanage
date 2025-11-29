@@ -1,0 +1,10 @@
+writable
+writable/*
+app/Config/App.php
+vendor/.DS_Store
+vendor
+app/.DS_Store
+public/.DS_Store
+*.DS_Store
+*.jpeg
+/public
