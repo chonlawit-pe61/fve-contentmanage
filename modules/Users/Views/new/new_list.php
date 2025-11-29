@@ -2,204 +2,278 @@
 
 <?php $this->section('style'); ?>
 <style>
+    /* --- Magazine Style Layout --- */
     .news-page-bg {
-        background-color: #f4f7f9;
+        background-color: #f9fafb;
+    }
+
+    /* Dynamic Hero Section */
+    .news-hero {
+        position: relative;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 4rem;
+        border-radius: 0 0 50px 50px; /* Unique shape */
+        overflow: hidden;
+    }
+
+    .news-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(26, 37, 60, 0.8), rgba(128, 0, 0, 0.8)); /* Dark Blue to Red */
+        z-index: 1;
+    }
+
+    .news-hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        padding: 0 20px;
+        max-width: 800px;
+    }
+
+    .news-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        letter-spacing: -1px;
+    }
+
+    .news-hero p {
+        font-size: 1.25rem;
+        font-weight: 300;
+        opacity: 0.9;
+        margin-bottom: 2rem;
     }
 
     .news-container {
         max-width: 1200px;
-        margin: 0 auto;
-        padding: 4rem 1rem;
+        margin: -80px auto 0; /* Overlap the hero */
+        padding: 0 20px 4rem;
+        position: relative;
+        z-index: 3;
     }
 
-    .page-header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-
-    .page-header h1 {
-        font-size: 2.75rem;
-        font-weight: 700;
-        color: #1a253c;
-    }
-
-    .page-header p {
-        font-size: 1.1rem;
-        color: #6c757d;
-        max-width: 600px;
-        margin: 0.5rem auto 0;
-    }
-
-    /* ----- NEW: Filter Menu Styling ----- */
+    /* Filter Menu (Floating) */
     .filter-menu {
-        display: flex;
+        background: #fff;
+        padding: 15px 20px;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        display: inline-flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 0.75rem;
+        gap: 10px;
         margin-bottom: 3rem;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .filter-btn {
-        background-color: #fff;
-        color: #4a5568;
-        border: 1px solid #e2e8f0;
-        padding: 0.6rem 1.2rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 500;
+        background: transparent;
+        color: #666;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease;
     }
 
     .filter-btn:hover {
-        background-color: #f7fafc;
-        border-color: #cbd5e0;
+        color: var(--vc-primary);
+        background: rgba(128, 0, 0, 0.05);
     }
 
     .filter-btn.active {
-        background-color: #4338ca;
+        background: var(--vc-primary);
         color: #fff;
-        border-color: #4338ca;
-        box-shadow: 0 4px 12px rgba(67, 56, 202, 0.2);
+        box-shadow: 0 4px 15px rgba(128, 0, 0, 0.3);
     }
 
-    /* ----- Article Grid ----- */
+    /* Article Grid */
     .article-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 2.5rem;
     }
 
-    /* ----- Article Card Styling ----- */
+    /* --- Magazine Card Styling --- */
     .article-card {
-        background: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        background: #fff;
+        border-radius: 20px;
         overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: flex;
-        /* Changed from 'flex' */
         flex-direction: column;
         text-decoration: none;
         color: inherit;
-        /* NEW: Transition for filtering */
-        transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease, visibility 0.4s ease;
-        opacity: 1;
-        visibility: visible;
+        position: relative;
+        border: 1px solid rgba(0,0,0,0.03);
     }
 
-    /* NEW: Class for hidden cards */
     .article-card.is-hidden {
-        opacity: 0;
-        visibility: hidden;
-        transform: scale(0.95);
-        /* We use position absolute to make it disappear from the grid flow */
-        position: absolute;
+        display: none; /* Simple hide for now */
     }
-
 
     .article-card:hover {
-        transform: translateY(-8px) scale(1.0);
-        /* Adjust hover transform */
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
     }
 
     .card-image-wrapper {
-        width: 100%;
-        height: 200px;
+        height: 240px;
         overflow: hidden;
+        position: relative;
     }
 
     .card-image-wrapper img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.4s ease;
+        transition: transform 0.6s ease;
     }
 
     .article-card:hover .card-image-wrapper img {
-        transform: scale(1.05);
+        transform: scale(1.1);
+    }
+
+    /* Category Badge (Floating on Image) */
+    .card-category {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--vc-primary);
+        padding: 6px 16px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 2;
+        backdrop-filter: blur(5px);
     }
 
     .card-content {
-        padding: 1.5rem;
+        padding: 25px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
     }
 
-    .card-category {
-        display: inline-block;
-        background-color: #eef2ff;
-        color: #4338ca;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        text-transform: uppercase;
+    /* Date Line */
+    .card-date {
+        font-size: 0.85rem;
+        color: #999;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+    }
+
+    .card-date i {
+        color: var(--vc-gold);
+        margin-right: 8px;
     }
 
     .card-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #1a253c;
-        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 12px;
+        line-height: 1.4;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        transition: color 0.3s;
+    }
+
+    .article-card:hover .card-title {
+        color: var(--vc-primary);
     }
 
     .card-excerpt {
-        font-size: 0.95rem;
-        color: #6c757d;
-        line-height: 1.6;
-        margin-bottom: 1rem;
-        flex-grow: 1;
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 20px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
 
+    /* Read More Button */
     .card-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 0.85rem;
-        color: #888;
-        border-top: 1px solid #f0f0f0;
-        padding-top: 1rem;
         margin-top: auto;
     }
 
-    .read-more {
-        color: #4338ca;
-        font-weight: 600;
-        text-decoration: none;
+    .read-more-btn {
+        display: inline-flex;
+        align-items: center;
+        color: var(--vc-primary);
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.3s;
     }
 
-    .read-more i {
-        margin-left: 0.25rem;
-        transition: transform 0.2s ease;
+    .read-more-btn i {
+        margin-left: 8px;
+        background: rgba(128, 0, 0, 0.1);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
     }
 
-    .article-card:hover .read-more i {
-        transform: translateX(4px);
+    .article-card:hover .read-more-btn i {
+        background: var(--vc-primary);
+        color: #fff;
+        transform: translateX(5px);
     }
 </style>
 <?php $this->endSection() ?>
 
 <?php $this->section('content'); ?>
 <div class="news-page-bg">
+    
+    <!-- Hero Section -->
+    <?php 
+        // Use the first news item image as hero background if available, else default
+        $heroBg = base_url('public/img/bg-people.jpg');
+        if (!empty($news) && !empty($news[0]['image_path']) && file_exists(ROOTPATH . $news[0]['image_path'])) {
+            $heroBg = base_url($news[0]['image_path']);
+        }
+    ?>
+    <div class="news-hero" style="background-image: url('<?= $heroBg ?>');">
+        <div class="news-hero-content" data-aos="fade-up">
+            <h1 class="text-white">ข่าวสารและกิจกรรม</h1>
+            <p>ติดตามความเคลื่อนไหว กิจกรรมเด่น และเรื่องราวความสำเร็จของชาววิทยาลัยการอาชีพฝาง</p>
+        </div>
+    </div>
+
     <div class="news-container">
 
-        <div class="page-header" data-aos="fade-up">
-            <h1>ข่าวสารและกิจกรรม</h1>
-            <p>ติดตามข่าวสารล่าสุด กิจกรรมต่างๆ และเรื่องราวความสำเร็จของเราได้ที่นี่</p>
-        </div>
-
-        <!-- NEW: Filter Menu -->
+        <!-- Filter Menu -->
         <?php if (!empty($category)): ?>
             <div class="filter-menu" data-aos="fade-up" data-aos-delay="100">
                 <a href="<?php echo base_url('news') ?>" class="filter-btn <?php echo @$_GET['category'] == '' ? 'active' : '' ?>">
@@ -214,20 +288,18 @@
         <?php endif; ?>
 
 
-        <!-- Article Grid Wrapper for proper animation handling -->
+        <!-- Article Grid Wrapper -->
         <div style="position: relative;">
             <div class="article-grid">
                 <?php if (!empty($news)): ?>
                     <?php $i = 0; ?>
                     <?php foreach ($news as $row): ?>
-                        <!-- ADDED data-category attribute -->
-                        <a class="card" href="<?= base_url('News/detail/' . esc($row['id'], 'url')) ?>"
-                            class="row-card"
+                        <a class="article-card" href="<?= base_url('News/detail/' . esc($row['id'], 'url')) ?>"
                             data-category="<?= esc($row['category_id'], 'attr') ?>"
-                            data-aos="fade-up" data-aos-delay="<?= $i * 50;
-                                                                $i++; ?>">
+                            data-aos="fade-up" data-aos-delay="<?= $i * 50; $i++; ?>">
 
                             <div class="card-image-wrapper">
+                                <span class="card-category"><?= esc($row['category_name']) ?></span>
                                 <?php if (!empty($row['image_path']) && file_exists(ROOTPATH . $row['image_path'])): ?>
                                     <img src="<?= base_url($row['image_path']) ?>" alt="<?= esc($row['title']) ?>">
                                 <?php else: ?>
@@ -235,22 +307,24 @@
                                 <?php endif; ?>
                             </div>
                             <div class="card-content">
-                                <span class="card-category"><?= esc($row['category_name']) ?></span>
+                                <div class="card-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <?= date('d M Y', strtotime($row['create_at'])) ?>
+                                </div>
                                 <h3 class="card-title"><?= esc($row['title']) ?></h3>
+                               
                                 <div class="card-footer">
-                                    <span class="card-date">
-                                        <i class="far fa-calendar-alt"></i>
-                                        <?= date('d M Y', strtotime($row['create_at'])) ?>
-                                    </span>
-                                    <span class="read-more">
-                                        อ่านต่อ <i class="ti ti-arrow-narrow-right"></i>
+                                    <span class="read-more-btn">
+                                        อ่านเพิ่มเติม <i class="ti ti-arrow-right"></i>
                                     </span>
                                 </div>
                             </div>
                         </a>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <!-- Fallback message here -->
+                    <div class="col-12 text-center py-5">
+                        <h3 class="text-muted">ไม่พบข้อมูลข่าวสาร</h3>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>

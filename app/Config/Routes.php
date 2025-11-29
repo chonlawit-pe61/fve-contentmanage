@@ -75,9 +75,6 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
         $routes->post('save-course', 'Course::saveCourse');
         $routes->post('manage_course_content', 'Course::manage_course_content');
         $routes->get('content/(:any)', 'Course::course_content/$1');
-        $routes->post('deleteCourse', 'Course::deleteCourse');
-        $routes->post('deleteCourseType', 'Course::deleteCourseType');
-        $routes->post('manageCourseType', 'Course::manageCourseType');
     });
 
     $routes->group('information', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
@@ -110,34 +107,11 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
         $routes->get('manageFile/(:any)/(:any)', 'Document::documentFormFile/$1/$2');
         $routes->post('manageDocumentFile', 'Document::manageDocumentFile');
         $routes->post('deleteDocumentFile', 'Document::deleteDocumentFile');
-        $routes->post('deleteDocument', 'Document::deleteDocument');
-        $routes->post('ShowContentDocument', 'Document::ShowContentDocument');
-    });
-    $routes->group('Alert', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
-        $routes->get('/', 'Alert::index');
-        $routes->get('manage', 'Alert::manage');
-        $routes->get('manage/(:any)', 'Alert::manage/$1');
-        $routes->post('saveAlert', 'Alert::saveAlert');
-        $routes->post('deleteAlert', 'Alert::manageDeleteAlert');
     });
 
     $routes->group('configs', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
         $routes->get('website', 'Config::website_content');
         $routes->post('save-content', 'Config::saveContent');
-    });
-    $routes->group('Users', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
-        $routes->get('/', 'Users::index');
-        $routes->get('permissions', 'Users::managePermissions');
-        $routes->get('manageUser', 'Users::manageUser');
-        $routes->post('savePermissions', 'Users::savePermissions');
-        $routes->post('saveUser', 'Users::saveUser');
-        $routes->post('deleteUser', 'Users::deleteUser');
-    });
-    $routes->group('Link', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
-        $routes->get('/', 'Link::index');
-        $routes->get('manage', 'Link::manage');
-        $routes->post('saveLink', 'Link::saveLink');
-        $routes->post('deleteLink', 'Link::deleteLink');
     });
 });
 $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
@@ -155,9 +129,9 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
         $routes->get('(:any)', 'Organization::organization/$1');
     });
     $routes->group('policy', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
-        $routes->get('/', 'Policy::policy');
-        $routes->get('/securityPolicy', 'Policy::securityPolicy');
-        $routes->get('/privacyPolicy', 'Policy::privacyPolicy');
+        $routes->get('/', 'policy::policy');
+        $routes->get('/securityPolicy', 'policy::securityPolicy');
+        $routes->get('/privacyPolicy', 'policy::privacyPolicy');
     });
     $routes->group('contact', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('/', 'Contact::contact');

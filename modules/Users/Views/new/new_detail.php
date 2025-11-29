@@ -2,296 +2,377 @@
 
 <?php $this->section('style'); ?>
 <style>
-    .article-page-bg {
-        background-color: #ffffff;
+    /* --- Modern Editorial Theme --- */
+    body {
+        background-color: #f9f9f9;
+        font-family: 'Sarabun', sans-serif;
     }
 
-    .article-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 4rem 1rem;
+    .editorial-container {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 320px; /* Main Content + Sidebar */
+        gap: 3rem;
     }
 
+    /* Main Content Column */
+    .main-content {
+        background: #fff;
+        padding: 3rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    }
+
+    /* Header */
     .article-header {
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
     }
 
-    .back-to-news {
+    .category-badge {
         display: inline-block;
-        color: #6c757d;
-        text-decoration: none;
-        margin-bottom: 1.5rem;
-        font-weight: 500;
-        transition: color 0.2s ease;
-    }
-
-    .back-to-news:hover {
-        color: #1a253c;
-    }
-
-    .back-to-news i {
-        margin-right: 0.5rem;
-    }
-
-    .article-category {
-        display: inline-block;
-        background-color: #eef2ff;
-        color: #4338ca;
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
+        background-color: var(--vc-gold);
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 700;
         text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 4px;
         margin-bottom: 1rem;
+        letter-spacing: 0.5px;
     }
 
     .article-title {
-        font-size: 2.8rem;
-        font-weight: 700;
-        color: #1a253c;
-        line-height: 1.2;
-        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1a1a1a;
+        line-height: 1.3;
+        margin-bottom: 1.2rem;
     }
 
     .article-meta {
-        font-size: 0.9rem;
-        color: #6c757d;
+        display: flex;
+        align-items: center;
+        color: #666;
+        font-size: 0.95rem;
+        gap: 20px;
     }
 
     .article-meta i {
-        margin-right: 0.5rem;
+        color: var(--vc-primary);
+        margin-right: 6px;
+    }
+
+    /* Hero Image */
+    .hero-image-wrapper {
+        margin-bottom: 3rem;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
 
     .article-hero-image {
         width: 100%;
-        max-height: 450px;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 2.5rem;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
     }
 
+    .hero-image-wrapper:hover .article-hero-image {
+        transform: scale(1.02);
+    }
+
+    /* Typography */
     .article-body {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         line-height: 1.8;
-        color: #343a40;
+        color: #2d2d2d;
     }
 
     .article-body p {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.8rem;
+    }
+
+    /* Lead Paragraph */
+    .article-body > p:first-of-type {
+        font-size: 1.35rem;
+        font-weight: 500;
+        color: #000;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Drop Cap */
+    .article-body > p:first-of-type::first-letter {
+        float: left;
+        font-size: 3.5rem;
+        line-height: 0.8;
+        font-weight: 800;
+        color: var(--vc-primary);
+        margin-right: 12px;
+        margin-top: 6px;
     }
 
     .article-body h2 {
         font-size: 1.8rem;
-        font-weight: 600;
-        margin-top: 2.5rem;
-        margin-bottom: 1rem;
-        color: #1a253c;
-    }
-
-    .article-body h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: #1a253c;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        padding-left: 15px;
+        border-left: 4px solid var(--vc-gold);
     }
 
     .article-body blockquote {
-        border-left: 4px solid #4338ca;
-        padding-left: 1.5rem;
-        margin: 2rem 0;
+        font-size: 1.4rem;
         font-style: italic;
-        color: #6c757d;
+        color: #444;
+        text-align: center;
+        margin: 3rem 0;
+        padding: 2rem;
+        background: #fcfcfc;
+        border-top: 2px solid var(--vc-gold);
+        border-bottom: 2px solid var(--vc-gold);
     }
 
-    .article-body ul {
-        padding-left: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    /* --- NEW: Attachment Section Styles --- */
-    .article-attachments {
-        margin-top: 3rem;
-        padding: 1.5rem;
-        background-color: #f8f9fa;
+    /* Attachments */
+    .attachments-box {
+        background: #f8f9fa;
         border: 1px solid #e9ecef;
         border-radius: 8px;
-    }
-
-    .article-attachments h4 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #343a40;
-        margin-top: 0;
-        margin-bottom: 1rem;
-    }
-
-    .attachment-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .attachment-item {
-        display: flex;
-        align-items: center;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid #e9ecef;
-    }
-
-    .attachment-item:last-child {
-        border-bottom: none;
-    }
-
-    .attachment-item .icon {
-        font-size: 1.5rem;
-        color: #6c757d;
-        margin-right: 1rem;
-        width: 25px;
-        text-align: center;
-    }
-
-    .attachment-item .details {
-        flex-grow: 1;
-    }
-
-    .attachment-item .filename {
-        color: #0d6efd;
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-    .attachment-item .filename:hover {
-        text-decoration: underline;
-    }
-
-    .attachment-item .filesize {
-        font-size: 0.85rem;
-        color: #6c757d;
-    }
-
-    /* --- End of Attachment Styles --- */
-
-    .article-footer {
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid #e2e8f0;
-    }
-
-    .social-share h4 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #4a5568;
-        margin-bottom: 1rem;
-    }
-
-    .share-buttons a {
-        display: inline-block;
-        color: #fff;
-        padding: 0.6rem;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        margin-right: 0.5rem;
-        font-size: 1rem;
-        line-height: 1.4;
-        transition: opacity 0.2s ease;
-    }
-
-    .share-buttons a:hover {
-        opacity: 0.85;
-    }
-
-    .share-facebook {
-        background-color: #1877F2;
-    }
-
-    .share-twitter {
-        background-color: #1DA1F2;
-    }
-
-    .share-line {
-        background-color: #00B900;
-    }
-
-    .related-articles {
+        padding: 1.5rem;
         margin-top: 4rem;
     }
 
-    .related-articles h3 {
-        font-size: 1.8rem;
-        font-weight: 600;
-        color: #1a253c;
-        margin-bottom: 2rem;
-        text-align: center;
+    .attachments-box h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
     }
 
-    .related-grid {
+    .download-item {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        padding: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .download-item:hover {
+        border-color: var(--vc-primary);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .dl-icon {
+        font-size: 1.8rem;
+        color: #dc3545;
+        margin-right: 1rem;
+    }
+
+    .dl-info span {
+        display: block;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .dl-info small {
+        color: #888;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+    }
+
+    .sidebar-widget {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        margin-bottom: 2rem;
+    }
+
+    .sidebar-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--vc-gold);
+    }
+
+    /* Share Buttons */
+    .share-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .share-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border-radius: 6px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: opacity 0.2s;
+    }
+
+    .share-btn:hover {
+        opacity: 0.9;
+        color: #fff;
+    }
+
+    .share-fb { background: #1877f2; }
+    .share-line { background: #00c300; }
+    .share-tw { background: #1da1f2; }
+    .share-link { background: #6c757d; }
+
+    .share-btn i { margin-right: 6px; }
+
+    /* Back Button */
+    .back-nav {
+        margin-bottom: 2rem;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        color: #666;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+
+    .back-link:hover {
+        color: var(--vc-primary);
+    }
+
+    .back-link i { margin-right: 8px; }
+
+    @media (max-width: 992px) {
+        .editorial-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .sidebar {
+            position: static;
+        }
+        .article-title {
+            font-size: 2rem;
+        }
     }
 </style>
 <?php $this->endSection() ?>
 
 <?php $this->section('content'); ?>
-<div class="article-page-bg">
-    <div class="article-container" data-aos="fade-up">
 
+<div class="editorial-container">
+    
+    <!-- Main Content -->
+    <main class="main-content" data-aos="fade-up">
+        
+        <!-- Back Nav (Mobile Only) -->
+        <div class="back-nav d-lg-none">
+            <a href="<?= base_url('news') ?>" class="back-link">
+                <i class="ti ti-arrow-left"></i> กลับไปหน้ารวมข่าวสาร
+            </a>
+        </div>
 
         <header class="article-header">
-            <a href="<?= base_url('news') ?>" class="back-to-news">
-                <i class="ti ti-arrow-big-left"></i> กลับไปหน้ารวมข่าวสาร
-            </a>
-
             <?php if (!empty($news['category_name'])): ?>
-                <div class="article-category"><?= esc($news['category_name']) ?></div>
+                <span class="category-badge"><?= esc($news['category_name']) ?></span>
             <?php endif; ?>
-
+            
             <h1 class="article-title"><?= esc($news['title']) ?></h1>
-
+            
             <div class="article-meta">
-                <span>
-                    <i class="far fa-calendar-alt"></i> เผยแพร่เมื่อ:
-                    <?= date('d F Y', strtotime($news['create_at'])) ?>
-                </span>
+                <span><i class="far fa-calendar-alt"></i> <?= date('d F Y', strtotime($news['create_at'])) ?></span>
+                <!-- Add Author if available -->
+                <span><i class="far fa-user"></i> ประชาสัมพันธ์</span>
             </div>
         </header>
 
-        <?php if (!empty($news['image_path']) && file_exists(ROOTPATH . $news['image_path'])) { ?>
-            <img style="object-fit: contain;" src="<?= base_url($news['image_path']) ?>" alt="<?= esc($news['title']) ?>" class="article-hero-image">
-        <?php } else {
+        <!-- Hero Image -->
+        <?php 
+            $heroImage = base_url('public/img/logo.jpeg'); // Default
+            if (!empty($news['image_path']) && file_exists(ROOTPATH . $news['image_path'])) {
+                $heroImage = base_url($news['image_path']);
+            }
         ?>
-            <img style="object-fit: contain;" src="<?php echo base_url('public/img/logo.jpeg') ?>" alt="<?= esc($news['title']) ?>" class="article-hero-image">
-        <?php
-        } ?>
+        <div class="hero-image-wrapper">
+            <img src="<?= $heroImage ?>" alt="<?= esc($news['title']) ?>" class="article-hero-image">
+        </div>
 
         <div class="article-body">
             <?= $news['description'] ?>
         </div>
 
-        <!-- --- NEW: Attachment Section --- -->
+        <!-- Attachments -->
         <?php if (!empty($news['document_path'])): ?>
-            <div class="article-attachments">
-                <h4><i class="ti ti-file-description"></i> ไฟล์แนบ</h4>
-                <ul class="attachment-list">
-                    <li class="attachment-item">
-                        <div class="icon"><i class="ti ti-folder"></i></div>
-                        <div class="details">
-                            <a href="<?= base_url($news['document_path']) ?>" download class="filename">
-                                <?= esc($news['document_name']) ?>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
+            <div class="attachments-box">
+                <h4><i class="ti ti-paperclip"></i> เอกสารที่เกี่ยวข้อง</h4>
+                <a href="<?= base_url($news['document_path']) ?>" download class="download-item">
+                    <i class="ti ti-file-type-pdf dl-icon"></i>
+                    <div class="dl-info">
+                        <span><?= esc($news['document_name']) ?></span>
+                        <small>คลิกเพื่อดาวน์โหลดไฟล์</small>
+                    </div>
+                </a>
             </div>
         <?php endif; ?>
-    </div>
 
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" data-aos="fade-left" data-aos-delay="100">
+        
+        <!-- Back Nav (Desktop) -->
+        <div class="back-nav d-none d-lg-block">
+            <a href="<?= base_url('news') ?>" class="back-link">
+                <i class="ti ti-arrow-left"></i> กลับไปหน้ารวมข่าวสาร
+            </a>
+        </div>
+
+        <!-- Share Widget -->
+        <div class="sidebar-widget">
+            <h3 class="sidebar-title">แชร์ข่าวสารนี้</h3>
+            <div class="share-grid">
+                <a href="#" class="share-btn share-fb"><i class="ti ti-brand-facebook"></i> Share</a>
+                <a href="#" class="share-btn share-line"><i class="ti ti-brand-line"></i> Line</a>
+                <a href="#" class="share-btn share-tw"><i class="ti ti-brand-twitter"></i> Tweet</a>
+                <a href="#" class="share-btn share-link"><i class="ti ti-link"></i> Copy</a>
+            </div>
+        </div>
+
+        <!-- Category Widget (Simulated) -->
+        <div class="sidebar-widget">
+            <h3 class="sidebar-title">หมวดหมู่ข่าวสาร</h3>
+            <ul class="list-unstyled mb-0">
+                <li class="mb-2"><a href="#" class="text-decoration-none text-dark"><i class="ti ti-chevron-right text-danger"></i> ข่าวประชาสัมพันธ์</a></li>
+                <li class="mb-2"><a href="#" class="text-decoration-none text-dark"><i class="ti ti-chevron-right text-danger"></i> กิจกรรมวิทยาลัย</a></li>
+                <li class="mb-2"><a href="#" class="text-decoration-none text-dark"><i class="ti ti-chevron-right text-danger"></i> ประกาศจัดซื้อจัดจ้าง</a></li>
+                <li><a href="#" class="text-decoration-none text-dark"><i class="ti ti-chevron-right text-danger"></i> ทุนการศึกษา</a></li>
+            </ul>
+        </div>
+
+    </aside>
 
 </div>
+
 <?php $this->endSection() ?>
 
 <?php $this->section('scripts'); ?>
@@ -299,7 +380,7 @@
     AOS.init({
         duration: 800,
         once: true,
-        offset: 100
+        offset: 50
     });
 </script>
 <?php $this->endSection() ?>

@@ -26,10 +26,10 @@ class Database extends Config
 	public $defaultGroup = 'default';
 
 	public $default = array(
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => 'root',
-		'database' => 'fve-content',
+		'hostname' => '149.28.129.22',
+		'username' => 'jigsawdb',
+		'password' => 'jigsaw@dmin',
+		'database' => 'glo_football',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pconnect' => true,
