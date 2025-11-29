@@ -74,138 +74,148 @@ $url = uri_string();
 $control = explode('/', $url);
 ?>
 <style>
-    html,
-    body {
+    :root {
+        --vc-primary: #800000;
+        --vc-primary-dark: #660000;
+        --vc-primary-light: #a01a1a;
+        --vc-gold: #FFD700;
+        --vc-gold-hover: #FFC107;
+        --vc-text-light: #ffffff;
+        --vc-bg-light: #f1f6fc;
+    }
+
+    html, body {
         font-family: 'Kanit', sans-serif;
-        background-color: #f1f6fc;
+        background-color: var(--vc-bg-light);
         margin: 0;
         padding: 0;
     }
 
-    .header_bg {
-        background-color: #860000;
-        /* background-color: white; */
+    /* Navbar & Header */
+    .bg-maroon-gradient {
+        background: linear-gradient(90deg, var(--vc-primary-dark) 0%, var(--vc-primary-light) 100%);
+        color: var(--vc-text-light);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand-text h5 {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar-brand-text p {
+        font-size: 0.85rem;
+        opacity: 0.9;
+        letter-spacing: 0.5px;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link.active {
+        color: var(--vc-gold);
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
     }
 
     #navbarSupportedContent {
         background: transparent !important;
     }
 
-    .bg_content {
-        background-color: #FFFFFF;
+    /* Dropdowns */
+    .dropdown-menu {
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+        padding: 0.5rem 0;
     }
 
-    .modal-backdrop {
-        display: none;
+    .dropdown-item {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: #333;
+        transition: all 0.2s;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
     }
 
-    body.modal-open {
-        transform: none !important;
-        overflow: auto !important;
-        touch-action: auto !important;
+    .dropdown-item:last-child {
+        border-bottom: none;
     }
 
-    .bg_footer {
-        background-color: #7b0000;
-        color: white;
-        font-family: 'Prompt', sans-serif;
+    .dropdown-item:hover, .dropdown-item:focus {
+        background-color: #f8f9fa;
+        color: var(--vc-primary);
+        border-left: 4px solid var(--vc-primary);
     }
 
-    .ve-section-title {
-        color: #ffc107;
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
+    /* Nested Dropdowns */
+    @media (min-width: 992px) {
+        .dropdown-menu li {
+            position: relative;
+        }
+        .dropdown-menu .dropdown-submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -5px;
+            min-width: 200px;
+            margin-left: 0;
+            border-radius: 8px;
+        }
+        .dropdown-menu > li:hover > .dropdown-submenu {
+            display: block;
+        }
+        
+        /* Custom Arrow for Nested Dropdown */
+        .dropend .dropdown-toggle::after {
+            border: none !important;
+            content: "\f054"; /* FontAwesome Chevron Right */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: var(--vc-primary);
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .dropdown-item:hover .dropdown-toggle::after {
+            color: var(--vc-primary);
+        }
     }
 
+    @media (max-width: 991.98px) {
+        .dropdown-menu .dropdown-submenu {
+            display: block;
+            position: static;
+            margin-left: 20px;
+            box-shadow: none;
+            border-left: 1px solid #ccc;
+        }
+        .dropdown-item:hover {
+            border-left: unset;
+        }
+    }
 
-
+    /* General Utilities */
+    .bg_content { background-color: #FFFFFF; }
+    .modal-backdrop { display: none; }
+    body.modal-open { transform: none !important; overflow: auto !important; touch-action: auto !important; }
+    
     hr {
         margin-top: 1rem;
         margin-bottom: 1rem;
         border: 0;
         border-top: 1px solid rgba(0, 0, 0, 1);
-    }
-
-
-    .ve-list {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .ve-list li::before {
-        content: "⦿ ";
-        color: white;
-        margin-right: 0.3rem;
-    }
-
-    .ve-footer {
-        margin-top: 3rem;
-        padding: 2rem 0;
-
-        text-align: center;
-        font-size: 0.9rem;
-    }
-
-    .ve-footer strong {
-        display: block;
-        font-size: 1.1rem;
-        margin-top: 1rem;
-    }
-
-    .ve-footer a {
-        color: #ffcc00;
-        text-decoration: none;
-    }
-
-    .header_bg {
-        background-color: white;
-        /* color: bla; */
-        /* background-color: #870100; */
-    }
-
-    .dropdown-submenu {
-        position: relative;
-    }
-
-    .dropdown-submenu>.dropdown-menu {
-        top: 0;
-        left: 100%;
-        margin-top: -1px;
-        display: none;
-    }
-
-    @media (min-width: 992px) {
-        .dropdown-submenu:hover>.dropdown-menu {
-            display: block;
-        }
-    }
-
-    /* บังคับให้ลูกศรแสดงด้านขวา */
-    .dropend>.dropdown-toggle::after {
-        float: right;
-        margin-left: 0.255em;
-        vertical-align: 0.255em;
-        content: "\25B6";
-        border: none;
-    }
-
-    @media (max-width: 991.98px) {
-        .dropdown-submenu>.dropdown-menu {
-            position: relative;
-            left: 0;
-            top: 0;
-            display: none;
-            margin-left: 1rem;
-        }
-
-        .dropdown-submenu.open>.dropdown-menu {
-            display: block;
-        }
-    }
-
-    .dropdown-menu {
-        width: 300px;
     }
 
     .bg-header-table {
@@ -216,150 +226,321 @@ $control = explode('/', $url);
     .bg-primary-subtle-new {
         background-color: rgb(209, 209, 209);
     }
+
+    /* Footer Styles */
+    .footer {
+        background: linear-gradient(135deg, var(--vc-primary-dark) 0%, var(--vc-primary) 100%);
+        color: #fff;
+        padding: 60px 0 30px;
+        font-family: "Sarabun", sans-serif;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Subtle Pattern Overlay */
+    .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .footer * { box-sizing: border-box; }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+        gap: 40px;
+        max-width: 1400px;
+        margin: auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .footer h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 5px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+        margin: 0;
+        opacity: 0.8;
+        letter-spacing: 0.5px;
+    }
+
+    .footer-col h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--vc-gold);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .footer-col h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 3px;
+        background-color: var(--vc-gold);
+        border-radius: 2px;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 12px;
+    }
+
+    .footer-link {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        font-size: 0.95rem;
+    }
+
+    .footer-link:hover {
+        color: var(--vc-gold);
+        transform: translateX(5px);
+    }
+
+    .footer-logo {
+        width: 100px;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        transition: transform 0.3s;
+    }
+    
+    .footer-logo:hover {
+        transform: scale(1.05);
+    }
+
+    address {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-top: 15px;
+        color: rgba(255, 255, 255, 0.8);
+        font-style: normal;
+    }
+
+    /* Social Icons */
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icon:hover {
+        background: var(--vc-gold);
+        color: var(--vc-primary);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Copyright Bar */
+    .copyright-bar {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Footer Responsive */
+    @media (max-width: 1200px) {
+        .footer-container {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        .footer-col {
+            text-align: center;
+        }
+        .footer-col h3::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .social-links {
+            justify-content: center;
+        }
+        .footer-logo {
+            margin: 0 auto 15px;
+            display: block;
+        }
+    }
+    
+    /* Legacy/Other Styles */
+    .ve-section-title {
+        color: var(--vc-gold-hover);
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .ve-list { list-style: none; padding-left: 0; }
+    .ve-list li::before { content: "⦿ "; color: white; margin-right: 0.3rem; }
+    
+    .ve-footer {
+        margin-top: 3rem;
+        padding: 2rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    .ve-footer strong { display: block; font-size: 1.1rem; margin-top: 1rem; }
+    .ve-footer a { color: var(--vc-gold); text-decoration: none; }
 </style>
+
+
+
+
+
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark header_bg fixed-top shadow-sm ">
-        <div class="container px-lg-5">
-            <a href="<?php echo base_url() ?>">
-                <div class="d-flex align-middle">
-                    <img class="img-fluid" style="height: 70px;" src="<?php echo base_url($information['image_path']) ?>" alt="">
-                    <h5 class="my-auto mx-1">
-                        วิทยาลัยเทคนิคเชียงคํา
-                        <p class="mb-0">ChiangKham Technical College</p>
-                    </h5>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-maroon-gradient fixed-top shadow">
+        <div class="container px-lg-4">
+            <a class="navbar-brand d-flex align-items-center" href="<?php echo base_url() ?>">
+                <img class="img-fluid me-2" style="height: 60px; filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.3));" src="<?php echo base_url($information['image_path']) ?>" alt="Logo">
+                <div class="navbar-brand-text text-white">
+                    <h5 class="mb-0 text-white">วิทยาลัยเทคนิคเชียงคํา</h5>
+                    <p class="mb-0 text-white" style="font-size: 0.85rem; opacity: 0.9;">ChiangKham Technical College</p>
                 </div>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-light">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-dark" aria-current="page" href="<?php echo base_url('/') ?>">หน้าแรก</a>
+                        <a class="nav-link <?php echo (uri_string() == '') ? 'active' : ''; ?>" aria-current="page" href="<?php echo base_url('/') ?>">
+                            หน้าแรก
+                        </a>
                     </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ข้อมูลฯ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dataDropdown">
                             <li><a class="dropdown-item" href="<?php echo base_url('/About/information_educational') ?>">ข้อมูลทั่วไปของสถานศึกษา</a></li>
                             <li><a class="dropdown-item" href="<?php echo base_url('/About/information_student') ?>">ข้อมูลนักเรียน</a></li>
-                            <!-- <li><a class="dropdown-item" href="<?php echo base_url('/About/information_about_manage') ?>">โครงสร้างการบริหาร</a></li> -->
-                            <!-- <li><a class="dropdown-item" href="<?php echo base_url('/About/information_law') ?>">กฎหมายที่เกี่ยวข้อง</a></li> -->
                             <li><a class="dropdown-item" href="<?php echo base_url('/About/information_giftPolicy') ?>">นโยบายไม่รับของขวัญ</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             หน่วยงาน
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown">ฝ่ายบริหารทรัพยากร</a>
-                                <ul class="dropdown-menu">
-                                    <?php
-                                    if (!empty($org_4)) {
-                                        foreach ($org_4 as $row) {
-                                    ?>
+
+                            <li class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#">ฝ่ายบริหารทรัพยากร</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <?php if (!empty($org_4)) : foreach ($org_4 as $row) : ?>
                                             <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
+                                    <?php endforeach;
+                                    endif; ?>
                                 </ul>
                             </li>
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown">ฝ่ายแผนงานและความร่วมมือ</a>
-                                <ul class="dropdown-menu">
-                                    <?php
-                                    if (!empty($org_5)) {
-                                        foreach ($org_5 as $row) {
-                                    ?>
+
+                            <li class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#">ฝ่ายแผนงานและความร่วมมือ</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <?php if (!empty($org_5)) : foreach ($org_5 as $row) : ?>
                                             <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
+                                    <?php endforeach;
+                                    endif; ?>
                                 </ul>
                             </li>
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown">ฝ่ายพัฒนากิจการนักศึกษา
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <?php
-                                    if (!empty($org_6)) {
-                                        foreach ($org_6 as $row) {
-                                    ?>
+
+                            <li class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#">ฝ่ายพัฒนากิจการนักศึกษา</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <?php if (!empty($org_6)) : foreach ($org_6 as $row) : ?>
                                             <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
+                                    <?php endforeach;
+                                    endif; ?>
                                 </ul>
                             </li>
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown">ฝ่ายวิชาการ
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <?php
-                                    if (!empty($org_7)) {
-                                        foreach ($org_7 as $row) {
-                                    ?>
+
+                            <li class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#">ฝ่ายวิชาการ</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <?php if (!empty($org_7)) : foreach ($org_7 as $row) : ?>
                                             <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
+                                    <?php endforeach;
+                                    endif; ?>
                                 </ul>
                             </li>
+
                         </ul>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="<?= base_url('news') ?>">ข่าวสาร</a>
+                        <a class="nav-link" href="<?= base_url('news') ?>">ข่าวสาร</a>
                     </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="docDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             เอกสาร
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="dataDropdown">
-                            <?php
-                            if (!empty($public_document)) {
-                                foreach ($public_document as $row) {
-                                    if (!empty($row['url'])) {
-                            ?>
-                                        <li>
-                                            <a
-                                                class="dropdown-item" target="_blank" style="text-wrap: auto;" href="<?php echo $row['url'] ?>"><?= $row['title'] ?>
-                                            </a>
-                                        </li>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <li>
-                                            <a
-                                                class="dropdown-item" style="text-wrap: auto;" href="<?php echo base_url('document?type=' . $row['id']) ?>"><?= $row['title'] ?>
-                                            </a>
-                                        </li>
-                                    <?php
-                                    }
-                                    ?>
-
-                            <?php
-                                }
-                            }
-                            ?>
-
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="docDropdown">
+                            <?php if (!empty($public_document)) : foreach ($public_document as $row) : ?>
+                                    <li>
+                                        <?php if (!empty($row['url'])) : ?>
+                                            <a class="dropdown-item text-wrap" target="_blank" href="<?php echo $row['url'] ?>"><?= $row['title'] ?></a>
+                                        <?php else : ?>
+                                            <a class="dropdown-item text-wrap" href="<?php echo base_url('document?type=' . $row['id']) ?>"><?= $row['title'] ?></a>
+                                        <?php endif; ?>
+                                    </li>
+                            <?php endforeach;
+                            endif; ?>
                         </ul>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a>
+                        <a class="nav-link" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a>
                     </li>
-
-
                 </ul>
             </div>
         </div>
@@ -367,393 +548,89 @@ $control = explode('/', $url);
     <div class="" style="padding-top: 85px;">
         <?php $this->renderSection('content'); ?>
     </div>
-    <style>
-        /* ===== โค้ดเดิมของคุณ (คงไว้ได้ทั้งหมด) ===== */
-        .footer {
-            background-color: #8b0000;
-            color: #fff;
-            padding: 40px 20px;
-            font-family: "Sarabun", sans-serif;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 70px;
-            max-width: 1500px;
-            margin: auto;
-        }
-
-
-
-        .footer-col-right {
-            border-right: 3px solid gold;
-        }
-
-        .footer-col h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #ffc107;
-            padding-left: 10px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-
-        .logo-col {
-            text-align: left;
-        }
-
-        .footer-logo {
-            width: 120px;
-            margin-bottom: 10px;
-        }
-
-        address {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-top: 10px;
-            color: #f0d9d9;
-        }
-
-        li::marker {
-            font-size: 20px;
-            vertical-align: middle;
-            line-height: 20px;
-        }
-
-        /* ===== เพิ่มเติมเพื่อความยืดหยุ่น/กันล้น ===== */
-        .footer * {
-            box-sizing: border-box;
-        }
-
-        .footer h2 {
-            font-size: clamp(18px, 2.2vw, 28px);
-            margin: 0 0 6px;
-        }
-
-        .footer p {
-            font-size: clamp(13px, 1.6vw, 16px);
-            margin: 0;
-            opacity: .95;
-        }
-
-        .footer-col {
-            min-width: 0;
-        }
-
-        /* กันข้อความล้นคอลัมน์ */
-        address {
-            word-wrap: break-word;
-            word-break: break-word;
-        }
-
-        /* แสดงเส้นขวาเฉพาะคอลัมน์ที่ต้องการในจอใหญ่ */
-        .footer-col-right {
-            border-right: 3px solid gold;
-            padding-right: 20px;
-        }
-
-        .footer-col-right:last-child {
-            border-right: none;
-        }
-
-        /* ===== Breakpoints ที่ละเอียดขึ้น ===== */
-        /* XL ≈ ≤ 1200px : ลดเป็น 3 คอลัมน์ */
-        @media (max-width: 1200px) {
-            .footer-container {
-                grid-template-columns: 1.2fr 1fr 1fr;
-                gap: 48px;
-                padding-inline: 16px;
-            }
-
-            .footer-col-right {
-                padding-right: 16px;
-            }
-
-            .footer-logo {
-                width: 110px;
-            }
-        }
-
-        /* LG ≈ ≤ 992px : 2 คอลัมน์ + จัดโลโก้ให้สวยขึ้น */
-        @media (max-width: 992px) {
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 36px 28px;
-            }
-
-            /* เส้นกั้นเปลี่ยนเป็นแนวนอนแทน เพื่อไม่ให้แน่น */
-            .footer-col-right {
-                border-right: none;
-                border-bottom: 2px solid rgba(255, 215, 0, .6);
-                padding-bottom: 16px;
-            }
-
-            .footer-col-right:last-child {
-                border-bottom: none;
-            }
-
-            .logo-col {
-                text-align: left;
-            }
-
-            .footer-logo {
-                width: 100px;
-            }
-        }
-
-        /* MD ≈ ≤ 768px : จัดหัวข้อ/รายการให้คลิกง่าย */
-        @media (max-width: 768px) {
-            .footer-col h3 {
-                font-size: 17px;
-            }
-
-            .footer-col ul li {
-                font-size: 16px;
-                line-height: 1.7;
-            }
-        }
-
-        /* SM ≈ ≤ 600px : 1 คอลัมน์ เต็มความกว้าง + จัดกึ่งกลาง */
-        @media (max-width: 600px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 28px;
-            }
-
-            .logo-col {
-                text-align: center;
-            }
-
-            .footer-logo {
-                margin: 0 auto 12px;
-                width: 96px;
-            }
-
-            .footer h2,
-            .footer p,
-            address {
-                text-align: center;
-            }
-
-            .footer-col-right {
-                border: none;
-                padding: 0;
-            }
-
-            .footer {
-                padding: 28px 16px;
-            }
-        }
-
-        /* XS ≈ ≤ 380px : ลดช่องไฟเพิ่มพื้นที่ */
-        @media (max-width: 380px) {
-            .footer {
-                padding: 24px 12px;
-            }
-
-            .footer-col ul li {
-                margin-bottom: 6px;
-            }
-        }
-    </style>
-
+    
+ 
     <footer class="footer">
-        <div class="footer-container container-lg">
-            <!-- โลโก้ + ชื่อวิทยาลัย -->
-            <div class="footer-col logo-col">
-                <div class="d-flex">
+        <div class="footer-container">
+            <!-- 1. Logo & Contact -->
+            <div class="footer-col">
+                <div class="d-flex align-items-center mb-3 justify-content-center justify-content-md-start">
+                    <img src="<?php echo base_url('public/img/logo_cktc.png') ?>" alt="College Logo" class="footer-logo me-3" />
                     <div>
-                        <img src="<?php echo base_url('public/img/logo_cktc.png') ?>" alt="College Logo" class="footer-logo" />
-                    </div>
-                    <div class="my-auto mx-3">
                         <h2 class="text-white">วิทยาลัยเทคนิคเชียงคำ</h2>
-                        <p>ChiangKham Technical College</p>
+                        <p class="text-white-50">ChiangKham Technical College</p>
                     </div>
                 </div>
                 <address>
                     <?= $information['address'] ?><br>
-                    199 Ban Nong Yao, Mae Soon Subdistrict, Fang District, Chiang Mai 50110, Thailand
+                    199 Ban Nong Yao, Mae Soon Subdistrict,<br>
+                    Fang District, Chiang Mai 50110, Thailand
                 </address>
-                <div class="d-flex align-items-center">
-                    <a href="<?= $information['facebook'] ?>" target="_blank">
-                        <div class="bg-white  rounded-circle my-auto text-center mx-1" style="height: 30px;vertical-align: middle;width: 30px;">
-                            <i class="fab fa-facebook-f text-dark my-auto mx-auto text-center mt-1" style="vertical-align: middle;"></i>
-                        </div>
+                
+                <div class="social-links">
+                    <a href="<?= $information['facebook'] ?>" target="_blank" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="<?= $information['youtube'] ?>" target="_blank">
-                        <div class="bg-white  rounded-circle my-auto text-center mx-1" style="height: 30px;vertical-align: middle;width: 30px;">
-                            <i class="fab fa-youtube text-dark mt-2"></i>
-                        </div>
+                    <a href="<?= $information['youtube'] ?>" target="_blank" class="social-icon">
+                        <i class="fab fa-youtube"></i>
                     </a>
-                    <div class="bg-white  rounded-circle my-auto text-center mx-1" style="height: 30px;vertical-align: middle;width: 30px;">
-                        <i class="fab fa-tiktok text-dark mt-2" aria-hidden="true"></i>
-                    </div>
-                    <div class="mx-3 d-flex align-items-center">
-                        <i class="fas fa-user text-warning fs-7" aria-hidden="true"></i><span class="mx-1">online <?= $logs['num'] ?></span>
-                    </div>
-
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <div class="mt-3 text-white-50 small">
+                    <i class="fas fa-user text-warning me-2"></i>Online: <?= $logs['num'] ?>
                 </div>
             </div>
 
-            <!-- นโยบายการให้บริการ -->
-            <div class="footer-col footer-col-right mx-5 mx-lg-0">
+            <!-- 2. Policies -->
+            <div class="footer-col">
                 <h3>นโยบายการให้บริการ</h3>
-                <ul style="list-style:unset">
-                    <li>
-                        <a class="text-white" href="<?php echo base_url('policy') ?>">นโยบายเว็บไซต์</a>
-                    </li>
-                    <li><a class="text-white" href="<?php echo base_url('policy/securityPolicy') ?>">การรักษาปลอดภัยเว็บไซต์</a> </li>
-                    <li><a class="text-white" href="<?php echo base_url('policy/privacyPolicy') ?>">การคุ้มครองข้อมูลส่วนบุคคล</a> </li>
-                    <li><a class="text-white" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a></li>
+                <ul>
+                    <li><a class="footer-link" href="<?php echo base_url('policy') ?>">นโยบายเว็บไซต์</a></li>
+                    <li><a class="footer-link" href="<?php echo base_url('policy/securityPolicy') ?>">การรักษาปลอดภัยเว็บไซต์</a></li>
+                    <li><a class="footer-link" href="<?php echo base_url('policy/privacyPolicy') ?>">การคุ้มครองข้อมูลส่วนบุคคล</a></li>
+                    <li><a class="footer-link" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a></li>
                 </ul>
             </div>
 
-            <!-- แผนกวิชาที่เปิดสอน -->
-            <div class="footer-col footer-col-right mx-5 mx-lg-0">
-                <h3>แผนกวิชาที่เปิดสอน</h3>
-                <ul style="list-style:unset">
-                    <?php
-                    if (!empty($course)) {
-                        foreach ($course as $row) {
-                    ?>
-                            <li class="">
-                                <a class="text-white" href="<?php echo base_url('Course/detail/' . $row['id']) ?>"><?php echo $row['name'] ?></a>
-                            </li>
-                    <?php
-                        }
-                    }
-                    ?>
+            <!-- 3. Departments (Consolidated) -->
+            <div class="footer-col">
+                <h3>หน่วยงานภายใน</h3>
+                <ul>
+                    <li><a class="footer-link" href="#">ฝ่ายบริหารทรัพยากร</a></li>
+                    <li><a class="footer-link" href="#">ฝ่ายแผนงานและความร่วมมือ</a></li>
+                    <li><a class="footer-link" href="#">ฝ่ายพัฒนากิจการนักเรียน</a></li>
+                    <li><a class="footer-link" href="#">ฝ่ายวิชาการ</a></li>
                 </ul>
             </div>
 
-            <!-- หน่วยงาน -->
-            <!-- <div class="footer-col mx-5 mx-lg-0">
-                <h3>หน่วยงาน</h3>
-                <ul style="list-style:unset">
-                    <li>ฝ่ายบริหารทรัพยากร</li>
-                    <li>ฝ่ายแผนงานและความร่วมมือ</li>
-                    <li>ฝ่ายพัฒนากิจการนักเรียน นักศึกษา</li>
-                    <li>ฝ่ายวิชาการ</li>
-                    <li>ข่าวสารสำหรับนักเรียน นักศึกษา</li>
-                    <li>ข่าวสารสำหรับครูและบุคลากร</li>
-                    <li>ข่าวประชาสัมพันธ์</li>
-                    <li>ข่าวประกวดราคา</li>
-                    <li>ข่าวรับสมัครงาน</li>
+            <!-- 4. Courses -->
+            <div class="footer-col">
+                <h3>หลักสูตรที่เปิดสอน</h3>
+                <ul>
+                    <?php if (!empty($course)) : foreach ($course as $row) : ?>
+                        <li>
+                            <a class="footer-link" href="<?php echo base_url('Course/detail/' . $row['id']) ?>">
+                                <?= $row['name'] ?>
+                            </a>
+                        </li>
+                    <?php endforeach; endif; ?>
                 </ul>
-            </div> -->
-
+            </div>
         </div>
-        <div class="container-lg" style="max-width: 1500px">
-            <div class="col-lg-12 my-3 text-center">
-                <h3 style="font-size: 18px;margin-bottom: 15px;color: #ffc107;padding-left: 10px;">หน่วยงาน</h3>
-                <div class="row ">
-                    <div class="col-lg-3 mx-auto">
-                        <ul>
-                            <li style="font-size: 18px;color:#ffc107;" class="mb-2">ฝ่ายบริหารทรัพยากร</li>
-                            <?php
-                            if (!empty($org_4)) {
-                                $none_style = 'none';
-                            }
-                            ?>
-                            <li style="list-style:<?= $none_style ?>">
-                                <ul class="text-start" style="padding-left: 20px; list-style:disc;font-size: 15px;">
-                                    <?php
-                                    if (!empty($org_4)) {
-                                        foreach ($org_4 as $row) {
-                                    ?>
-                                            <li><a class="text-white text-start" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 mx-auto">
-                        <ul>
-                            <li style="font-size: 18px;color:#ffc107;" class="mb-2">ฝ่ายแผนงานและความร่วมมือ</li>
-                            <?php
-                            if (!empty($org_4)) {
-                                $none_style = 'none';
-                            }
-                            ?>
-                            <li style="list-style:<?= $none_style ?>">
-                                <ul class="text-start" style="padding-left: 20px; list-style:disc;font-size: 15px;">
-                                    <?php
-                                    if (!empty($org_4)) {
-                                        foreach ($org_4 as $row) {
-                                    ?>
-                                            <li><a class="text-white" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 mx-auto">
-                        <ul>
-                            <li style="font-size: 18px; color:#ffc107;" class="mb-2">ฝ่ายพัฒนากิจการนักเรียนนักศึกษา</li>
-                            <?php
-                            if (!empty($org_6)) {
-                                $none_style = 'none';
-                            }
-                            ?>
-                            <li style="list-style:<?= $none_style ?>">
-                                <ul class="text-start" style="padding-left: 20px; list-style:disc;font-size: 15px;">
-                                    <?php
-                                    if (!empty($org_6)) {
-                                        foreach ($org_6 as $row) {
-                                    ?>
-                                            <li><a class="text-white" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 mx-auto">
-                        <ul>
-                            <li style="font-size: 18px; color:#ffc107;" class="mb-2">ฝ่ายวิชาการ</li>
-                            <?php
-                            if (!empty($org_7)) {
-                                $none_style = 'none';
-                            }
-                            ?>
-                            <li style="list-style:<?= $none_style ?>">
-                                <ul class="text-start" style="padding-left: 20px; list-style:disc;font-size: 15px;">
-                                    <?php
-                                    if (!empty($org_7)) {
-                                        foreach ($org_7 as $row) {
-                                    ?>
-                                            <li><a class="text-white" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
 
+        <div class="copyright-bar container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    &copy; <?= date('Y') ?> ChiangKham Technical College. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed & Developed by IT Department
                 </div>
             </div>
         </div>
-
     </footer>
 
     <!-- <div class="bg_footer">

@@ -2,298 +2,213 @@
 
 <?php $this->section('style'); ?>
 <style>
-    .philosophy-section {
-        font-family: 'Sarabun', sans-serif;
-        padding: 2rem;
-        /* background-color: #f8f9fa; */
-        color: #333;
+    /* --- History Section Refinement --- */
+    .history-image-wrapper {
+        position: relative;
+        padding: 15px;
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 15px;
+        display: inline-block;
+        background: #fff;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+        max-width: 350px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
     }
 
-    .philosophy-section h1 {
-        font-size: 1.75rem;
-        color: #870100;
-        margin-top: 2rem;
+    .history-image-wrapper:hover {
+        transform: translateY(-5px);
     }
 
-    .philosophy-section blockquote {
-        background: #fff3f3;
-        border-left: 5px solid #870100;
-        margin: 1rem 0;
-        padding: 1rem 1.5rem;
-        font-style: italic;
+    .history-image-wrapper img {
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        display: block;
     }
 
-    .philosophy-section blockquote p {
-        margin: 0;
-        font-size: 1.1rem;
+    .history-content {
+        font-size: 1.15rem;
+        line-height: 1.9;
+        color: #444;
+        text-align: left;
     }
 
-    .philosophy-section ul {
-        padding-left: 1.2rem;
+    .history-content p {
+        margin-bottom: 1.5rem;
+        text-indent: 2rem;
     }
 
-    .philosophy-section li {
-        margin-bottom: 1rem;
-        line-height: 1.6;
-    }
-
+    /* --- Royal Timeline Theme --- */
     .timeline {
         display: flex;
         flex-direction: column;
-        margin: 20px auto;
+        margin: 40px auto;
         position: relative;
     }
 
+    /* Timeline Line */
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 4px;
+        height: 100%;
+        background: rgba(128, 0, 0, 0.1); /* Subtle Red Trace */
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+
     .timeline__event {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         position: relative;
         display: flex;
-        margin: 20px 0;
-        border-radius: 6px;
+        margin: 30px 0;
+        border-radius: 15px;
         align-self: center;
-        width: 50vw;
+        width: 100%;
+        max-width: 1000px;
     }
 
     .timeline__event:nth-child(2n + 1) {
         flex-direction: row-reverse;
     }
 
-    .timeline__event:nth-child(2n + 1) .timeline__event__date {
-        border-radius: 0 6px 6px 0;
+    /* Content Card */
+    .timeline__event__content {
+        padding: 30px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        background: #fff;
+        width: 45%;
+        border-radius: 15px;
+        border-top: 4px solid var(--vc-gold); /* Gold Top Border */
+        position: relative;
+        transition: all 0.3s ease;
     }
 
-    .timeline__event:nth-child(2n + 1) .timeline__event__content {
-        border-radius: 6px 0 0 6px;
-    }
-
-    .timeline__event:nth-child(2n + 1) .timeline__event__icon::before {
-        content: "";
-        width: 2px;
-        height: 100%;
-        background: #f6a4ec;
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        z-index: -1;
-        transform: translateX(-50%);
-        animation: fillTop 2s forwards 4s ease-in-out;
-    }
-
-    .timeline__event:nth-child(2n + 1) .timeline__event__icon::after {
-        content: "";
-        width: 100%;
-        height: 2px;
-        background: #f6a4ec;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        z-index: -1;
-        transform: translateY(-50%);
-        animation: fillLeft 2s forwards 4s ease-in-out;
+    .timeline__event__content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
     }
 
     .timeline__event__title {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         line-height: 1.4;
         text-transform: uppercase;
-        font-weight: 600;
-        color: #9251ac;
-        letter-spacing: 1.5px;
+        font-weight: 700;
+        color: var(--vc-primary); /* Red Title */
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        padding-bottom: 10px;
+        display: inline-block;
     }
 
-    .timeline__event__content {
-        padding: 20px;
-        box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
-            0 18px 36px -18px rgba(0, 0, 0, 0.3),
-            0 -12px 36px -8px rgba(0, 0, 0, 0.025);
-        background: #fff;
-        width: calc(40vw - 84px);
-        border-radius: 0 6px 6px 0;
+    .timeline__event__description p {
+        color: #666;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin: 0;
     }
 
+    /* Date/Label Badge */
     .timeline__event__date {
-        color: #f6a4ec;
-        font-size: 1.5rem;
+        color: #fff;
+        font-size: 1.2rem;
         font-weight: 600;
-        background: #9251ac;
+        background: var(--vc-primary); /* Red Background */
         display: flex;
         align-items: center;
         justify-content: center;
         white-space: nowrap;
-        padding: 0 20px;
-        border-radius: 6px 0 0 6px;
+        padding: 10px 25px;
+        border-radius: 50px;
+        position: absolute;
+        top: -20px;
+        left: 30px;
+        box-shadow: 0 5px 15px rgba(128, 0, 0, 0.3);
+        z-index: 2;
     }
 
+    .timeline__event:nth-child(2n + 1) .timeline__event__date {
+        left: auto;
+        right: 30px;
+    }
+
+    /* Icon Circle */
     .timeline__event__icon {
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #9251ac;
-        padding: 40px;
-        align-self: center;
-        margin: 0 20px;
-        background: #f6a4ec;
-        border-radius: 100%;
-        width: 40px;
-        height: 40px;
-        position: relative;
-        box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
-            0 18px 36px -18px rgba(0, 0, 0, 0.3),
-            0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+        color: var(--vc-gold);
+        background: #fff;
+        border: 4px solid var(--vc-primary);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        transform: translateX(-50%);
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.8), 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 3;
     }
 
     .timeline__event__icon i {
-        font-size: 32px;
+        font-size: 28px;
     }
 
-    .timeline__event__icon::before {
-        content: "";
-        width: 2px;
-        height: 100%;
-        background: #f6a4ec;
-        position: absolute;
-        top: 0%;
-        z-index: -1;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: fillTop 2s forwards 4s ease-in-out;
+    /* Connecting Lines (Animated) */
+    .timeline__event__icon::before,
+    .timeline__event__icon::after,
+    .timeline__event:nth-child(2n + 1) .timeline__event__icon::before,
+    .timeline__event:nth-child(2n + 1) .timeline__event__icon::after {
+        display: none; /* Removed old lines for cleaner look */
     }
 
-    .timeline__event__icon::after {
-        content: "";
-        width: 100%;
-        height: 2px;
-        background: #f6a4ec;
-        position: absolute;
-        left: 0%;
-        z-index: -1;
-        top: 50%;
-        transform: translateY(-50%);
-        animation: fillLeftOdd 2s forwards 4s ease-in-out;
-    }
+    /* Responsive */
+    @media (max-width: 768px) {
+        .timeline::before {
+            left: 30px;
+        }
 
-    .timeline__event__description {
-        flex-basis: 60%;
-    }
-
-    .timeline__event--type2::after {
-        background: #555ac0;
-    }
-
-    .timeline__event--type2 .timeline__event__date {
-        color: #87bbfe;
-        background: #555ac0;
-    }
-
-    .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon::before,
-    .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon::after {
-        background: #87bbfe;
-    }
-
-    .timeline__event--type2 .timeline__event__icon {
-        background: #87bbfe;
-        color: #555ac0;
-    }
-
-    .timeline__event--type2 .timeline__event__icon::before,
-    .timeline__event--type2 .timeline__event__icon::after {
-        background: #87bbfe;
-    }
-
-    .timeline__event--type2 .timeline__event__title {
-        color: #555ac0;
-    }
-
-    .timeline__event--type3::after {
-        background: #24b47e;
-    }
-
-    .timeline__event--type3 .timeline__event__date {
-        color: #aff1b6;
-        background: #24b47e;
-    }
-
-    .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon::before,
-    .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon::after {
-        background: #aff1b6;
-    }
-
-    .timeline__event--type3 .timeline__event__icon {
-        background: #aff1b6;
-        color: #24b47e;
-    }
-
-    .timeline__event--type3 .timeline__event__icon::before,
-    .timeline__event--type3 .timeline__event__icon::after {
-        background: #aff1b6;
-    }
-
-    .timeline__event--type3 .timeline__event__title {
-        color: #24b47e;
-    }
-
-    .timeline__event:last-child .timeline__event__icon::before {
-        content: none;
-    }
-
-    @media (max-width: 786px) {
         .timeline__event {
             flex-direction: column;
-            align-self: center;
-        }
-
-        .timeline__event__content {
+            align-items: flex-start;
+            margin-bottom: 50px;
+            padding-left: 60px;
             width: 100%;
-        }
-
-        .timeline__event__icon {
-            border-radius: 6px 6px 0 0;
-            width: 100%;
-            margin: 0;
-            box-shadow: none;
-        }
-
-        .timeline__event__icon::before,
-        .timeline__event__icon::after {
-            display: none;
-        }
-
-        .timeline__event__date {
-            border-radius: 0;
-            padding: 20px;
         }
 
         .timeline__event:nth-child(2n + 1) {
             flex-direction: column;
-            align-self: center;
+            align-items: flex-start;
         }
 
-        .timeline__event:nth-child(2n + 1) .timeline__event__date {
-            border-radius: 0;
-            padding: 20px;
+        .timeline__event__content {
+            width: 100%;
+            border-radius: 15px;
         }
 
-        .timeline__event:nth-child(2n + 1) .timeline__event__icon {
-            border-radius: 6px 6px 0 0;
-            margin: 0;
+        .timeline__event__icon {
+            left: 30px;
+            top: 0;
+            width: 50px;
+            height: 50px;
         }
-    }
 
-    @keyframes fillLeft {
-        100% {
-            right: 100%;
+        .timeline__event__icon i {
+            font-size: 22px;
         }
-    }
 
-    @keyframes fillTop {
-        100% {
-            top: 100%;
-        }
-    }
-
-    @keyframes fillLeftOdd {
-        100% {
-            left: 100%;
+        .timeline__event__date {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            margin-bottom: 15px;
+            display: inline-flex;
         }
     }
 
@@ -308,15 +223,17 @@
 <div data-aos="fade-up" class="bg_content">
     <div class="container px-5">
         <div class="py-5">
-            <div class="row">
-                <div class="col-lg-6 text-center">
-                    <img class="img-fluid" src="<?php echo base_url('public/img/logofve.png') ?>" alt="">
-                </div>
-                <div class="col-lg-6">
-                    <div class="border-bottom border-3">
-                        <h1>ประวัติความเป็นมา</h1>
+            <div class="row align-items-start">
+                <div class="col-lg-12 text-center mb-4 mb-lg-0" data-aos="fade-right">
+                    <div class="history-image-wrapper">
+                        <img src="<?php echo base_url('public/img/logofve.png') ?>" alt="College Logo">
                     </div>
-                    <div class="mt-2  font-16  fw-light">
+                </div>
+                <div class="col-lg-12" data-aos="fade-left">
+                    <div class="border-bottom border-3 mb-4" style="border-color: var(--vc-gold) !important; display: inline-block;">
+                        <h1 style="color: var(--vc-primary); font-weight: 700;">ประวัติความเป็นมา</h1>
+                    </div>
+                    <div class="history-content">
                         <?php echo $information['history'] ?>
                     </div>
                 </div>
@@ -348,10 +265,10 @@
                         </div>
                     </div>
                     <div class="container">
-                        <div class="timeline">
-                            <div class="timeline__event timeline__event--type1">
+                        <div class="timeline w-100">
+                            <div class="timeline__event" data-aos="fade-up">
                                 <div class="timeline__event__icon">
-                                    <i class="lni-cake"></i>
+                                    <i class="fa fa-lightbulb-o"></i>
                                 </div>
                                 <div class="timeline__event__date">ปรัชญา</div>
                                 <div class="timeline__event__content">
@@ -362,9 +279,9 @@
                                 </div>
                             </div>
 
-                            <div class="timeline__event timeline__event--type2">
+                            <div class="timeline__event" data-aos="fade-up">
                                 <div class="timeline__event__icon">
-                                    <i class="lni-burger"></i>
+                                    <i class="fa fa-fingerprint"></i>
                                 </div>
                                 <div class="timeline__event__date">อัตลักษณ์</div>
                                 <div class="timeline__event__content">
@@ -375,9 +292,9 @@
                                 </div>
                             </div>
 
-                            <div class="timeline__event timeline__event--type3">
+                            <div class="timeline__event" data-aos="fade-up">
                                 <div class="timeline__event__icon">
-                                    <i class="lni-slim"></i>
+                                    <i class="fa fa-star"></i>
                                 </div>
                                 <div class="timeline__event__date">เอกลักษณ์</div>
                                 <div class="timeline__event__content">
@@ -388,9 +305,9 @@
                                 </div>
                             </div>
 
-                            <div class="timeline__event timeline__event--type1">
+                            <div class="timeline__event" data-aos="fade-up">
                                 <div class="timeline__event__icon">
-                                    <i class="lni-cake"></i>
+                                    <i class="fa fa-eye"></i>
                                 </div>
                                 <div class="timeline__event__date">วิสัยทัศน์</div>
                                 <div class="timeline__event__content">
@@ -400,9 +317,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="timeline__event timeline__event--type3">
+                            <div class="timeline__event" data-aos="fade-up">
                                 <div class="timeline__event__icon">
-                                    <i class="lni-slim"></i>
+                                    <i class="fa fa-rocket"></i>
                                 </div>
                                 <div class="timeline__event__date">พันธกิจ</div>
                                 <div class="timeline__event__content">
