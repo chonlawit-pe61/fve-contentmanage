@@ -431,24 +431,29 @@ $control = explode('/', $url);
                             ?>
                                     <li class="dropdown-submenu dropend">
                                         <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown"><?= $row['name'] ?></a>
-                                        <ul class="dropdown-menu">
-                                            <?php
-                                            $course_level1 = $CourseModel->getCourse(0, $row['id']);
-                                            $course_level2 = [];
-                                            foreach ($course_level1 as $course) {
-                                                $temp = $CourseModel->getCourse($course['id'], $row['id']);
-                                                $course_level2 = array_merge($course_level2, $temp);
-                                            }
+                                        <?php
+                                        $course_level1 = $CourseModel->getCourse(0, $row['id']);
+                                        $course_level2 = [];
+                                        foreach ($course_level1 as $course) {
+                                            $temp = $CourseModel->getCourse($course['id'], $row['id']);
+                                            $course_level2 = array_merge($course_level2, $temp);
+                                        }
 
-                                            if (!empty($course_level2)) {
+                                        if (!empty($course_level2)) { ?>
+                                            <ul class="dropdown-menu">
+
+                                                <?php
                                                 foreach ($course_level2 as $child) {
-                                            ?>
+                                                ?>
+
                                                     <li><a class="dropdown-item" href="<?= base_url('Course/detail/' . $child['id']) ?>"><?php echo $child['name'] ?></a></li>
-                                            <?php
+                                                <?php
                                                 }
-                                            }
-                                            ?>
-                                        </ul>
+                                                ?>
+                                            </ul>
+                                        <?php
+                                        }
+                                        ?>
                                     </li>
                             <?php
                                 }
