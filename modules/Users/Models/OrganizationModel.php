@@ -24,7 +24,7 @@ class OrganizationModel extends Model
             'parentId' => $parentNodeId,
             'name' => $org['name'] ?? 'หน่วยงาน',
             'title' => '',
-            'img' => base_url('public/img/logo_cktc.png'),
+            'img' => base_url('public/img/logofve_t.png'),
         ];
 
         $parentIdForSubGroups = $orgNodeId;

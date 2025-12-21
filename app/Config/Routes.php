@@ -185,6 +185,9 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
     $routes->group('Course', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('detail/(:any)', 'Course::index/$1');
     });
+    $routes->group('Reward', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
+        $routes->get('detail/(:any)', 'Reward::reward_detail/$1');
+    });
 });
 
 // We get a performance increase by specifying the default

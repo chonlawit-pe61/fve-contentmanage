@@ -305,20 +305,17 @@
 
         <!-- Back Nav (Mobile Only) -->
         <div class="back-nav d-lg-none">
-            <a href="<?= base_url('news') ?>" class="back-link">
+            <a href="<?= base_url('/') ?>" class="back-link">
                 <i class="ti ti-arrow-left"></i> กลับไปหน้ารวมข่าวสาร
             </a>
         </div>
 
         <header class="article-header">
-            <?php if (!empty($news['category_name'])): ?>
-                <span class="category-badge"><?= esc($news['category_name']) ?></span>
-            <?php endif; ?>
 
-            <h1 class="article-title"><?= esc($news['title']) ?></h1>
+            <h1 class="article-title"><?= esc($reward['title']) ?></h1>
 
             <div class="article-meta">
-                <span><i class="far fa-calendar-alt"></i> <?= date('d F Y', strtotime($news['create_at'])) ?></span>
+                <span><i class="far fa-calendar-alt"></i> <?= date('d F Y', strtotime($reward['create_at'])) ?></span>
                 <!-- Add Author if available -->
                 <span><i class="far fa-user"></i> ประชาสัมพันธ์</span>
             </div>
@@ -327,31 +324,18 @@
         <!-- Hero Image -->
         <?php
         $heroImage = base_url('public/img/logo.jpeg'); // Default
-        if (!empty($news['image_path']) && file_exists(ROOTPATH . $news['image_path'])) {
-            $heroImage = base_url($news['image_path']);
+        if (!empty($reward['image_path']) && file_exists(ROOTPATH . $reward['image_path'])) {
+            $heroImage = base_url($reward['image_path']);
         }
         ?>
         <div class="hero-image-wrapper">
-            <img src="<?= $heroImage ?>" alt="<?= esc($news['title']) ?>" class="article-hero-image" style="width: 100%; height: auto; object-fit: cover;">
+            <img src="<?= $heroImage ?>" alt="<?= esc($reward['title']) ?>" class="article-hero-image" style="width: 100%; height: auto; object-fit: cover;">
         </div>
 
         <div class="article-body">
-            <?= $news['description'] ?>
+            <?= $reward['description'] ?>
         </div>
 
-        <!-- Attachments -->
-        <?php if (!empty($news['document_path'])): ?>
-            <div class="attachments-box">
-                <h4><i class="ti ti-paperclip"></i> เอกสารที่เกี่ยวข้อง</h4>
-                <a href="<?= base_url($news['document_path']) ?>" download class="download-item">
-                    <i class="ti ti-file-type-pdf dl-icon"></i>
-                    <div class="dl-info">
-                        <span><?= esc($news['document_name']) ?></span>
-                        <small>คลิกเพื่อดาวน์โหลดไฟล์</small>
-                    </div>
-                </a>
-            </div>
-        <?php endif; ?>
 
     </main>
 

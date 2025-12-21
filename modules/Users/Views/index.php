@@ -1613,35 +1613,111 @@
         </div>
     </div>
 </div>
+<style>
+    /* การ์ดข่าว: เพิ่มเงาที่นุ่มนวลและมนขึ้น */
+    .news-card-wrapper {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+    }
 
+    .news-card-wrapper:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    /* ปรับปรุงรูปภาพ: แก้ปัญหาภาพยืด/บีบ */
+    .news-image-container {
+        position: relative;
+        width: 100%;
+        padding-top: 60%;
+        /* ทำเป็น Ratio 5:3 หรือปรับตามชอบ */
+        overflow: hidden;
+    }
+
+    .news-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* สำคัญ: ทำให้ภาพไม่เบี้ยว */
+        object-position: center;
+    }
+
+    /* ปรับปรุง Badge วันที่ */
+    .news-date-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: #333;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ส่วนเนื้อหา */
+    .news-content {
+        padding: 20px;
+    }
+
+    .news-title {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #2d3436;
+        margin-bottom: 0;
+        /* จำกัดบรรทัดไม่ให้ยาวเกินไป (Line Clamp) */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* ปุ่มอ่านเพิ่มเติม */
+    .news-btn {
+        color: #007bff;
+        transition: color 0.2s;
+    }
+
+    .news-btn:hover {
+        color: #0056b3;
+    }
+</style>
 <?php if (!empty($news)) { ?>
-    <div class="container py-5 px-4 justify-content-center">
-        <div class="page-header-custom text-center" data-aos="fade-up">
+    <div class="row g-4 justify-content-center">
+        <div class="page-header-custom" data-aos="fade-up">
             <h1>ข่าวประกาศจากวิทยาลัยฯ</h1>
         </div>
-        <div class="row g-4">
-            <?php foreach ($news as $row) { ?>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="news-card-wrapper">
-                        <div class="news-image-container">
-                            <img class="news-image" alt="<?php echo $row['title'] ?>"
-                                src="<?php echo base_url($row['image_path']) ?>">
+        <?php foreach ($news as $key => $row) { ?>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
+                <div class="news-card-wrapper h-100">
+                    <div class="news-image-container">
+                        <img class="news-image" alt="<?= $row['title'] ?>" src="<?= base_url($row['image_path']) ?>">
+                        <div class="news-date-badge">
+                            <i class="far fa-calendar-alt me-1"></i>
+                            <?= $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
                         </div>
-                        <div class="news-content">
-                            <h2 class="news-title"><?php echo $row['title'] ?></h2>
-                            <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="news-btn">
-                                อ่านเพิ่มเติม <i class="fa fa-arrow-right"></i>
+                    </div>
+                    <div class="news-content">
+                        <h2 class="news-title"><?= $row['title'] ?></h2>
+                        <div class="mt-3 pt-3 border-top d-flex justify-content-end">
+                            <a href="<?= base_url('News/detail/' . $row['id']) ?>" class="news-btn text-decoration-none fw-bold">
+                                อ่านเพิ่มเติม <i class="fas fa-chevron-right ms-1" style="font-size: 0.8rem;"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-            <?php } ?>
-            <div class="col-12 text-center mt-5" data-aos="fade-up" data-aos-delay="300">
-                <button onclick="goNew()" class="btn-view-all">
-                    ดูประกาศทั้งหมด
-                </button>
             </div>
-        </div>
+        <?php } ?>
     </div>
 <?php } ?>
 
@@ -1697,11 +1773,11 @@ if (!empty($news_original)) {
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
                             <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="text-decoration-none">
                                 <div class="news-card-horizontal">
-                                    <div class="news-horizontal-image">
+                                    <div class="news-horizontal-image ">
                                         <img src="<?= base_url($row['image_path']) ?>" alt="<?php echo $row['title'] ?>">
                                     </div>
                                     <div class="news-horizontal-content">
-                                        <div class="news-date-badge-v2">
+                                        <div class="news-date-badge-v2 text-dark">
                                             <i class="fa fa-calendar-check-o"></i>
                                             <?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
                                         </div>
@@ -1727,20 +1803,20 @@ if (!empty($news_original)) {
 }
 ?>
 <?php
-if (!empty($news_original)) {
+if (!empty($reward)) {
 ?>
     <div class="container pb-5 justify-content-center ">
         <div class="page-header-custom" data-aos="fade-up">
-            <h1>ข่าวประชาสัมพันธ์ทั่วไป</h1>
+            <h1>ผลงานและความสำเร็จ</h1>
         </div>
         <div class="row g-5">
             <?php
-            if (!empty($news_original)) {
-                foreach ($news_original as $key => $row) {
+            if (!empty($reward)) {
+                foreach ($reward as $key => $row) {
                     if ($key < 6) {
             ?>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
-                            <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="text-decoration-none">
+                            <a href="<?php echo base_url('Reward/detail/' . $row['id']) ?>" class="text-decoration-none">
                                 <div class="news-card-horizontal">
                                     <div class="news-horizontal-image">
                                         <img src="<?= base_url($row['image_path']) ?>" alt="<?php echo $row['title'] ?>">

@@ -288,7 +288,6 @@
                         <?= esc($row['name']) ?>
                     </a>
                 <?php endforeach; ?>
-
             </div>
         <?php endif; ?>
 

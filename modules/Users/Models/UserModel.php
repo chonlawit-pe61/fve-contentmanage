@@ -17,7 +17,20 @@ class UserModel extends Model
         $result = $builder->get()->getRowArray();
         return $result;
     }
-
+    function getRewardList($id = 0, $limit = 0)
+    {
+        $builder = $this->db->table('reward');
+        $builder->select("*");
+        if ($id > 0) {
+            $builder->where("id", $id);
+        }
+        if ($limit > 0) {
+            $builder->limit($limit);
+        }
+        $builder->orderBy('create_at', 'desc');
+        $result = $builder->get()->getResultArray();
+        return $result;
+    }
     function getNewsList($id = 0, $limit = 0)
     {
         $builder = $this->db->table('news');
@@ -76,7 +89,7 @@ class UserModel extends Model
         ");
         $builder->where('edu_year', date('Y'));
         $data =  $builder->get()->getRowArray();
-     
+
         return $data;
     }
 }
