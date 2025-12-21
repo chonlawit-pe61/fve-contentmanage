@@ -3,186 +3,151 @@
 <?php $this->section('style'); ?>
 <style>
     #carouselExampleCaptions .carousel-inner {
-        height: 700px;
+        height: 800px;
+    }
+
+    #carouselExampleCaptions .carousel-item {
+        height: 100%;
+        background: transparent;
     }
 
     #carouselExampleCaptions .carousel-item img {
-        object-fit: contain;
-        height: 100%;
         width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
     }
 
     /* 👉 สำหรับหน้าจอเล็ก (มือถือ) */
     @media (max-width: 768px) {
         #carouselExampleCaptions .carousel-inner {
-            height: auto;
-            /* ปรับให้เล็กลง */
+            height: 220px;
         }
     }
 
     /* 👉 สำหรับแท็บเล็ต */
     @media (min-width: 769px) and (max-width: 1024px) {
         #carouselExampleCaptions .carousel-inner {
-            height: auto;
+            height: 350px;
         }
     }
 
+    /* --- Quick Links & Service Cards (v2) --- */
     .custom-card {
-        /* width: 16rem; */
-        background-color: white;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.09);
-        padding: 2.25rem;
+        background: #fff;
+        border-radius: 20px;
+        padding: 40px 30px;
         position: relative;
         overflow: hidden;
-    }
-
-    .custom-circle {
-        width: 6rem;
-        height: 6rem;
-        background-color: #870100;
-        /* violet-500 */
-        border-radius: 9999px;
-        position: absolute;
-        right: -1.25rem;
-        top: -1.75rem;
-    }
-
-    .custom-circle-number {
-        position: absolute;
-        bottom: 1.5rem;
-        left: 1.75rem;
-        color: white;
-        font-size: 1.5rem;
-    }
-
-    .custom-icon {
-        .fa {
-            font-size: 80px;
-            color: #8b5cf6;
-        }
-    }
-
-    .custom-title {
-        font-weight: bold;
-        font-size: 1.25rem;
-    }
-
-    .custom-description {
-        font-size: 0.875rem;
-        color: #71717a;
-        line-height: 1.5rem;
-    }
-
-    .unique-card-wrapper {
-        /* width: 20rem; */
-        padding: 1rem;
-        background-color: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transform: scale(1);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .unique-card-wrapper:hover {
-        transform: scale(1.05);
-    }
-
-    .unique-card-image {
-        width: 100%;
-        height: 10rem;
-        object-fit: cover;
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-    }
-
-    .unique-card-body {
-        padding: 1rem;
-    }
-
-    .unique-card-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-    }
-
-    .unique-card-text {
-        color: #4B5563;
-        /* Tailwind gray-600 */
-        margin-top: 0.5rem;
-    }
-
-    .unique-card-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 1rem;
-    }
-
-    .unique-card-button {
-        background-color: #3B82F6;
-        /* blue-500 */
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 9999px;
-        border: none;
-        cursor: pointer;
-        outline: none;
-        transition: background-color 0.3s ease;
-    }
-
-    .unique-card-button:hover {
-        background-color: #2563EB;
-        /* blue-600 */
-    }
-
-    .unique-card-button:focus {
-        box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.5);
-        /* ring effect */
-    }
-
-    .py-10 {
-        padding-top: 50px !important;
-        padding-bottom: 50px !important;
-    }
-
-    .modal-body {
-        max-height: 70vh;
-        /* ปรับตามต้องการ */
-        overflow-y: auto;
-    }
-
-    .imgzoom-modal-content {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: auto;
-    }
-
-    .carousel-item img {
-        width: 100%;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         height: 100%;
-        object-fit: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.02);
     }
 
+    .custom-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Bottom Border Animation */
+    .custom-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--vc-primary), var(--vc-gold));
+        transition: all 0.4s ease;
+        transform: translateX(-50%);
+    }
+
+    .custom-card:hover::after {
+        width: 100%;
+    }
+
+    /* Icon (Gradient Text) */
     .icon-wrapper {
-        width: 5rem;
-        height: 5rem;
-        border: 2px solid #6b1e0f;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        color: #800000;
+        width: auto;
+        height: auto;
+        background: transparent;
+        margin-bottom: 25px;
+        transition: all 0.3s;
+    }
+
+    .custom-card:hover .icon-wrapper {
+        transform: scale(1.1);
     }
 
     .icon-wrapper .fa {
-        font-size: 40px;
-        color: #6b1e0f;
-        /* background-color: #6b1e0f; */
-        border-radius: 50%;
-        padding: 15px 15px;
+        font-size: 4rem;
+        background: -webkit-linear-gradient(45deg, var(--vc-primary), var(--vc-gold));
+        -webkit-background-clip: text;
+        transition: all 0.3s;
+        display: inline-block;
     }
 
-    .box-content-1 {
-        height: 500px;
+    /* Text */
+    .custom-title {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .custom-description {
+        font-size: 0.9rem;
+        color: #7f8c8d;
+        line-height: 1.6;
+        margin-bottom: 0;
+        font-weight: 400;
+    }
+
+    /* Link Cards (v2) */
+    .link-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+        height: 100%;
+    }
+
+    .link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-color: var(--vc-gold);
+    }
+
+    .link-icon {
+        font-size: 1.8rem;
+        background: -webkit-linear-gradient(45deg, var(--vc-primary), var(--vc-gold));
+        -webkit-background-clip: text;
+        margin-right: 20px;
+        width: 50px;
+        text-align: center;
+    }
+
+    .link-text {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #34495e;
+    }
+
+    .link-card:hover .link-text {
+        color: var(--vc-primary);
     }
 
     /* ───── SECTION ───── */
@@ -282,16 +247,304 @@
         border: 4px solid #ffe4e1;
     }
 
-    .animated-banner {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
+    /* --- News Section --- */
+    .page-header-custom {
         position: relative;
-        z-index: 1;
+        margin-bottom: 3rem;
         text-align: center;
-        padding: 0 1rem;
     }
+
+    .page-header-custom h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--vc-primary);
+        display: inline-block;
+        position: relative;
+        padding-bottom: 15px;
+        text-transform: uppercase;
+    }
+
+    .page-header-custom h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 4px;
+        background: var(--vc-gold);
+        border-radius: 2px;
+    }
+
+    .news-card-wrapper {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    .news-card-wrapper:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .news-image-container {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .news-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .news-card-wrapper:hover .news-image {
+        transform: scale(1.1);
+    }
+
+    .news-date-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--vc-gold);
+        color: #000;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+    }
+
+    .news-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* --- Horizontal News Card (v2 Magazine Style) --- */
+    .news-card-horizontal {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        align-items: stretch;
+        height: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        position: relative;
+    }
+
+    .news-card-horizontal:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        border-color: var(--vc-gold);
+    }
+
+    .news-horizontal-image {
+        width: 40%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .news-horizontal-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .news-card-horizontal:hover .news-horizontal-image img {
+        transform: scale(1.15);
+    }
+
+    .news-horizontal-content {
+        width: 60%;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    .news-date-badge-v2 {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--vc-primary), var(--vc-primary-dark));
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(128, 0, 0, 0.2);
+        align-self: flex-start;
+    }
+
+    .news-date-badge-v2 i {
+        color: var(--vc-gold);
+        margin-right: 5px;
+    }
+
+    .news-horizontal-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 12px;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: color 0.3s;
+    }
+
+    .news-card-horizontal:hover .news-horizontal-title {
+        color: var(--vc-primary);
+    }
+
+    .news-horizontal-desc {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 20px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.6;
+    }
+
+    .news-read-more-btn {
+        background: linear-gradient(45deg, var(--vc-gold), var(--vc-gold-hover));
+        color: #000;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .news-read-more-btn i {
+        margin-left: 5px;
+        transition: transform 0.3s;
+    }
+
+    .news-read-more-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        color: #000;
+    }
+
+    .news-read-more-btn:hover i {
+        transform: translateX(3px);
+    }
+
+    .news-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .news-btn {
+        margin-top: auto;
+        align-self: flex-start;
+        color: var(--vc-primary);
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .news-btn i {
+        margin-left: 8px;
+        transition: transform 0.3s;
+    }
+
+    .news-btn:hover {
+        color: var(--vc-gold-hover);
+    }
+
+    .news-btn:hover i {
+        transform: translateX(5px);
+    }
+
+    .btn-view-all {
+        background: linear-gradient(45deg, var(--vc-primary), var(--vc-primary-light));
+        color: #fff;
+        padding: 12px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s;
+        box-shadow: 0 5px 15px rgba(128, 0, 0, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn-view-all:hover {
+        background: linear-gradient(45deg, var(--vc-gold), var(--vc-gold-hover));
+        color: #000;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    }
+
+    /* --- Congratulate/Gallery Section --- */
+    .gallery-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border-color: var(--vc-gold);
+    }
+
+    .gallery-image-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .gallery-image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .gallery-card:hover .gallery-image-wrapper img {
+        transform: scale(1.05);
+    }
+
 
     .animated-content h2 {
         color: #ffffff;
@@ -774,7 +1027,7 @@
         aspect-ratio: 16 / 9;
 
         /* จำกัดไม่ให้สูงเกินหน้าจอ และยังคง 16:9 */
-        max-height: 100vh;
+        max-height: 1000px;
 
         /* พื้นหลังเป็นรูป */
         background-position: center center;
@@ -870,6 +1123,290 @@
             }
         }
     }
+
+    /* --- Homepage Stats Section (Refined v3: Bold Metric) --- */
+    .stats-section-home {
+        background: transparent;
+        padding: 20px 0 80px;
+        position: relative;
+        margin-top: 2rem;
+    }
+
+    /* Remove the overlay */
+    .stats-section-home::before {
+        display: none;
+    }
+
+    .home-stat-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 50px 30px 40px;
+        /* Increased top padding for floating icon */
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: visible;
+        /* Allow icon to float out */
+        margin-top: 30px;
+        /* Space for the floating icon */
+    }
+
+
+
+
+    .home-stat-icon {
+        width: 90px;
+        height: 90px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -45px;
+        /* Float half out */
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border: 4px solid #fff;
+        /* White ring */
+        transition: all 0.4s ease;
+        z-index: 2;
+    }
+
+    .home-stat-card:hover .home-stat-icon {
+        transform: translateX(-50%) scale(1.1);
+        box-shadow: 0 15px 35px rgba(128, 0, 0, 0.2);
+        border-color: var(--vc-gold);
+    }
+
+    .home-stat-icon i {
+        font-size: 2.5rem;
+        background: -webkit-linear-gradient(45deg, var(--vc-primary), #a01a1a);
+        -webkit-background-clip: text;
+        transition: all 0.3s;
+    }
+
+    .home-stat-card:hover .home-stat-icon i {
+        background: -webkit-linear-gradient(45deg, var(--vc-gold), #ffc107);
+        -webkit-background-clip: text;
+    }
+
+    .home-stat-number {
+        font-size: 4.5rem;
+        /* Huge Number */
+        font-weight: 800;
+        color: var(--vc-primary);
+        line-height: 1;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-family: 'Sarabun', sans-serif;
+        letter-spacing: -2px;
+    }
+
+
+
+    .home-stat-label {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #444;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .home-stat-sub {
+        font-size: 0.9rem;
+        color: #999;
+        font-weight: 400;
+    }
+</style>
+<style>
+    /* --- ITA Banner Redesign (Aurora Transparency) --- */
+    .ita-banner-section {
+        position: relative;
+        width: 100%;
+        padding: 60px 0;
+        /* Reduced padding */
+        overflow: hidden;
+        background: linear-gradient(-45deg, #800000, #500000, #b8860b, #3a0000);
+        background-size: 400% 400%;
+        animation: auroraGradient 15s ease infinite;
+        border-radius: 15px;
+        /* Slightly reduced radius */
+        margin: 3rem 0;
+        /* Reduced margin */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    @keyframes auroraGradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Glassmorphism Card */
+    .ita-glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 40px;
+        /* Reduced padding */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        max-width: 800px;
+        /* Constrained width */
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .ita-title {
+        color: #fff;
+        font-size: 1.8rem;
+        /* Slightly smaller font */
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.4;
+    }
+
+    .ita-subtitle {
+        color: var(--vc-gold);
+        font-size: 1.3rem;
+        /* Slightly smaller subtitle */
+        font-weight: 600;
+        display: block;
+        margin-top: 8px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    /* Shining Button */
+    .btn-ita-shine {
+        position: relative;
+        padding: 15px 40px;
+        background: #fff;
+        color: var(--vc-primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 50px;
+        text-decoration: none;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin-top: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-ita-shine:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        color: var(--vc-primary);
+    }
+
+    .btn-ita-shine::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+        transition: 0.5s;
+    }
+
+    .btn-ita-shine:hover::before {
+        left: 100%;
+    }
+
+    /* Floating Particles (Subtle) */
+    .ita-particles span {
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        animation: floatUp 25s linear infinite;
+        bottom: -150px;
+        border-radius: 50%;
+    }
+
+    .ita-particles span:nth-child(1) {
+        left: 25%;
+        width: 80px;
+        height: 80px;
+        animation-delay: 0s;
+    }
+
+    .ita-particles span:nth-child(2) {
+        left: 10%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 2s;
+        animation-duration: 12s;
+    }
+
+    .ita-particles span:nth-child(3) {
+        left: 70%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 4s;
+    }
+
+    .ita-particles span:nth-child(4) {
+        left: 40%;
+        width: 60px;
+        height: 60px;
+        animation-delay: 0s;
+        animation-duration: 18s;
+    }
+
+    .ita-particles span:nth-child(5) {
+        left: 65%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 0s;
+    }
+
+    .ita-particles span:nth-child(6) {
+        left: 75%;
+        width: 110px;
+        height: 110px;
+        animation-delay: 3s;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+            border-radius: 0;
+        }
+
+        100% {
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+            border-radius: 50%;
+        }
+    }
 </style>
 <?php $this->endSection() ?>
 <?php $this->section('content'); ?>
@@ -908,330 +1445,333 @@
 <div data-aos="fade-up" class="bg_content">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="true">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item hero-slide active ">
-                <video class="d-block w-100" autoplay muted loop playsinline>
-                    <source src="<?= base_url('public/img/video.mp4') ?>" type="video/mp4">
-                    เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
-                </video>
-            </div>
+
             <?php
             if (!empty($slideList)) {
                 foreach ($slideList as $key => $row) {
             ?>
 
-                    <div class="carousel-item hero-slide"
-                        style="background-image: url('<?= base_url($row['image_path']) ?>');">
+                    <div class="carousel-item hero-slide <?= $key == 0 ? 'active' : '' ?>">
+                        <img src="<?= base_url($row['image_path']) ?>" class="d-block w-100" alt="Slide Image">
                     </div>
             <?php
                 }
             }
             ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="container py-10 px-4 py-sm-0">
-        <div class="row w-100">
-            <!-- <div class="col-lg-3 mb-3" data-aos="fade-left">
-                <a href="#">
-                    <div class="custom-card shadow">
+    <div class="container py-5" style="">
+        <div class="row g-4">
+            <!-- Service Card 01 -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-decoration-none">
+                    <div class="custom-card">
                         <div class="icon-wrapper">
-                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <i class="fa fa-user"></i>
                         </div>
-                        <div class="custom-circle">
-                            <p class="custom-circle-number mb-0">01</p>
+                        <div>
+                            <h1 class="custom-title">ใบรายชื่อนักเรียน</h1>
+                            <p class="custom-description">
+                                ตรวจสอบรายชื่อนักศึกษา <br> ปีการศึกษา <?= date('Y') + 543 ?>
+                            </p>
                         </div>
-                        <h1 class="custom-title">ใบรายชื่อนักเรียน</h1>
-                        <p class="custom-description">
-                            รายชื่อนักศึกษา ปีการศึกษา <?= date('Y') + 543 ?> <br> [ข้อมูลล่าสุด <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?>]
-                        </p>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3 mb-3" data-aos="fade-up">
-                <a href="">
-                    <div class="custom-card shadow">
-                        <div class="custom-circle">
-                            <p class="custom-circle-number mb-0">02</p>
-                        </div>
-                        <div class="icon-wrapper">
-                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                        </div>
-                        <h1 class="custom-title">ปฏิทิน</h1>
-                        <p class="custom-description">
-                            ปฏิทินการศึกษา ปีการศึกษา <br> [ข้อมูลล่าสุด <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?>]
-                        </p>
 
+            <!-- Service Card 02 -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <a href="#" class="text-decoration-none">
+                    <div class="custom-card">
+                        <div class="icon-wrapper">
+                            <i class="fa fa-calendar-check-o"></i>
+                        </div>
+                        <div>
+                            <h1 class="custom-title">ปฏิทินการศึกษา</h1>
+                            <p class="custom-description">
+                                ติดตามกำหนดการ <br> และกิจกรรมสำคัญ
+                            </p>
+                        </div>
                     </div>
                 </a>
-
             </div>
-            <div class="col-lg-3 mb-3" data-aos="fade-right">
-                <a href="">
-                    <div class="custom-card shadow">
-                        <div class="custom-circle">
-                            <p class="custom-circle-number mb-0">03</p>
-                        </div>
-                        <div class="icon-wrapper">
-                            <i class="fa fa-table" aria-hidden="true"></i>
-                        </div>
-                        <h1 class="custom-title">ตารางเรียน</h1>
-                        <p class="custom-description">
-                            ตารางเรียน ปีการศึกษา <?= date('Y') + 543 ?> <br> [ข้อมูลล่าสุด <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?>]
-                        </p>
 
+            <!-- Service Card 03 -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <a href="#" class="text-decoration-none">
+                    <div class="custom-card">
+                        <div class="icon-wrapper">
+                            <i class="fa fa-table"></i>
+                        </div>
+                        <div>
+                            <h1 class="custom-title">ตารางเรียน</h1>
+                            <p class="custom-description">
+                                ดูตารางเรียนประจำปี <br> การศึกษา <?= date('Y') + 543 ?>
+                            </p>
+                        </div>
                     </div>
                 </a>
-
             </div>
-            <div class="col-lg-3 mb-3" data-aos="fade-right">
-                <a href="">
-                    <div class="custom-card shadow">
-                        <div class="custom-circle">
-                            <p class="custom-circle-number mb-0">04</p>
-                        </div>
+
+            <!-- Service Card 04 -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <a href="#" class="text-decoration-none">
+                    <div class="custom-card">
                         <div class="icon-wrapper">
-                            <i class="fa fa-clipboard" aria-hidden="true"></i>
+                            <i class="fa fa-clipboard"></i>
                         </div>
-
-                        <h1 class="custom-title">งานพัสดุ</h1>
-
-                        <p class="custom-description">
-                            แบบฟอร์มงานพัสดุ ปีงบประมาณ <?= date('Y') + 543 ?> <br> [ข้อมูลล่าสุด <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?>]
-                        </p>
+                        <div>
+                            <h1 class="custom-title">งานพัสดุ</h1>
+                            <p class="custom-description">
+                                ดาวน์โหลดแบบฟอร์ม <br> และเอกสารต่างๆ
+                            </p>
+                        </div>
                     </div>
                 </a>
-            </div> -->
-            <div class="col-lg-12" data-aos="fade-right">
-                <div class=" row">
-                    <?php
-                    if (!empty($Link)) {
-                        foreach ($Link as $row) {
-                    ?>
-                            <div class="col-lg-3 mb-3">
-                                <a class="link-card bg-white shadow" href="<?= $row['box_url'] ?>" target="_blank">
+            </div>
+
+            <!-- Dynamic Links -->
+            <div class="col-12 mt-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="row g-3">
+                    <?php if (!empty($Link)) : foreach ($Link as $row) : ?>
+                            <div class="col-lg-3 col-md-6">
+                                <a class="link-card" href="<?= $row['box_url'] ?>" target="_blank">
                                     <div class="link-icon"><i class="fa <?= $row['box_icon'] ?>"></i></div>
                                     <span class="link-text"><?= $row['box_name'] ?></span>
                                 </a>
                             </div>
-                    <?php
-                        }
-                    }
-                    ?>
-
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-
-    <?php
-    if (!empty($news)) {
-    ?>
-        <div class="container py-6 px-5 flex-lg-column">
-            <div class="text-center">
-                <h1>
-                    ข่าว ประกาศจากวิทยาลัยฯ
-                </h1>
-            </div>
-            <div class="row">
-                <?php
-                foreach ($news as $row) {
-                ?>
-                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                        <div class="unique-card-wrapper shadow">
-                            <img class="unique-card-image" alt="Card Image" src="<?php echo base_url($row['image_path']) ?>">
-                            <div class="unique-card-body p-0 pt-2">
-                                <h2 class="unique-card-title fw-light " style="font-size: 16px;"><?php echo $row['title'] ?></h2>
-                                <!-- <p class="unique-card-text"> -->
-                                <?php // echo $row['description'] 
-                                ?>
-                                <!-- </p> -->
-                                <div class="unique-card-footer justify-content-center ">
-                                    <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="unique-card-button text-center">ดูเพิ่มเติม</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                <?php
-                }
-                ?>
-                <div class="col-lg-12 text-center py-5">
-                    <button onclick="goNew()" class="btn btn-warning p-2">ประกาศทั้งหมด</ฟ>
-                </div>
-            </div>
-        </div>
-    <?php
-    }
-    ?>
-
-    <div class="animated-section">
-        <div class="animated-wrapper">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="animated-banner">
-            <div class="animated-content">
-                <h2>เปิดประตูสู่ความโปร่งใส : Open to Transparency <br><b>ITA : Integrity and Transparency Assessment</b></h2>
-                <br>
-                <div class="text-center">
-                    <a target="_blank" href="<?= $Link_ITA['box_url'] ?>" class="btn btn-indigo">รายละเอียดเพิ่มเติม คลิก!</a>
+                    <?php endforeach;
+                    endif; ?>
                 </div>
             </div>
         </div>
     </div>
-    <?php
-    if (!empty($congratulate)) {
-    ?>
-        <div class="container py-6 px-5 flex-lg-column" style="flex-wrap:nowrap;">
-            <div class="text-center">
-                <h1>
-                    แสดงความยินดี คณะครูและบุคลากรฯ
-                </h1>
-            </div>
-
-            <div class="gallery">
-                <div class="row">
-                    <?php
-                    foreach ($congratulate as $row) {
-                    ?>
-                        <div class="col-lg-6 text-center my-image mb-3" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-src="<?php echo base_url($row['image_path']) ?>">
-                            <img class="imgzoom-thumbnail" src="<?php echo base_url($row['image_path']) ?>" alt="" style="width:100%">
-                        </div>
-                    <?php
-                    }
-                    ?>
-
-                </div>
-
-            </div>
+    <div class="container px-4 mb-5 justify-content-center">
+        <div class="page-header-custom" data-aos="fade-up">
+            <h1>จำนวนนักศึกษา</h1>
         </div>
-    <?php
-    }
-    ?>
-    <div class="container">
-        <header class="page-header mx-auto mt-5">
-            <h1>ข่าวประชาสัมพันธ์ทั่วไป</h1>
-        </header>
-        <div class="news-grid">
-            <?php
-            $idx = 0;
-            if (!empty($news_original)) {
-                foreach ($news_original as $key => $row) {
-                    $idx++;
-                    if ($idx <= 2) {
-            ?>
-                        <div class="featured-news-wrapper">
-                            <a href="<?= base_url('News/detail/' . $row['id']) ?>" class="news-card">
-                                <div class="card-image">
-                                    <!-- ใช้รูปภาพจริงจากตัวแปร PHP ของคุณ -->
-                                    <img src="<?php echo base_url($row['image_path']) ?>" alt="">
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="card-title"><?php echo $row['title'] ?></h2>
-                                    <p class="card-description">
-                                        <?php echo $row['description'] ?>
-                                    </p>
-                                    <div class="card-meta">
-                                        <i class="fa fa-calendar-alt" aria-hidden="true"></i>
-                                        <span><?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?></span>
-                                    </div>
-                                </div>
-                            </a>
+        <div class="stats-section-home w-100" data-aos="fade-up">
+            <div class="row justify-content-center g-4">
+                <!-- Item 1 -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">
+                            <i class="fa fa-users"></i>
                         </div>
-            <?php
-                    }
-                }
-            }
-            ?>
-            <div class="news-list-wrapper">
-                <?php
-
-                if (!empty($news_original)) {
-                    foreach ($news_original as $key => $row) {
-                        if ($key >= 2 && $key <= 3) {
-                ?>
-                            <!-- News Item 1 -->
-                            <a href="<?= base_url('News/detail/' . $row['id']) ?>" class="news-card list-item">
-                                <div class="card-image">
-                                    <img src="<?php echo base_url($row['image_path']) ?>" alt="">
-                                </div>
-                                <div class="card-content">
-                                    <h3 class="card-title"><?php echo $row['title'] ?></h3>
-                                    <p class="card-description">
-                                        <?php echo $row['description'] ?>
-                                    </p>
-                                    <div class="card-meta">
-                                        <i class="fa fa-calendar-alt" aria-hidden="true"></i>
-                                        <span><?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?></span>
-                                    </div>
-                                </div>
-                            </a>
-
-                <?php
-                        }
-                    }
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-    <div class="animated-section-2 mt-6">
-        <div class="container d-flex justify-content-center h-100 ">
-            <div class="row w-100 justify-content-center">
-                <div class="col-lg-3 mb-3 mb-lg-auto my-auto text-center">
-                    <img src="<?php echo base_url('public/img/logo_cktc.png') ?>" style="max-width: 150px;" alt="" class="img-fluid">
-                    <div class="font-30 Count">
-                        <?= $personel_count['voc_count_all'] ?> คน
-                    </div>
-                    <div class="fw-light">
-                        ผู้เรียนทั้งหมด (ข้อมูล ณ <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?>)
+                        <div class="home-stat-number Count"><?= $personel_count['voc_count_all'] ?></div>
+                        <div class="stat-divider"></div>
+                        <div class="home-stat-label">ผู้เรียนทั้งหมด</div>
+                        <div class="home-stat-sub">ข้อมูล ณ
+                            <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
                     </div>
                 </div>
-                <div class="col-lg-3 mb-3 mb-lg-auto my-auto text-center">
-                    <img src="<?php echo base_url('public/img/logo_cktc.png') ?>" style="max-width: 150px;" alt="" class="img-fluid">
-                    <div class="font-30 Count">
-                        <?= $personel_count['voc_count'] ?> คน
-                    </div>
-                    <div class="fw-light">
-                        ระดับ ปวช. (ข้อมูล ณ <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?>)
+                <!-- Item 2 -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <div class="home-stat-number Count"><?= $personel_count['voc_count'] + $personel_count['voc_residue_count'] ?></div>
+                        <div class="stat-divider"></div>
+                        <div class="home-stat-label">ระดับ ปวช.</div>
+                        <div class="home-stat-sub">ข้อมูล ณ
+                            <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
                     </div>
                 </div>
-                <div class="col-lg-3 mb-3 mb-lg-auto my-auto text-center">
-                    <img src="<?php echo base_url('public/img/logo_cktc.png') ?>" style="max-width: 150px;" alt="" class="img-fluid">
-                    <div class="font-30 Count">
-                        <?= $personel_count['hvoc_count'] ?> คน
-                    </div>
-                    <div class="fw-light">
-                        ระดับ ปวส. (ข้อมูล ณ <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?>)
+                <!-- Item 3 -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="home-stat-number Count"><?= $personel_count['hvoc_count'] + $personel_count['hvoc_residue_count'] ?></div>
+                        <div class="stat-divider"></div>
+                        <div class="home-stat-label">ระดับ ปวส.</div>
+                        <div class="home-stat-sub">ข้อมูล ณ
+                            <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<?php if (!empty($news)) { ?>
+    <div class="container py-5 px-4 justify-content-center">
+        <div class="page-header-custom text-center" data-aos="fade-up">
+            <h1>ข่าวประกาศจากวิทยาลัยฯ</h1>
+        </div>
+        <div class="row g-4">
+            <?php foreach ($news as $row) { ?>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-card-wrapper">
+                        <div class="news-image-container">
+                            <img class="news-image" alt="<?php echo $row['title'] ?>"
+                                src="<?php echo base_url($row['image_path']) ?>">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title"><?php echo $row['title'] ?></h2>
+                            <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="news-btn">
+                                อ่านเพิ่มเติม <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+            <div class="col-12 text-center mt-5" data-aos="fade-up" data-aos-delay="300">
+                <button onclick="goNew()" class="btn-view-all">
+                    ดูประกาศทั้งหมด
+                </button>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+
+
+<div class="container px-4">
+    <div class="ita-banner-section" data-aos="fade-up">
+        <div class="ita-particles">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="ita-glass-card">
+            <h2 class="ita-title">
+                เปิดประตูสู่ความโปร่งใส : Open to Transparency
+                <span class="ita-subtitle">ITA : Integrity and Transparency Assessment</span>
+            </h2>
+            <a target="_blank" href="<?= @$Link_ITA['box_url'] ?>" class="btn-ita-shine">
+                รายละเอียดเพิ่มเติม คลิก!
+            </a>
+        </div>
+    </div>
+</div>
+<?php if (!empty($congratulate)) { ?>
+    <div class="container py-5 px-4 justify-content-center">
+        <div class="page-header-custom" data-aos="fade-up">
+            <h1>แสดงความยินดี คณะครูและบุคลากรฯ</h1>
+        </div>
+        <div class="row g-4 justify-content-center gallery">
+            <?php foreach ($congratulate as $row) { ?>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-card my-image" data-src="<?= base_url($row['image_path']) ?>">
+                        <div class="gallery-image-wrapper">
+                            <img class="imgzoom-thumbnail" src="<?= base_url($row['image_path']) ?>" alt="Congratulate Image">
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+<?php } ?>
+<?php
+if (!empty($news_original)) {
+?>
+    <div class="container pb-5 justify-content-center ">
+        <div class="page-header-custom" data-aos="fade-up">
+            <h1>ข่าวประชาสัมพันธ์ทั่วไป</h1>
+        </div>
+        <div class="row g-5">
+            <?php
+            if (!empty($news_original)) {
+                foreach ($news_original as $key => $row) {
+                    if ($key < 6) {
+            ?>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
+                            <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="text-decoration-none">
+                                <div class="news-card-horizontal">
+                                    <div class="news-horizontal-image">
+                                        <img src="<?= base_url($row['image_path']) ?>" alt="<?php echo $row['title'] ?>">
+                                    </div>
+                                    <div class="news-horizontal-content">
+                                        <div class="news-date-badge-v2">
+                                            <i class="fa fa-calendar-check-o"></i>
+                                            <?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+                                        </div>
+                                        <h3 class="news-horizontal-title"><?php echo $row['title'] ?></h3>
+                                        <p class="news-horizontal-desc">
+                                            <?php echo strip_tags($row['description']) ?>
+                                        </p>
+                                        <span class="news-read-more-btn">
+                                            อ่านต่อ <i class="fa fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+            <?php
+                    }
+                }
+            }
+            ?>
+        </div>
+    </div>
+<?php
+}
+?>
+<?php
+if (!empty($news_original)) {
+?>
+    <div class="container pb-5 justify-content-center ">
+        <div class="page-header-custom" data-aos="fade-up">
+            <h1>ข่าวประชาสัมพันธ์ทั่วไป</h1>
+        </div>
+        <div class="row g-5">
+            <?php
+            if (!empty($news_original)) {
+                foreach ($news_original as $key => $row) {
+                    if ($key < 6) {
+            ?>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
+                            <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="text-decoration-none">
+                                <div class="news-card-horizontal">
+                                    <div class="news-horizontal-image">
+                                        <img src="<?= base_url($row['image_path']) ?>" alt="<?php echo $row['title'] ?>">
+                                    </div>
+                                    <div class="news-horizontal-content">
+                                        <div class="news-date-badge-v2">
+                                            <i class="fa fa-calendar-check-o"></i>
+                                            <?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+                                        </div>
+                                        <h3 class="news-horizontal-title"><?php echo $row['title'] ?></h3>
+                                        <p class="news-horizontal-desc">
+                                            <?php echo strip_tags($row['description']) ?>
+                                        </p>
+                                        <span class="news-read-more-btn">
+                                            อ่านต่อ <i class="fa fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+            <?php
+                    }
+                }
+            }
+            ?>
+        </div>
+    </div>
+<?php
+}
+?>
+
 <?php $this->endSection() ?>
 <?php $this->section('scripts'); ?>
 <script>

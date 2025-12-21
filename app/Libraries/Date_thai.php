@@ -61,7 +61,6 @@ class Date_thai
     #thaidot = จาก eng to thai แบบแสดงเดือนเป็น ม.ค.
     public function dateFormat($value, $type)
     {
-
         if ($value == '' or $value == '0000-00-00') {
             $date = NULL;
         } else if ($type == "engthai") {
@@ -79,10 +78,6 @@ class Date_thai
 
             $day = explode("/", $value);
             $date = ($day[2] - 543) . '-' . $day[1] . '-' . $day[0];
-        } else if ($type == "thailinuxplus") {
-
-            $day = explode("/", $value);
-            $date = ($day[2]) . '-' . $day[1] . '-' . $day[0];
         } else if ($type == "thaidot") {
 
             $Month = array("", "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");

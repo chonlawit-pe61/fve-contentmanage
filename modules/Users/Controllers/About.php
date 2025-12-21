@@ -57,4 +57,19 @@ class About extends BaseController
 
         return view('Modules\Users\Views\about\information_about_manage.php', $data);
     }
+    public function information_about_money()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $AboutModel = new AboutModel();
+        $data['information_money'] = $AboutModel->getInformationMoney();
+        return view('Modules\Users\Views\about\information_about_money.php', $data);
+    }
+    public function information_about_personel()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $AboutModel = new AboutModel();
+        $data['information_personel'] = $AboutModel->getInformationPersonel();
+
+        return view('Modules\Users\Views\about\information_about_personel.php', $data);
+    }
 }

@@ -36,7 +36,6 @@ class DocumentModel extends Model
         $builder = $this->db->table("public_document_file");
         $builder->select('*');
         $builder->where('public_document_id', $id);
-        $builder->limit(2);
         $result = $builder->get()->getResultArray();
 
         return $result;

@@ -1,13 +1,13 @@
 {
     "require": {
         "irsyadulibad/codeigniter4-datatables": "^3.0",
-        "hermawan/codeigniter4-datatables": "^0.7.2",
+        "hermawan/codeigniter4-datatables": "^0.8.0",
         "mpdf/mpdf": "^8.2",
         "firebase/php-jwt": "^6.4"
     },
     "config": {
         "platform": {
-            "php": "7.3.29"
+            "php": "7.4"
         }
     }
 }

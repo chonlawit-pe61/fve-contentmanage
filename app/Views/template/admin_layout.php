@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?php echo base_url('public/js/DatepickerThai/css/datepicker.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('public/css/dataTables.dataTables.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('public/css/font-awesome_4.7/css/font-awesome.min.css') ?>">
+
     <link rel="stylesheet" href="<?php echo base_url('public/css/jqueryBracket/jquery.bracket.min.css') ?>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +27,7 @@
 <?php
 $url = uri_string();
 $control = explode('/', $url);
-
+// print_r($control);die;
 ?>
 
 <body>
@@ -39,7 +40,7 @@ $control = explode('/', $url);
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
                     <a href="<?= base_url('admin/dashboard') ?>" class="text-nowrap logo-img">
-                        <img src="<?= base_url('public/img/logo_cktc.png') ?>" width="80" class="img-fluid my-2" alt="" />
+                        <img src="<?= base_url('public/img/logo_nbg.png') ?>" width="80" class="img-fluid my-2" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -62,162 +63,103 @@ $control = explode('/', $url);
                                 <span class="hide-menu">แดชบอร์ด</span>
                             </a>
                         </li>
-                        <?php
-                        if ($_SESSION['per']['Manage_information']['action_view'] >= 1) {
-                        ?>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="<?= base_url('admin/information') ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-database"></i>
-                                    </span>
-                                    <span class="hide-menu">ข้อมูลทั่วไป</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
 
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= base_url('admin/information') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-database"></i>
+                                </span>
+                                <span class="hide-menu">ข้อมูลทั่วไป</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "information_about_personel") ? "active" : "" ?>" href="<?= base_url('admin/information/information_about_personel') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">ข้อมูลครูและบุคลากรฯ</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "information_about_money") ? "active" : "" ?>" href="<?= base_url('admin/information/information_about_money') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">ข้อมูลงบประมาณ</span>
+                            </a>
+                        </li>
 
-                        <?php
-                        if (@$_SESSION['per']['Manage_slide']['action_view'] >= 1) {
-                        ?>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "slide") ? "active" : "" ?>" href="<?= base_url('admin/slide') ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-slideshow"></i>
-                                    </span>
-                                    <span class="hide-menu">ภาพสไลด์โปรโมท</span>
-                                </a>
-                            </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "slide") ? "active" : "" ?>" href="<?= base_url('admin/slide') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-slideshow"></i>
+                                </span>
+                                <span class="hide-menu">ภาพสไลด์โปรโมท</span>
+                            </a>
+                        </li>
 
-                        <?php
-                        }
-                        ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "course") ? "active" : "" ?>" href="<?= base_url('admin/course') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-book-upload"></i>
+                                </span>
+                                <span class="hide-menu">หลักสูตร</span>
+                            </a>
+                        </li>
 
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "organization") ? "active" : "" ?>" href="<?= base_url('admin/organization') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-sitemap"></i>
+                                </span>
+                                <span class="hide-menu">โครงสร้างองค์กร</span>
+                            </a>
+                        </li>
 
-                        <?php
-                        if (@$_SESSION['per']['Manage_course']['action_view'] >= 1) {
-                        ?>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "course") ? "active" : "" ?>" href="<?= base_url('admin/course') ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-book-upload"></i>
-                                    </span>
-                                    <span class="hide-menu">หลักสูตร</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-                        <?php
-                        if (@$_SESSION['per']['Manage_organization']['action_view'] >= 1) {
-                        ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "member") ? "active" : "" ?>" href=" <?= base_url('admin/member') ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-users"></i>
+                                </div>
+                                <span class="hide-menu">บุคลากร</span>
+                            </a>
+                        </li>
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "organization") ? "active" : "" ?>" href="<?= base_url('admin/organization') ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-sitemap"></i>
-                                    </span>
-                                    <span class="hide-menu">โครงสร้างองค์กร</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "news") ? "active" : "" ?>" href="<?= base_url('admin/news'); ?>">
+                                <span class="d-flex">
+                                    <i class="ti ti-news"></i>
+                                </span>
+                                <span class="hide-menu">ข่าวสาร</span>
+                            </a>
+                        </li>
 
-                        <?php
-                        if (@$_SESSION['per']['Manage_member']['action_view'] >= 1) {
-                        ?>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "member") ? "active" : "" ?>" href=" <?= base_url('admin/member') ?>">
-                                    <div class="round-16 d-flex align-items-center justify-content-center">
-                                        <i class="ti ti-users"></i>
-                                    </div>
-                                    <span class="hide-menu">บุคลากร</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "reward") ? "active" : "" ?>" href="<?= base_url('admin/reward'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-trophy"></i>
+                                </span>
+                                <span class="hide-menu">รางวัลความสำเร็จ</span>
+                            </a>
+                        </li>
 
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "law") ? "active" : "" ?>" href="<?= base_url('admin/law'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-gavel"></i>
+                                </span>
+                                <span class="hide-menu">กฏหมายที่เกี่ยวข้อง</span>
+                            </a>
+                        </li>
 
-                        <?php
-                        if (@$_SESSION['per']['Manage_news']['action_view'] >= 1) {
-                        ?>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "news") ? "active" : "" ?>" href="<?= base_url('admin/news'); ?>">
-                                    <span class="d-flex">
-                                        <i class="ti ti-news"></i>
-                                    </span>
-                                    <span class="hide-menu">ข่าวสาร</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-
-
-
-
-                        <?php
-                        if (@$_SESSION['per']['Manage_reward']['action_view'] >= 1) {
-                        ?>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "reward") ? "active" : "" ?>" href="<?= base_url('admin/reward'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-trophy"></i>
-                                    </span>
-                                    <span class="hide-menu">รางวัลความสำเร็จ</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-                        <?php
-                        if (@$_SESSION['per']['Manage_Document']['action_view'] >= 1) {
-                        ?>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "Document") ? "active" : "" ?>" href="<?= base_url('admin/Document'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-folder-minus"></i>
-                                    </span>
-                                    <span class="hide-menu">เอกสาร</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-
-                        <?php
-                        if (@$_SESSION['per']['Manage_law']['action_view'] >= 1) {
-                        ?>
-
-                            <li class="sidebar-item">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "law") ? "active" : "" ?>" href="<?= base_url('admin/law'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-gavel"></i>
-                                    </span>
-                                    <span class="hide-menu">กฏหมายที่เกี่ยวข้อง</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-
-                        <?php
-                        if (@$_SESSION['per']['Manage_Alert']['action_view'] >= 1) {
-                        ?>
-                            <li class="sidebar-item ">
-                                <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "Alert") ? "active" : "" ?>" href="<?= base_url('admin/Alert'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-bell-plus"></i>
-                                    </span>
-                                    <span class="hide-menu">ประกาศ</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= base_url('admin/Document'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-folder-minus"></i>
+                                </span>
+                                <span class="hide-menu">เอกสาร</span>
+                            </a>
+                        </li>
                         <?php
                         if (@$_SESSION['per']['Manage_users']['action_view'] >= 1) {
                         ?>
@@ -246,77 +188,56 @@ $control = explode('/', $url);
                         <?php
                         }
                         ?>
-                        <?php
-                        if (@$_SESSION['per']['Manage_configWebsite']['action_view'] >= 1) {
-                        ?>
-                            <li class="nav-small-cap">
-                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                                <span class="hide-menu">ตั้งค่านโยบาบการบริการ</span>
-                            </li>
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=นโยบายเว็บไซต์'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-settings-2"></i>
-                                    </span>
-                                    <span class="hide-menu">นโยบายเว็บไซต์</span>
-                                </a>
-                            </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">ตั้งค่านโยบาบการบริการ</span>
+                        </li>
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=การรักษาปลอดภัยเว็บไซต์'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-settings-2"></i>
-                                    </span>
-                                    <span class="hide-menu">การรักษาปลอดภัยเว็บไซต์</span>
-                                </a>
-                            </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=นโยบายเว็บไซต์'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-settings-2"></i>
+                                </span>
+                                <span class="hide-menu">นโยบายเว็บไซต์</span>
+                            </a>
+                        </li>
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=การคุ้มครองข้อมูลส่วนบุคคล'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-settings-2"></i>
-                                    </span>
-                                    <span class="hide-menu">การคุ้มครองข้อมูลส่วนบุคคล</span>
-                                </a>
-                            </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=การรักษาปลอดภัยเว็บไซต์'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-settings-2"></i>
+                                </span>
+                                <span class="hide-menu">การรักษาปลอดภัยเว็บไซต์</span>
+                            </a>
+                        </li>
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=การปฏิเสธความรับผิด'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-settings-2"></i>
-                                    </span>
-                                    <span class="hide-menu">การปฏิเสธความรับผิด</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=นโยบายไม่รับของขวัญและของกำนัลทุกชนิด'); ?>" aria-expanded="false">
-                                    <span class="d-flex">
-                                        <i class="ti ti-settings-2"></i>
-                                    </span>
-                                    <span class="hide-menu">นโยบายไม่รับของขวัญและของกำนัลทุกชนิด</span>
-                                </a>
-                            </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=การคุ้มครองข้อมูลส่วนบุคคล'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-settings-2"></i>
+                                </span>
+                                <span class="hide-menu">การคุ้มครองข้อมูลส่วนบุคคล</span>
+                            </a>
+                        </li>
 
-                        <?php
-                        }
-                        ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=การปฏิเสธความรับผิด'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-settings-2"></i>
+                                </span>
+                                <span class="hide-menu">การปฏิเสธความรับผิด</span>
+                            </a>
+                        </li>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        <li class="sidebar-item ">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "Alert") ? "active" : "" ?>" href="<?= base_url('admin/Alert'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-bell-plus"></i>
+                                </span>
+                                <span class="hide-menu">ประกาศ</span>
+                            </a>
+                        </li>
 
                         <!-- <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= base_url('admin/logout') ?>" aria-expanded="false">

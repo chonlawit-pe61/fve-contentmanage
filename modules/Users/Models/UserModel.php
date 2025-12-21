@@ -72,10 +72,11 @@ class UserModel extends Model
            SUM(voc_residue_value) as voc_residue_count,
            SUM(hvoc_1_value) + SUM(hvoc_2_value) as hvoc_count,
            SUM(hvoc_residue_value) as hvoc_residue_count,
-           SUM(voc_1_value) + SUM(voc_2_value) + SUM(voc_3_value) + SUM(hvoc_1_value) + SUM(hvoc_2_value) AS voc_count_all
+           SUM(voc_1_value) + SUM(voc_2_value) + SUM(voc_3_value) + SUM(voc_residue_value) + SUM(hvoc_1_value) + SUM(hvoc_2_value) + SUM(hvoc_residue_value) AS voc_count_all
         ");
         $builder->where('edu_year', date('Y'));
         $data =  $builder->get()->getRowArray();
+     
         return $data;
     }
 }

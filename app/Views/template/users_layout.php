@@ -19,11 +19,12 @@ $org_7 = $OrganizationModel->getOrganizationList(7);
 
 $AboutModel = new AboutModel();
 $information = $AboutModel->getInformationEducational();
+$course = $AboutModel->getCourse();
 
 // t;
 
 // logs
-$logs = $MainModel->countLogs('view', 'user');
+// $logs = $MainModel->countLogs('view', 'user');
 
 // echo '<pre>';
 // print_r($information);
@@ -40,7 +41,7 @@ $course = $CourseModel->courseById();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>วิทยาลัยเทคนิคเชียงคํา</title>
+    <title>วิทยาลัยการอาชีพฝาง</title>
     <link rel="icon" href="<?= base_url('public/img/logofve.png') ?>" type="image/icon type">
 
     <link rel="stylesheet" href="<?php echo base_url('public/assets/css/styles.css') ?>">
@@ -63,9 +64,10 @@ $course = $CourseModel->courseById();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup/dist/magnific-popup.css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="<?php echo base_url('public/css/font-awesome_4.7/css/font-awesome.min.css') ?>">
-    <!-- <link href="<?php echo base_url('public/css/orgchart.css') ?>" rel="stylesheet"> -->
 </head>
 <?php $this->renderSection('style'); ?>
 
@@ -82,10 +84,7 @@ $control = explode('/', $url);
         padding: 0;
     }
 
-    .header_bg {
-        background-color: #860000;
-        /* background-color: white; */
-    }
+
 
     #navbarSupportedContent {
         background: transparent !important;
@@ -158,10 +157,99 @@ $control = explode('/', $url);
         text-decoration: none;
     }
 
+    /* Premium Red & Gold Navbar Styles - v2 (Refined) */
     .header_bg {
-        background-color: white;
-        /* color: bla; */
-        /* background-color: #870100; */
+        background: #800000;
+        /* Deep Royal Red */
+        background: linear-gradient(90deg, #800000 0%, #990000 100%);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        /* Subtle Gold Border */
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-brand h5 {
+        color: #FFFFFF;
+        font-weight: 600;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand p {
+        color: #E5C100;
+        /* Muted Gold */
+        font-size: 0.85rem;
+        font-weight: 400;
+        margin-top: -2px;
+        letter-spacing: 0.5px;
+    }
+
+    .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 400;
+        font-size: 1rem;
+        padding: 0.5rem 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    /* Hover & Active State - No Underline, Just Color & Glow */
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active,
+    .navbar-nav .show>.nav-link {
+        color: #FFD700 !important;
+        /* Bright Gold */
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        transform: translateY(-1px);
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+        background-color: #ffffff;
+        border: none;
+        border-top: 3px solid #B8860B;
+        /* Dark Goldenrod */
+        border-radius: 0 0 6px 6px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        padding: 0.5rem 0;
+        margin-top: 10px;
+        /* Slight gap */
+    }
+
+    /* Dropdown Triangle/Arrow */
+
+
+    .dropdown-item {
+        color: #333;
+        padding: 0.6rem 1.5rem;
+        font-weight: 400;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+        white-space: normal;
+    }
+
+
+
+    @media (min-width: 992px) {
+        .px-lg-5 {
+            padding-right: 3rem !important;
+            padding-left: 3rem !important;
+        }
+
+
+    }
+
+    @media (min-width: 992px) and (max-width: 1400px) {
+        .container_navbar {
+            max-width: 1120px !important;
+        }
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        background-color: #FFF8E1;
+        /* Very Light Gold */
+        color: #800000;
+        padding-left: 1.8rem;
+        /* Slide effect */
+        font-weight: 500;
     }
 
     .dropdown-submenu {
@@ -178,6 +266,7 @@ $control = explode('/', $url);
     @media (min-width: 992px) {
         .dropdown-submenu:hover>.dropdown-menu {
             display: block;
+            width: 225px;
         }
     }
 
@@ -186,9 +275,11 @@ $control = explode('/', $url);
         float: right;
         margin-left: 0.255em;
         vertical-align: 0.255em;
-        content: "\25B6";
+        content: "\25b6";
         border: none;
     }
+
+
 
     @media (max-width: 991.98px) {
         .dropdown-submenu>.dropdown-menu {
@@ -201,6 +292,15 @@ $control = explode('/', $url);
 
         .dropdown-submenu.open>.dropdown-menu {
             display: block;
+        }
+
+        .dropdown-menu {
+            width: auto !important;
+            min-width: auto !important;
+        }
+
+        .dropdown-item {
+            white-space: normal !important;
         }
     }
 
@@ -221,13 +321,13 @@ $control = explode('/', $url);
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark header_bg fixed-top shadow-sm ">
-        <div class="container px-lg-5">
-            <a href="<?php echo base_url() ?>">
+        <div class="container px-lg-5 container_navbar">
+            <a class="navbar-brand" href="<?php echo base_url() ?>">
                 <div class="d-flex align-middle">
-                    <img class="img-fluid" style="height: 70px;" src="<?php echo base_url($information['image_path']) ?>" alt="">
+                    <img class="img-fluid" style="height: 70px;" src="<?php echo base_url('public/img/logofve_t.png') ?>" alt="">
                     <h5 class="my-auto mx-1">
-                        วิทยาลัยเทคนิคเชียงคํา
-                        <p class="mb-0">ChiangKham Technical College</p>
+                        วิทยาลัยการอาชีพฝาง
+                        <p class="mb-0">Fang Industrial and Community Education College</p>
                     </h5>
                 </div>
             </a>
@@ -238,14 +338,28 @@ $control = explode('/', $url);
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-light">
                     <li class="nav-item">
-                        <a class="nav-link active text-dark" aria-current="page" href="<?php echo base_url('/') ?>">หน้าแรก</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo base_url('/') ?>">หน้าแรก</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ข้อมูลฯ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dataDropdown">
-                            <li><a class="dropdown-item" href="<?php echo base_url('/About/information_educational') ?>">ข้อมูลทั่วไปของสถานศึกษา</a></li>
+                            <li class="dropdown-submenu dropend">
+                                <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown">ข้อมูลพื้นฐาน 9 ประเภท</a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item" href="<?php echo base_url('/About/information_educational') ?>">
+                                        ข้อมูลทั่วไปของสถานศึกษา
+                                    </a>
+                                    <a class="dropdown-item" href="<?php echo base_url('/About/information_student') ?>">ข้อมูลนักเรียน</a>
+                                    <a class="dropdown-item" href="<?php echo base_url('/About/information_about_personel') ?>">
+                                        ข้อมูลครูและบุคลากรฯ
+                                    </a>
+                                    <a class="dropdown-item" href="<?php echo base_url('/About/information_about_money') ?>">
+                                        ข้อมูลงบประมาณฯ
+                                    </a>
+                                </ul>
+                            </li>
                             <li><a class="dropdown-item" href="<?php echo base_url('/About/information_student') ?>">ข้อมูลนักเรียน</a></li>
                             <!-- <li><a class="dropdown-item" href="<?php echo base_url('/About/information_about_manage') ?>">โครงสร้างการบริหาร</a></li> -->
                             <!-- <li><a class="dropdown-item" href="<?php echo base_url('/About/information_law') ?>">กฎหมายที่เกี่ยวข้อง</a></li> -->
@@ -253,7 +367,7 @@ $control = explode('/', $url);
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             หน่วยงาน
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -317,11 +431,41 @@ $control = explode('/', $url);
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            แผนกวิชา
+                        </a>
+                        <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php
+                            if (!empty($course)) {
+                                foreach ($course as $row) {
+                            ?>
+                                    <li class="dropdown-submenu dropend">
+                                        <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown"><?= $row['name'] ?></a>
+                                        <ul class="dropdown-menu">
+                                            <?php
+                                            if (!empty($org_4)) {
+                                                foreach ($org_4 as $row) {
+                                            ?>
+                                                    <li><a class="dropdown-item"><?php echo $row['name'] ?></a></li>
+                                            <?php
+                                                }
+                                            }
+                                            ?>
+                                        </ul>
+                                    </li>
+                            <?php
+                                }
+                            }
+                            ?>
+
+                        </ul> -->
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="<?= base_url('news') ?>">ข่าวสาร</a>
+                        <a class="nav-link" href="<?= base_url('news') ?>">ข่าวสาร</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             เอกสาร
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dataDropdown">
@@ -355,8 +499,12 @@ $control = explode('/', $url);
                         </ul>
                     </li>
 
+
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a>
+                        <a class="nav-link" href="<?php echo base_url('contact') ?>">ITA2025</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a>
                     </li>
 
 
@@ -368,458 +516,238 @@ $control = explode('/', $url);
         <?php $this->renderSection('content'); ?>
     </div>
     <style>
-        /* ===== โค้ดเดิมของคุณ (คงไว้ได้ทั้งหมด) ===== */
-        .footer {
-            background-color: #8b0000;
-            color: #fff;
-            padding: 40px 20px;
-            font-family: "Sarabun", sans-serif;
+        /* --- Standard Clean Footer --- */
+        .footer-clean {
+            background-color: #990000;
+            /* Brighter, Standard Red */
+            color: #ffffff;
+            font-family: 'Kanit', sans-serif;
+            padding-top: 60px;
+            padding-bottom: 20px;
+            font-weight: 300;
         }
 
-        .footer-container {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 70px;
-            max-width: 1500px;
-            margin: auto;
+        .footer-clean h5 {
+            color: #FFD700;
+            /* Gold */
+            font-weight: 500;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
         }
 
-
-
-        .footer-col-right {
-            border-right: 3px solid gold;
+        /* Brand */
+        .footer-brand {
+            margin-bottom: 20px;
         }
 
-        .footer-col h3 {
-            font-size: 18px;
+        .footer-brand img {
+            width: 60px;
             margin-bottom: 15px;
-            color: #ffc107;
-            padding-left: 10px;
         }
 
-        .footer-col ul {
+        .footer-brand h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        /* Links List */
+        .clean-links {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .footer-col ul li {
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-
-        .logo-col {
-            text-align: left;
-        }
-
-        .footer-logo {
-            width: 120px;
+        .clean-links li {
             margin-bottom: 10px;
         }
 
-        address {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-top: 10px;
-            color: #f0d9d9;
+        .clean-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
         }
 
-        li::marker {
-            font-size: 20px;
-            vertical-align: middle;
-            line-height: 20px;
+        .clean-links a:hover {
+            color: #FFD700;
+            text-decoration: underline;
         }
 
-        /* ===== เพิ่มเติมเพื่อความยืดหยุ่น/กันล้น ===== */
-        .footer * {
-            box-sizing: border-box;
+        /* Contact */
+        .footer-contact p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
         }
 
-        .footer h2 {
-            font-size: clamp(18px, 2.2vw, 28px);
-            margin: 0 0 6px;
+        .footer-contact i {
+            margin-right: 10px;
+            margin-top: 5px;
+            color: #FFD700;
         }
 
-        .footer p {
-            font-size: clamp(13px, 1.6vw, 16px);
-            margin: 0;
-            opacity: .95;
+        /* Socials */
+        .social-clean {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
         }
 
-        .footer-col {
-            min-width: 0;
+        .social-clean a {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s;
         }
 
-        /* กันข้อความล้นคอลัมน์ */
-        address {
-            word-wrap: break-word;
-            word-break: break-word;
+        .social-clean a:hover {
+            background: #FFD700;
+            color: #990000;
         }
 
-        /* แสดงเส้นขวาเฉพาะคอลัมน์ที่ต้องการในจอใหญ่ */
-        .footer-col-right {
-            border-right: 3px solid gold;
-            padding-right: 20px;
+        /* Copyright */
+        .copyright-clean {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.7;
         }
 
-        .footer-col-right:last-child {
-            border-right: none;
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #FFD700;
+            color: #990000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
         }
 
-        /* ===== Breakpoints ที่ละเอียดขึ้น ===== */
-        /* XL ≈ ≤ 1200px : ลดเป็น 3 คอลัมน์ */
-        @media (max-width: 1200px) {
-            .footer-container {
-                grid-template-columns: 1.2fr 1fr 1fr;
-                gap: 48px;
-                padding-inline: 16px;
-            }
-
-            .footer-col-right {
-                padding-right: 16px;
-            }
-
-            .footer-logo {
-                width: 110px;
-            }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
         }
 
-        /* LG ≈ ≤ 992px : 2 คอลัมน์ + จัดโลโก้ให้สวยขึ้น */
-        @media (max-width: 992px) {
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 36px 28px;
-            }
-
-            /* เส้นกั้นเปลี่ยนเป็นแนวนอนแทน เพื่อไม่ให้แน่น */
-            .footer-col-right {
-                border-right: none;
-                border-bottom: 2px solid rgba(255, 215, 0, .6);
-                padding-bottom: 16px;
-            }
-
-            .footer-col-right:last-child {
-                border-bottom: none;
-            }
-
-            .logo-col {
-                text-align: left;
-            }
-
-            .footer-logo {
-                width: 100px;
-            }
-        }
-
-        /* MD ≈ ≤ 768px : จัดหัวข้อ/รายการให้คลิกง่าย */
-        @media (max-width: 768px) {
-            .footer-col h3 {
-                font-size: 17px;
-            }
-
-            .footer-col ul li {
-                font-size: 16px;
-                line-height: 1.7;
-            }
-        }
-
-        /* SM ≈ ≤ 600px : 1 คอลัมน์ เต็มความกว้าง + จัดกึ่งกลาง */
-        @media (max-width: 600px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 28px;
-            }
-
-            .logo-col {
-                text-align: center;
-            }
-
-            .footer-logo {
-                margin: 0 auto 12px;
-                width: 96px;
-            }
-
-            .footer h2,
-            .footer p,
-            address {
-                text-align: center;
-            }
-
-            .footer-col-right {
-                border: none;
-                padding: 0;
-            }
-
-            .footer {
-                padding: 28px 16px;
-            }
-        }
-
-        /* XS ≈ ≤ 380px : ลดช่องไฟเพิ่มพื้นที่ */
-        @media (max-width: 380px) {
-            .footer {
-                padding: 24px 12px;
-            }
-
-            .footer-col ul li {
-                margin-bottom: 6px;
-            }
+        .back-to-top:hover {
+            background: #fff;
+            color: #990000;
+            transform: translateY(-5px);
         }
     </style>
 
-    <footer class="footer">
-        <div class="footer-container container-lg">
-            <!-- โลโก้ + ชื่อวิทยาลัย -->
-            <div class="footer-col logo-col">
-                <div class="d-flex">
-                    <div>
-                        <img src="<?php echo base_url('public/img/logo_cktc.png') ?>" alt="College Logo" class="footer-logo" />
+    <footer class="footer-clean">
+        <div class="container">
+            <div class="row">
+                <!-- Col 1: Brand -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <img src="<?php echo base_url('public/img/logofve_t.png') ?>" alt="Logo">
+                        <h4 style="color: #FFD700;">วิทยาลัยการอาชีพฝาง</h4>
+                        <span style="color: #FFD700;">Fang Industrial and Community Education College</span>
                     </div>
-                    <div class="my-auto mx-3">
-                        <h2 class="text-white">วิทยาลัยเทคนิคเชียงคำ</h2>
-                        <p>ChiangKham Technical College</p>
+                    <div class="social-clean">
+                        <a href="<?= $information['facebook'] ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="<?= $information['youtube'] ?>" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
-                <address>
-                    <?= $information['address'] ?><br>
-                    199 Ban Nong Yao, Mae Soon Subdistrict, Fang District, Chiang Mai 50110, Thailand
-                </address>
-                <div class="d-flex align-items-center">
-                    <a href="<?= $information['facebook'] ?>" target="_blank">
-                        <div class="bg-white  rounded-circle my-auto text-center mx-1" style="height: 30px;vertical-align: middle;width: 30px;">
-                            <i class="fab fa-facebook-f text-dark my-auto mx-auto text-center mt-1" style="vertical-align: middle;"></i>
+
+                <!-- Col 2: Quick Links -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>เมนูหลัก & นโยบาย</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="clean-links">
+                                <li><a href="<?php echo base_url('/') ?>">หน้าแรก</a></li>
+                                <li><a href="<?php echo base_url('news') ?>">ข่าวสาร</a></li>
+                                <li><a href="<?php echo base_url('contact') ?>">ติดต่อเรา</a></li>
+                            </ul>
                         </div>
-                    </a>
-                    <a href="<?= $information['youtube'] ?>" target="_blank">
-                        <div class="bg-white  rounded-circle my-auto text-center mx-1" style="height: 30px;vertical-align: middle;width: 30px;">
-                            <i class="fab fa-youtube text-dark mt-2"></i>
+                        <div class="col-6">
+                            <ul class="clean-links">
+                                <li><a href="<?php echo base_url('policy') ?>">นโยบายเว็บไซต์</a></li>
+                                <li><a href="<?php echo base_url('policy/securityPolicy') ?>">ความปลอดภัย</a></li>
+                                <li><a href="<?php echo base_url('policy/privacyPolicy') ?>">ข้อมูลส่วนบุคคล</a></li>
+                            </ul>
                         </div>
-                    </a>
-                    <div class="bg-white  rounded-circle my-auto text-center mx-1" style="height: 30px;vertical-align: middle;width: 30px;">
-                        <i class="fab fa-tiktok text-dark mt-2" aria-hidden="true"></i>
                     </div>
-                    <div class="mx-3 d-flex align-items-center">
-                        <i class="fas fa-user text-warning fs-7" aria-hidden="true"></i><span class="mx-1">online <?= $logs['num'] ?></span>
-                    </div>
+                </div>
 
+                <!-- Col 3: Contact -->
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <h5>ข้อมูลติดต่อ</h5>
+                    <div class="footer-contact">
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>
+                                <?= $information['address'] ?><br>
+                                199 Ban Nong Yao, Mae Sun Subdistrict,<br>
+                                Fang District, Chiang Mai Province, Mae Son Mae Sun, Fang District, Chiang Mai 50110
+                            </span>
+                        </p>
+                        <!-- Add Phone/Email if needed -->
+                    </div>
                 </div>
             </div>
 
-            <!-- นโยบายการให้บริการ -->
-            <div class="footer-col footer-col-right mx-5 mx-lg-0">
-                <h3>นโยบายการให้บริการ</h3>
-                <ul style="list-style:unset">
-                    <li>
-                        <a class="text-white" href="<?php echo base_url('policy') ?>">นโยบายเว็บไซต์</a>
-                    </li>
-                    <li><a class="text-white" href="<?php echo base_url('policy/securityPolicy') ?>">การรักษาปลอดภัยเว็บไซต์</a> </li>
-                    <li><a class="text-white" href="<?php echo base_url('policy/privacyPolicy') ?>">การคุ้มครองข้อมูลส่วนบุคคล</a> </li>
-                    <li><a class="text-white" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a></li>
-                </ul>
-            </div>
-
-            <!-- แผนกวิชาที่เปิดสอน -->
-            <div class="footer-col footer-col-right mx-5 mx-lg-0">
-                <h3>แผนกวิชาที่เปิดสอน</h3>
-                <ul style="list-style:unset">
-                    <?php
-                    if (!empty($course)) {
-                        foreach ($course as $row) {
-                    ?>
-                            <li class="">
-                                <a class="text-white" href="<?php echo base_url('Course/detail/' . $row['id']) ?>"><?php echo $row['name'] ?></a>
-                            </li>
-                    <?php
-                        }
-                    }
-                    ?>
-                </ul>
-            </div>
-
-            <!-- หน่วยงาน -->
-            <!-- <div class="footer-col mx-5 mx-lg-0">
-                <h3>หน่วยงาน</h3>
-                <ul style="list-style:unset">
-                    <li>ฝ่ายบริหารทรัพยากร</li>
-                    <li>ฝ่ายแผนงานและความร่วมมือ</li>
-                    <li>ฝ่ายพัฒนากิจการนักเรียน นักศึกษา</li>
-                    <li>ฝ่ายวิชาการ</li>
-                    <li>ข่าวสารสำหรับนักเรียน นักศึกษา</li>
-                    <li>ข่าวสารสำหรับครูและบุคลากร</li>
-                    <li>ข่าวประชาสัมพันธ์</li>
-                    <li>ข่าวประกวดราคา</li>
-                    <li>ข่าวรับสมัครงาน</li>
-                </ul>
-            </div> -->
-
-        </div>
-        <div class="container-lg" style="max-width: 1500px">
-            <div class="col-lg-12 my-3 text-center">
-                <h3 style="font-size: 18px;margin-bottom: 15px;color: #ffc107;padding-left: 10px;">หน่วยงาน</h3>
-                <div class="row ">
-                    <div class="col-lg-3 mx-auto">
-                        <ul>
-                            <li style="font-size: 18px;color:#ffc107;" class="mb-2">ฝ่ายบริหารทรัพยากร</li>
-                            <?php
-                            if (!empty($org_4)) {
-                                $none_style = 'none';
-                            }
-                            ?>
-                            <li style="list-style:<?= $none_style ?>">
-                                <ul class="text-start" style="padding-left: 20px; list-style:disc;font-size: 15px;">
-                                    <?php
-                                    if (!empty($org_4)) {
-                                        foreach ($org_4 as $row) {
-                                    ?>
-                                            <li><a class="text-white text-start" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 mx-auto">
-                        <ul>
-                            <li style="font-size: 18px;color:#ffc107;" class="mb-2">ฝ่ายแผนงานและความร่วมมือ</li>
-                            <?php
-                            if (!empty($org_4)) {
-                                $none_style = 'none';
-                            }
-                            ?>
-                            <li style="list-style:<?= $none_style ?>">
-                                <ul class="text-start" style="padding-left: 20px; list-style:disc;font-size: 15px;">
-                                    <?php
-                                    if (!empty($org_4)) {
-                                        foreach ($org_4 as $row) {
-                                    ?>
-                                            <li><a class="text-white" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 mx-auto">
-                        <ul>
-                            <li style="font-size: 18px; color:#ffc107;" class="mb-2">ฝ่ายพัฒนากิจการนักเรียนนักศึกษา</li>
-                            <?php
-                            if (!empty($org_6)) {
-                                $none_style = 'none';
-                            }
-                            ?>
-                            <li style="list-style:<?= $none_style ?>">
-                                <ul class="text-start" style="padding-left: 20px; list-style:disc;font-size: 15px;">
-                                    <?php
-                                    if (!empty($org_6)) {
-                                        foreach ($org_6 as $row) {
-                                    ?>
-                                            <li><a class="text-white" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 mx-auto">
-                        <ul>
-                            <li style="font-size: 18px; color:#ffc107;" class="mb-2">ฝ่ายวิชาการ</li>
-                            <?php
-                            if (!empty($org_7)) {
-                                $none_style = 'none';
-                            }
-                            ?>
-                            <li style="list-style:<?= $none_style ?>">
-                                <ul class="text-start" style="padding-left: 20px; list-style:disc;font-size: 15px;">
-                                    <?php
-                                    if (!empty($org_7)) {
-                                        foreach ($org_7 as $row) {
-                                    ?>
-                                            <li><a class="text-white" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
+            <div class="copyright-clean w-100">
+                &copy; <?php echo date('Y'); ?> Fang Industrial and Community Education College.
             </div>
         </div>
-
     </footer>
 
-    <!-- <div class="bg_footer">
-        <div class="container d-flex flex-col justify-content-center">
-            <div class="pt-5">
-                <div class="row justify-content-lg-center justify-start">
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 
-                    <div class="col-md-3 px-3 col-6 ">
-                        <div class="ve-section-title text-center">นโยบายการให้บริการ
-                        </div>
-                        <div class="d-flex justify-content-center ">
-                            <ul class="ve-list mx-auto">
-                                <li><a class="text-white" href="<?php echo base_url('policy') ?>">นโยบายเว็บไซต์</a>
-                                </li>
-                                <li><a class="text-white" href="<?php echo base_url('policy/securityPolicy') ?>">การรักษาปลอดภัยเว็บไซต์</a> </li>
-                                <li><a class="text-white" href="<?php echo base_url('policy/privacyPolicy') ?>">การคุ้มครองข้อมูลส่วนบุคคล</a> </li>
-                                <li><a class="text-white" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 px-3 col-6">
-                        <div class="ve-section-title text-center">แผนกวิชาที่เปิดสอน</div>
-                        <div class="d-flex justify-content-center">
-                            <ul id="" class="ve-list text-white">
-                                <?php
-                                if (!empty($course)) {
-                                    foreach ($course as $row) {
-                                ?>
-                                        <li id="menu-item-7889" class=""><a class="text-white" href="<?php echo base_url('Course/detail/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
-                                <?php
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 px-3 col-12 text-start">
-                        <div class="ve-section-title">หน่วยงาน</div>
-                        <ul id="" class="ve-list">
-                            <li id="" class=""><a class="text-white" href="">ฝ่ายบริหารทรัพยากร</a></li>
-                            <li id="" class=""><a class="text-white" href="">ฝ่ายแผนงานและความร่วมมือ</a></li>
-                            <li id="" class=""><a class="text-white" href="">ฝ่ายพัฒนากิจการนักเรียน นักศึกษา</a></li>
-                            <li id="" class=""><a class="text-white" href="">ฝ่ายวิชาการ</a></li>
-                            <li id="menu-item-3345" class=""><a class="text-white" href="">ข่าวสารสำหรับนักเรียน นักศึกษา</a></li>
-                            <li id="menu-item-3344" class=""><a class="text-white" href="">ข่าวสารสำหรับครูและบุคลากร</a></li>
-                            <li id="menu-item-3342" class=""><a class="text-white" href="">ข่าวประชาสัมพันธ์</a></li>
-                            <li id="menu-item-3341" class=""><a class="text-white" href="">ข่าวประกวดราคา</a></li>
-                            <li id="menu-item-3343" class=""><a class="text-white" href="">ข่าวรับสมัครงาน</a></li>
-                        </ul>
+    <script>
+        // Back to Top Script
+        window.addEventListener('scroll', function() {
+            var backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
 
-                    </div>
-
-                    <div class="col-lg-12">
-                        <div class="ve-footer mt-0 mb-0 pb-0">
-
-                            <strong>วิทยาลัยเทคนิคเชียงคำ</strong>
-                            <?php echo $information['address'] . ' ' . $information['phone'] ?>
-
-                            ออกแบบและพัฒนาโดย นายนฤเบศ สอนง่าย ครูประจำสาขาวิชาเทคโนโลยีธุรกิจดิจิทัล
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-        </div>
-    </div> -->
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
     <script src="<?php echo base_url('public/js/jquery-3.5.1.min.js') ?>"></script>
     <script src="<?php echo base_url('public/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?php echo base_url('public/js/jquery.mask.min.js') ?>"></script>

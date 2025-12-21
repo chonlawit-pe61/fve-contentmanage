@@ -83,6 +83,17 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
     $routes->group('information', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
         $routes->get('/', 'Information::index');
         $routes->post('save-information', 'Information::saveInformation');
+        $routes->get('information_about_personel', 'Information::information_about_personel');
+        $routes->get('information_about_personel_form', 'Information::information_about_personel_form');
+        $routes->post('saveInformationPersonel', 'Information::saveInformationPersonel');
+        $routes->post('ajaxDeleteinformation_about_personel', 'Information::ajaxDeleteinformation_about_personel');
+
+
+
+        $routes->get('information_about_money', 'Information::information_about_money');
+        $routes->get('information_about_money_form', 'Information::information_about_money_form');
+        $routes->post('saveInformationMoney', 'Information::saveInformationMoney');
+        $routes->post('ajaxDeleteinformation_about_money', 'Information::ajaxDeleteinformation_about_money');
     });
 
     $routes->group('law', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
@@ -149,6 +160,8 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
         $routes->get('/information_giftPolicy', 'About::information_giftPolicy');
         $routes->get('/information_law', 'About::information_law');
         $routes->get('/information_about_manage', 'About::information_about_manage');
+        $routes->get('/information_about_personel', 'About::information_about_personel');
+        $routes->get('/information_about_money', 'About::information_about_money');
     });
     $routes->group('Organization', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('organization_personal/(:any)', 'Organization::organization_personal/$1');

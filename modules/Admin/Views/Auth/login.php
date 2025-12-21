@@ -21,9 +21,9 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="<?= base_url('public/img/logo_cktc.png') ?>" width="120" alt="">
+                                    <img src="<?php echo base_url('public/img/logofve_t.png') ?>" width="120" alt="">
                                 </a>
-                                <p class="text-center">ระบบจัดการเว็บไซต์วิทยาลัยเทคนิคเชียงคำ</p>
+                                <p class="text-center">ระบบจัดการเว็บไซต์วิทยาลัยการอาชีพฝาง</p>
                                 <div class="row">
                                     <div class="col-12">
                                         <?php if (session()->getFlashdata('msg')) { ?>
