@@ -12,6 +12,9 @@ use Modules\Users\Models\OrganizationModel;
 $OrganizationModel = new OrganizationModel();
 $MainModel = new MainModel();
 $InformationModel = new InformationModel();
+$CourseModel = new CourseModel();
+$DocumentModel = new DocumentModel();
+
 $org_4 = $OrganizationModel->getOrganizationList(4);
 $org_5 = $OrganizationModel->getOrganizationList(5);
 $org_6 = $OrganizationModel->getOrganizationList(6);
@@ -19,23 +22,9 @@ $org_7 = $OrganizationModel->getOrganizationList(7);
 
 $AboutModel = new AboutModel();
 $information = $AboutModel->getInformationEducational();
-$course = $AboutModel->getCourse();
-
-// t;
-
-// logs
-// $logs = $MainModel->countLogs('view', 'user');
-
-// echo '<pre>';
-// print_r($information);
-// die();
-$DocumentModel = new DocumentModel();
 
 $public_document = $DocumentModel->getPublicDocument();
-
-$CourseModel = new CourseModel();
-
-$course = $CourseModel->courseById();
+$course_level1 = $CourseModel->getCourse(0);
 ?>
 
 <head>
@@ -435,19 +424,19 @@ $control = explode('/', $url);
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             แผนกวิชา
                         </a>
-                        <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
-                            if (!empty($course)) {
-                                foreach ($course as $row) {
+                            if (!empty($course_level1)) {
+                                foreach ($course_level1 as $row) {
                             ?>
                                     <li class="dropdown-submenu dropend">
                                         <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown"><?= $row['name'] ?></a>
                                         <ul class="dropdown-menu">
                                             <?php
-                                            if (!empty($org_4)) {
-                                                foreach ($org_4 as $row) {
+                                            if (!empty($row['children'])) {
+                                                foreach ($row['children'] as $child) {
                                             ?>
-                                                    <li><a class="dropdown-item"><?php echo $row['name'] ?></a></li>
+                                                    <li><a class="dropdown-item" href="<?= base_url('Course/detail/' . $child['id']) ?>"><?php echo $child['name'] ?></a></li>
                                             <?php
                                                 }
                                             }
@@ -459,7 +448,7 @@ $control = explode('/', $url);
                             }
                             ?>
 
-                        </ul> -->
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('news') ?>">ข่าวสาร</a>
