@@ -47,7 +47,8 @@ class AlertModel extends Model
     function getListAlert()
     {
         $builder = $this->db->table('alert_new');
-        $builder->select('*');
+        $builder->select('alert_new.*, alert_image.alert_image_path');
+        $builder->join('alert_image', 'alert_new.alert_id = alert_image.alert_id', 'left');
         $data = $builder->get()->getResultArray();
         return $data;
     }
