@@ -24,7 +24,7 @@ $AboutModel = new AboutModel();
 $information = $AboutModel->getInformationEducational();
 
 $public_document = $DocumentModel->getPublicDocument();
-$course_level1 = $CourseModel->getCourse(0);
+$course_type = $CourseModel->getCourseType();
 ?>
 
 <head>
@@ -426,15 +426,22 @@ $control = explode('/', $url);
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
-                            if (!empty($course_level1)) {
-                                foreach ($course_level1 as $row) {
+                            if (!empty($course_type)) {
+                                foreach ($course_type as $row) {
                             ?>
                                     <li class="dropdown-submenu dropend">
                                         <a class="dropdown-item dropdown-toggle ms-auto" href="#" data-bs-toggle="dropdown"><?= $row['name'] ?></a>
                                         <ul class="dropdown-menu">
                                             <?php
-                                            if (!empty($row['children'])) {
-                                                foreach ($row['children'] as $child) {
+                                            $course_level1 = $CourseModel->getCourse(0, $row['id']);
+                                            $course_level2 = [];
+                                            foreach ($course_level1 as $course) {
+                                                $temp = $CourseModel->getCourse($course['id'], $row['id']);
+                                                $course_level2 = array_merge($course_level2, $temp);
+                                            }
+
+                                            if (!empty($course_level2)) {
+                                                foreach ($course_level2 as $child) {
                                             ?>
                                                     <li><a class="dropdown-item" href="<?= base_url('Course/detail/' . $child['id']) ?>"><?php echo $child['name'] ?></a></li>
                                             <?php
