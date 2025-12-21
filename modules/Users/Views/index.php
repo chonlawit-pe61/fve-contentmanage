@@ -1482,7 +1482,7 @@
         <div class="row g-4">
             <!-- Service Card 01 -->
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <a href="#" class="text-decoration-none">
+                <a target="_blank" href="https://drive.google.com/drive/folders/1cns9nmI5wSM3FZymjaSuZX2cXmTUblaB" class="text-decoration-none">
                     <div class="custom-card">
                         <div class="icon-wrapper">
                             <i class="fa fa-user"></i>
@@ -1802,109 +1802,108 @@ if (!empty($news_original)) {
 <?php
 }
 ?>
-<?php
-if (!empty($reward)) {
-?>
-    <div class="container pb-5 justify-content-center ">
-        <div class="page-header-custom" data-aos="fade-up">
-            <h1>ผลงานและความสำเร็จ</h1>
-        </div>
-        <div class="row g-5">
-            <?php
-            if (!empty($reward)) {
-                foreach ($reward as $key => $row) {
-                    if ($key < 6) {
-            ?>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
-                            <a href="<?php echo base_url('Reward/detail/' . $row['id']) ?>" class="text-decoration-none">
-                                <div class="news-card-horizontal">
-                                    <div class="news-horizontal-image">
-                                        <img src="<?= base_url($row['image_path']) ?>" alt="<?php echo $row['title'] ?>">
+<?php if (!empty($reward)): ?>
+    <section class="reward-section">
+        <div class="container">
+            <div class="page-header-custom text-center text-lg-start" data-aos="fade-right">
+                <h1>ผลงานและความสำเร็จ</h1>
+            </div>
+
+            <div class="row g-4">
+                <?php foreach ($reward as $key => $row): if ($key < 6): ?>
+                        <div class="col-xl-6 col-lg-6" data-aos="zoom-in-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
+                            <a href="<?= base_url('Reward/detail/' . $row['id']) ?>" class="text-decoration-none">
+                                <div class="premium-reward-card">
+                                    <div class="reward-img-wrapper">
+                                        <img src="<?= base_url($row['image_path']) ?>" alt="<?= $row['title'] ?>">
+                                        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1));"></div>
                                     </div>
-                                    <div class="news-horizontal-content">
-                                        <div class="news-date-badge-v2">
-                                            <i class="fa fa-calendar-check-o"></i>
-                                            <?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+
+                                    <div class="reward-content-body">
+                                        <div>
+                                            <div class="reward-badge">
+                                                <i class="fa fa-calendar-o me-1"></i>
+                                                <?= $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+                                            </div>
+                                            <h3 class="reward-title"><?= $row['title'] ?></h3>
+                                            <p class="reward-text">
+                                                <?= strip_tags($row['description']) ?>
+                                            </p>
                                         </div>
-                                        <h3 class="news-horizontal-title"><?php echo $row['title'] ?></h3>
-                                        <p class="news-horizontal-desc">
-                                            <?php echo strip_tags($row['description']) ?>
-                                        </p>
-                                        <span class="news-read-more-btn">
-                                            อ่านต่อ <i class="fa fa-arrow-right"></i>
-                                        </span>
+
+                                        <div class="reward-footer">
+                                            <span class="btn-read-gold">
+                                                อ่านรายละเอียด <i class="fa fa-chevron-right"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
-            <?php
-                    }
-                }
-            }
-            ?>
+                <?php endif;
+                endforeach; ?>
+            </div>
         </div>
-    </div>
-<?php
-}
-?>
+    </section>
+<?php endif; ?>
 
 
 <!-- Announcement Modal -->
 <?php if (!empty($alert)): ?>
-<div class="modal fade" id="announcementModal" tabindex="-1" aria-labelledby="announcementModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header border-0 pb-0">
-                <h5 class="modal-title my-1 py-1" id="announcementModalLabel">ประกาศจากวิทยาลัย</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <div id="alertCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <?php if (count($alert) > 1): ?>
-                    <div class="carousel-indicators">
-                        <?php foreach ($alert as $key => $item): ?>
-                            <button type="button" data-bs-target="#alertCarousel" data-bs-slide-to="<?= $key ?>" class="<?= $key === 0 ? 'active' : '' ?>" aria-current="<?= $key === 0 ? 'true' : 'false' ?>" aria-label="Slide <?= $key + 1 ?>"></button>
-                        <?php endforeach; ?>
-                    </div>
-                    <?php endif; ?>
-
-                    <div class="carousel-inner">
-                        <?php foreach ($alert as $key => $item): ?>
-                            <div class="carousel-item <?= $key === 0 ? 'active' : '' ?>">
-                                <?php if (!empty($item['alert_image_path'])): ?>
-                                    <img src="<?= base_url($item['alert_image_path']) ?>" class="d-block w-100" alt="<?= esc($item['alert_name']) ?>" style="border-radius: 0 0 5px 5px;">
-                                <?php else: ?>
-                                    <div class="p-5 text-center">
-                                        <h3><?= esc($item['alert_name']) ?></h3>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-
-                    <?php if (count($alert) > 1): ?>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#alertCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#alertCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                    <?php endif; ?>
+    <div class="modal fade" id="announcementModal" tabindex="-1" aria-labelledby="announcementModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title my-1 py-1" id="announcementModalLabel">ประกาศจากวิทยาลัย</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-            <div class="modal-footer justify-content-between border-0 pt-2">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="dontShowToday">
-                    <label class="form-check-label text-muted" for="dontShowToday" style="font-size: 0.9rem;">
-                        ไม่แสดงอีกในวันนี้
-                    </label>
+                <div class="modal-body p-0">
+                    <div id="alertCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <?php if (count($alert) > 1): ?>
+                            <div class="carousel-indicators">
+                                <?php foreach ($alert as $key => $item): ?>
+                                    <button type="button" data-bs-target="#alertCarousel" data-bs-slide-to="<?= $key ?>" class="<?= $key === 0 ? 'active' : '' ?>" aria-current="<?= $key === 0 ? 'true' : 'false' ?>" aria-label="Slide <?= $key + 1 ?>"></button>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="carousel-inner">
+                            <?php foreach ($alert as $key => $item): ?>
+                                <div class="carousel-item <?= $key === 0 ? 'active' : '' ?>">
+                                    <?php if (!empty($item['alert_image_path'])): ?>
+                                        <img src="<?= base_url($item['alert_image_path']) ?>" class="d-block w-100" alt="<?= esc($item['alert_name']) ?>" style="border-radius: 0 0 5px 5px;">
+                                    <?php else: ?>
+                                        <div class="p-5 text-center">
+                                            <h3><?= esc($item['alert_name']) ?></h3>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <?php if (count($alert) > 1): ?>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#alertCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#alertCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between border-0 pt-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="dontShowToday">
+                        <label class="form-check-label text-muted" for="dontShowToday" style="font-size: 0.9rem;">
+                            ไม่แสดงอีกในวันนี้
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <?php endif; ?>
 
 <?php $this->endSection() ?>
@@ -1913,55 +1912,55 @@ if (!empty($reward)) {
     const goNew = () => {
         window.location.href = "<?= base_url('news') ?>";
     }
-    
+
     $(document).ready(function() {
         // --- Announcement Modal Logic ---
         <?php if (!empty($alert)): ?>
-        var myModal = new bootstrap.Modal(document.getElementById('announcementModal'), {
-            keyboard: false
-        });
+            var myModal = new bootstrap.Modal(document.getElementById('announcementModal'), {
+                keyboard: false
+            });
 
-        // Check Input Checkbox
-        var dontShowCheckbox = document.getElementById('dontShowToday');
-        
-        // Function to set cookie
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days*24*60*60*1000));
-                expires = "; expires=" + date.toUTCString();
+            // Check Input Checkbox
+            var dontShowCheckbox = document.getElementById('dontShowToday');
+
+            // Function to set cookie
+            function setCookie(name, value, days) {
+                var expires = "";
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
             }
-            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-        }
 
-        // Function to get cookie
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i=0;i < ca.length;i++) {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            // Function to get cookie
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
             }
-            return null;
-        }
 
-        // Check if we should show the modal
-        var today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-        var lastShownDate = getCookie('hideAnnouncement');
+            // Check if we should show the modal
+            var today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+            var lastShownDate = getCookie('hideAnnouncement');
 
-        if (lastShownDate !== today) {
-            myModal.show();
-        }
-
-        // Handle Modal Close
-        var modalElement = document.getElementById('announcementModal');
-        modalElement.addEventListener('hide.bs.modal', function (event) {
-            if (dontShowCheckbox.checked) {
-                setCookie('hideAnnouncement', today, 1); // Expire in 1 day
+            if (lastShownDate !== today) {
+                myModal.show();
             }
-        });
+
+            // Handle Modal Close
+            var modalElement = document.getElementById('announcementModal');
+            modalElement.addEventListener('hide.bs.modal', function(event) {
+                if (dontShowCheckbox.checked) {
+                    setCookie('hideAnnouncement', today, 1); // Expire in 1 day
+                }
+            });
         <?php endif; ?>
         // --------------------------------
 
