@@ -17,11 +17,14 @@ class CourseModel extends Model
         return $result;
     }
 
-    function getCourse($parent_id = 0)
+    function getCourse($parent_id = 0, $course_type_id = '')
     {
         $builder = $this->db->table($this->table);
         $builder->where("$this->table.parent_id", $parent_id);
         $builder->orderBy("$this->table.id", "desc");
+        if(!empty($course_type_id)) {
+            $builder->where("$this->table.course_type_id", $course_type_id);
+        }
         $organizations = $builder->get()->getResultArray();
 
         foreach ($organizations as &$org) {
