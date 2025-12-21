@@ -96,7 +96,7 @@
                                     </a>
                                     <button type="button" onclick="deleteImage('<?= $row['alert_image_id'] ?>')" class="btn btn-danger btn-xs ms-3"><i class="ti ti-trash" style="font-size: 20px;"></i></button>
                                 </div>
-                        <?
+                        <?php
                             }
                         }
                         ?>
