@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-md-10 mb-4">
                     <label for="" class="form-label">วันที่เผยแพร่ <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control date-picker" id="show_date" name="show_date" value="<?= $alert['show_date'] ? $alert['show_date'] :  date('d/m/Y') ?>" required>
+                    <input type="text" class="form-control date-picker" id="show_date" name="show_date" value="<?= @$alert['show_date'] ? @$alert['show_date'] :  date('d/m/Y') ?>" required>
                 </div>
                 <div class="col-lg-10 mb-3">
                     <input type="file" class="form-control" id="imageCropFileInput" multiple accept=".jpg,.jpeg,.png">

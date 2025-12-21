@@ -26,10 +26,10 @@ class Database extends Config
 	public $defaultGroup = 'default';
 
 	public $default = array(
-		'hostname' => '',
-		'username' => '',
-		'password' => '',
-		'database' => '',
+		'hostname' => 'localhost',
+		'username' => 'root',
+		'password' => 'root',
+		'database' => 'content_management',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pconnect' => true,

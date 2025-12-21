@@ -20,6 +20,7 @@ class Alert extends BaseController
     }
     public function manage($id = '')
     {
+        $data = [];
         $AlertModel = new AlertModel();
         $date_thai = $this->Date_thai;
         if (!empty($id)) {
@@ -75,8 +76,8 @@ class Alert extends BaseController
             $input['image_paths'] = $imagePaths;
         }
         // echo '<pre>';
-        // print_r($input);
-        $input['show_date'] = $this->Date_thai->dateFormat($input['show_date'], 'thailinuxplus');
+        // print_r($input); 
+        $input['show_date'] = $this->Date_thai->dateFormat($input['show_date'], 'thailinux');
         // print_r($input);
         // die();
         // $input['show_date'] = $this->db
