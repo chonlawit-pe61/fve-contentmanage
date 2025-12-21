@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-10 my-2">
                     <label for="title" class="form-label">ลิงค์</label>
-                    <input type="text" name="url" class="form-control" value="<?= @$document['url'] ?>" required>
+                    <input type="text" name="url" class="form-control" value="<?= @$document['url'] ?>">
                 </div>
             </div>
             <div class="row justify-content-center my-2">

@@ -18,7 +18,8 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 4rem;
-        border-radius: 0 0 50px 50px; /* Unique shape */
+        border-radius: 0 0 50px 50px;
+        /* Unique shape */
         overflow: hidden;
     }
 
@@ -29,7 +30,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom, rgba(26, 37, 60, 0.8), rgba(128, 0, 0, 0.8)); /* Dark Blue to Red */
+        background: linear-gradient(to bottom, rgba(26, 37, 60, 0.8), rgba(128, 0, 0, 0.8));
+        /* Dark Blue to Red */
         z-index: 1;
     }
 
@@ -46,7 +48,7 @@
         font-size: 3.5rem;
         font-weight: 800;
         margin-bottom: 1rem;
-        text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         letter-spacing: -1px;
     }
 
@@ -59,7 +61,8 @@
 
     .news-container {
         max-width: 1200px;
-        margin: -80px auto 0; /* Overlap the hero */
+        margin: -80px auto 0;
+        /* Overlap the hero */
         padding: 0 20px 4rem;
         position: relative;
         z-index: 3;
@@ -70,14 +73,14 @@
         background: #fff;
         padding: 15px 20px;
         border-radius: 50px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         display: inline-flex;
         justify-content: center;
         flex-wrap: wrap;
         gap: 10px;
         margin-bottom: 3rem;
         position: relative;
-        left: 50%;
+        left: 40%;
         transform: translateX(-50%);
     }
 
@@ -123,11 +126,12 @@
         text-decoration: none;
         color: inherit;
         position: relative;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
     }
 
     .article-card.is-hidden {
-        display: none; /* Simple hide for now */
+        display: none;
+        /* Simple hide for now */
     }
 
     .article-card:hover {
@@ -164,7 +168,7 @@
         font-size: 0.8rem;
         font-weight: 700;
         text-transform: uppercase;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         z-index: 2;
         backdrop-filter: blur(5px);
     }
@@ -255,14 +259,14 @@
 
 <?php $this->section('content'); ?>
 <div class="news-page-bg">
-    
+
     <!-- Hero Section -->
-    <?php 
-        // Use the first news item image as hero background if available, else default
-        $heroBg = base_url('public/img/bg-people.jpg');
-        if (!empty($news) && !empty($news[0]['image_path']) && file_exists(ROOTPATH . $news[0]['image_path'])) {
-            $heroBg = base_url($news[0]['image_path']);
-        }
+    <?php
+    // Use the first news item image as hero background if available, else default
+    $heroBg = base_url('public/img/bg-people.jpg');
+    if (!empty($news) && !empty($news[0]['image_path']) && file_exists(ROOTPATH . $news[0]['image_path'])) {
+        $heroBg = base_url($news[0]['image_path']);
+    }
     ?>
     <div class="news-hero" style="background-image: url('<?= $heroBg ?>');">
         <div class="news-hero-content" data-aos="fade-up">
@@ -276,14 +280,15 @@
         <!-- Filter Menu -->
         <?php if (!empty($category)): ?>
             <div class="filter-menu" data-aos="fade-up" data-aos-delay="100">
-                <a href="<?php echo base_url('news') ?>" class="filter-btn <?php echo @$_GET['category'] == '' ? 'active' : '' ?>">
+                <a href="<?php echo base_url('news') ?>" class="filter-btn text-dark <?php echo @$_GET['category'] == '' ? 'active' : '' ?>">
                     ทั้งหมด
                 </a>
                 <?php foreach ($category as $row): ?>
-                    <a href="<?php echo base_url('news?category=' . $row['id']) ?>" class="filter-btn <?php echo @$_GET['category'] == $row['id'] ? 'active' : '' ?>" data-filter="<?= esc($row['id'], 'attr') ?>">
+                    <a href="<?php echo base_url('news?category=' . $row['id']) ?>" class="filter-btn text-dark <?php echo @$_GET['category'] == $row['id'] ? 'active' : '' ?>" data-filter="<?= esc($row['id'], 'attr') ?>">
                         <?= esc($row['name']) ?>
                     </a>
                 <?php endforeach; ?>
+
             </div>
         <?php endif; ?>
 
@@ -296,14 +301,15 @@
                     <?php foreach ($news as $row): ?>
                         <a class="article-card" href="<?= base_url('News/detail/' . esc($row['id'], 'url')) ?>"
                             data-category="<?= esc($row['category_id'], 'attr') ?>"
-                            data-aos="fade-up" data-aos-delay="<?= $i * 50; $i++; ?>">
+                            data-aos="fade-up" data-aos-delay="<?= $i * 50;
+                                                                $i++; ?>">
 
                             <div class="card-image-wrapper">
                                 <span class="card-category"><?= esc($row['category_name']) ?></span>
                                 <?php if (!empty($row['image_path']) && file_exists(ROOTPATH . $row['image_path'])): ?>
-                                    <img src="<?= base_url($row['image_path']) ?>" alt="<?= esc($row['title']) ?>">
+                                    <img src="<?= base_url('public/img/logofve_t.png') ?>" alt="<?= esc($row['title']) ?>">
                                 <?php else: ?>
-                                    <img class="img-fluid" style="object-fit: contain;" src="<?php echo base_url('public/img/logo_cktc.png') ?>" alt="No Image Available">
+                                    <img class="img-fluid" style="object-fit: contain;" src="<?php echo base_url('public/img/logofve_t.png') ?>" alt="No Image Available">
                                 <?php endif; ?>
                             </div>
                             <div class="card-content">
@@ -312,7 +318,7 @@
                                     <?= date('d M Y', strtotime($row['create_at'])) ?>
                                 </div>
                                 <h3 class="card-title"><?= esc($row['title']) ?></h3>
-                               
+
                                 <div class="card-footer">
                                     <span class="read-more-btn">
                                         อ่านเพิ่มเติม <i class="ti ti-arrow-right"></i>

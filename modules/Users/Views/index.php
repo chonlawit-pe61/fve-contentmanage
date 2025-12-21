@@ -3,27 +3,32 @@
 <?php $this->section('style'); ?>
 <style>
     #carouselExampleCaptions .carousel-inner {
-        height: 700px;
+        height: 800px;
+    }
+
+    #carouselExampleCaptions .carousel-item {
+        height: 100%;
+        background: transparent;
     }
 
     #carouselExampleCaptions .carousel-item img {
-        object-fit: contain;
-        height: 100%;
         width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
     }
 
     /* 👉 สำหรับหน้าจอเล็ก (มือถือ) */
     @media (max-width: 768px) {
         #carouselExampleCaptions .carousel-inner {
-            height: auto;
-            /* ปรับให้เล็กลง */
+            height: 220px;
         }
     }
 
     /* 👉 สำหรับแท็บเล็ต */
     @media (min-width: 769px) and (max-width: 1024px) {
         #carouselExampleCaptions .carousel-inner {
-            height: auto;
+            height: 350px;
         }
     }
 
@@ -41,7 +46,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        border: 1px solid rgba(0,0,0,0.02);
+        border: 1px solid rgba(0, 0, 0, 0.02);
     }
 
     .custom-card:hover {
@@ -68,6 +73,7 @@
 
     /* Icon (Gradient Text) */
     .icon-wrapper {
+        color: #800000;
         width: auto;
         height: auto;
         background: transparent;
@@ -83,7 +89,6 @@
         font-size: 4rem;
         background: -webkit-linear-gradient(45deg, var(--vc-primary), var(--vc-gold));
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         transition: all 0.3s;
         display: inline-block;
     }
@@ -114,15 +119,15 @@
         display: flex;
         align-items: center;
         text-decoration: none;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         transition: all 0.3s;
-        border: 1px solid rgba(0,0,0,0.02);
+        border: 1px solid rgba(0, 0, 0, 0.02);
         height: 100%;
     }
 
     .link-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         border-color: var(--vc-gold);
     }
 
@@ -130,7 +135,6 @@
         font-size: 1.8rem;
         background: -webkit-linear-gradient(45deg, var(--vc-primary), var(--vc-gold));
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         margin-right: 20px;
         width: 50px;
         text-align: center;
@@ -141,7 +145,7 @@
         font-weight: 700;
         color: #34495e;
     }
-    
+
     .link-card:hover .link-text {
         color: var(--vc-primary);
     }
@@ -276,17 +280,17 @@
         background: #fff;
         border-radius: 15px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
         height: 100%;
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba(0,0,0,0.02);
+        border: 1px solid rgba(0, 0, 0, 0.02);
     }
 
     .news-card-wrapper:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
 
     .news-image-container {
@@ -316,7 +320,7 @@
         border-radius: 20px;
         font-size: 0.8rem;
         font-weight: 700;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         z-index: 2;
     }
 
@@ -332,18 +336,18 @@
         background: #fff;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: flex;
         align-items: stretch;
         height: 100%;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
         position: relative;
     }
 
     .news-card-horizontal:hover {
         transform: translateY(-8px);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
         border-color: var(--vc-gold);
     }
 
@@ -382,10 +386,10 @@
         font-size: 0.8rem;
         font-weight: 700;
         margin-bottom: 15px;
-        box-shadow: 0 4px 10px rgba(128,0,0,0.2);
+        box-shadow: 0 4px 10px rgba(128, 0, 0, 0.2);
         align-self: flex-start;
     }
-    
+
     .news-date-badge-v2 i {
         color: var(--vc-gold);
         margin-right: 5px;
@@ -494,7 +498,7 @@
         font-weight: 600;
         border: none;
         transition: all 0.3s;
-        box-shadow: 0 5px 15px rgba(128,0,0,0.3);
+        box-shadow: 0 5px 15px rgba(128, 0, 0, 0.3);
         text-transform: uppercase;
         letter-spacing: 1px;
     }
@@ -511,16 +515,16 @@
         background: #fff;
         border-radius: 15px;
         padding: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         transition: all 0.4s ease;
-        border: 1px solid rgba(0,0,0,0.02);
+        border: 1px solid rgba(0, 0, 0, 0.02);
         position: relative;
         overflow: hidden;
     }
 
     .gallery-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         border-color: var(--vc-gold);
     }
 
@@ -541,7 +545,7 @@
         transform: scale(1.05);
     }
 
-   
+
     .animated-content h2 {
         color: #ffffff;
         font-size: 26px;
@@ -1023,7 +1027,7 @@
         aspect-ratio: 16 / 9;
 
         /* จำกัดไม่ให้สูงเกินหน้าจอ และยังคง 16:9 */
-        max-height: 100vh;
+        max-height: 1000px;
 
         /* พื้นหลังเป็นรูป */
         background-position: center center;
@@ -1136,22 +1140,25 @@
     .home-stat-card {
         background: #fff;
         border-radius: 20px;
-        padding: 50px 30px 40px; /* Increased top padding for floating icon */
+        padding: 50px 30px 40px;
+        /* Increased top padding for floating icon */
         text-align: center;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-        border: 1px solid rgba(0,0,0,0.03);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.03);
         height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         position: relative;
-        overflow: visible; /* Allow icon to float out */
-        margin-top: 30px; /* Space for the floating icon */
+        overflow: visible;
+        /* Allow icon to float out */
+        margin-top: 30px;
+        /* Space for the floating icon */
     }
 
-    
+
 
 
     .home-stat-icon {
@@ -1163,11 +1170,13 @@
         align-items: center;
         justify-content: center;
         position: absolute;
-        top: -45px; /* Float half out */
+        top: -45px;
+        /* Float half out */
         left: 50%;
         transform: translateX(-50%);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        border: 4px solid #fff; /* White ring */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border: 4px solid #fff;
+        /* White ring */
         transition: all 0.4s ease;
         z-index: 2;
     }
@@ -1182,18 +1191,17 @@
         font-size: 2.5rem;
         background: -webkit-linear-gradient(45deg, var(--vc-primary), #a01a1a);
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         transition: all 0.3s;
     }
 
     .home-stat-card:hover .home-stat-icon i {
         background: -webkit-linear-gradient(45deg, var(--vc-gold), #ffc107);
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
     }
 
     .home-stat-number {
-        font-size: 4.5rem; /* Huge Number */
+        font-size: 4.5rem;
+        /* Huge Number */
         font-weight: 800;
         color: var(--vc-primary);
         line-height: 1;
@@ -1203,7 +1211,7 @@
         letter-spacing: -2px;
     }
 
-  
+
 
     .home-stat-label {
         font-size: 1.3rem;
@@ -1225,20 +1233,31 @@
     .ita-banner-section {
         position: relative;
         width: 100%;
-        padding: 60px 0; /* Reduced padding */
+        padding: 60px 0;
+        /* Reduced padding */
         overflow: hidden;
         background: linear-gradient(-45deg, #800000, #500000, #b8860b, #3a0000);
         background-size: 400% 400%;
         animation: auroraGradient 15s ease infinite;
-        border-radius: 15px; /* Slightly reduced radius */
-        margin: 3rem 0; /* Reduced margin */
-        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        border-radius: 15px;
+        /* Slightly reduced radius */
+        margin: 3rem 0;
+        /* Reduced margin */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
     @keyframes auroraGradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
     }
 
     /* Glassmorphism Card */
@@ -1247,10 +1266,12 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border-radius: 15px;
-        padding: 40px; /* Reduced padding */
+        padding: 40px;
+        /* Reduced padding */
         border: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        max-width: 800px; /* Constrained width */
+        max-width: 800px;
+        /* Constrained width */
         margin: 0 auto;
         text-align: center;
         position: relative;
@@ -1259,16 +1280,18 @@
 
     .ita-title {
         color: #fff;
-        font-size: 1.8rem; /* Slightly smaller font */
+        font-size: 1.8rem;
+        /* Slightly smaller font */
         font-weight: 700;
         margin-bottom: 0.8rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         line-height: 1.4;
     }
 
     .ita-subtitle {
         color: var(--vc-gold);
-        font-size: 1.3rem; /* Slightly smaller subtitle */
+        font-size: 1.3rem;
+        /* Slightly smaller subtitle */
         font-weight: 600;
         display: block;
         margin-top: 8px;
@@ -1291,12 +1314,12 @@
         transition: all 0.3s ease;
         display: inline-block;
         margin-top: 20px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .btn-ita-shine:hover {
         transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         color: var(--vc-primary);
     }
 
@@ -1307,7 +1330,7 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
         transition: 0.5s;
     }
 
@@ -1327,16 +1350,62 @@
         border-radius: 50%;
     }
 
-    .ita-particles span:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
-    .ita-particles span:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
-    .ita-particles span:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
-    .ita-particles span:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
-    .ita-particles span:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
-    .ita-particles span:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+    .ita-particles span:nth-child(1) {
+        left: 25%;
+        width: 80px;
+        height: 80px;
+        animation-delay: 0s;
+    }
+
+    .ita-particles span:nth-child(2) {
+        left: 10%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 2s;
+        animation-duration: 12s;
+    }
+
+    .ita-particles span:nth-child(3) {
+        left: 70%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 4s;
+    }
+
+    .ita-particles span:nth-child(4) {
+        left: 40%;
+        width: 60px;
+        height: 60px;
+        animation-delay: 0s;
+        animation-duration: 18s;
+    }
+
+    .ita-particles span:nth-child(5) {
+        left: 65%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 0s;
+    }
+
+    .ita-particles span:nth-child(6) {
+        left: 75%;
+        width: 110px;
+        height: 110px;
+        animation-delay: 3s;
+    }
 
     @keyframes floatUp {
-        0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
-        100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+            border-radius: 0;
+        }
+
+        100% {
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+            border-radius: 50%;
+        }
     }
 </style>
 <?php $this->endSection() ?>
@@ -1376,35 +1445,35 @@
 <div data-aos="fade-up" class="bg_content">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="true">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item hero-slide active ">
-                <video class="d-block w-100" autoplay muted loop playsinline>
-                    <source src="<?= base_url('public/img/video.mp4') ?>" type="video/mp4">
-                    เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
-                </video>
-            </div>
+
             <?php
             if (!empty($slideList)) {
                 foreach ($slideList as $key => $row) {
             ?>
 
-                    <div class="carousel-item hero-slide"
-                        style="background-image: url('<?= base_url($row['image_path']) ?>');">
+                    <div class="carousel-item hero-slide <?= $key == 0 ? 'active' : '' ?>">
+                        <img src="<?= base_url($row['image_path']) ?>" class="d-block w-100" alt="Slide Image">
                     </div>
             <?php
                 }
             }
             ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -1483,19 +1552,20 @@
             <div class="col-12 mt-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="row g-3">
                     <?php if (!empty($Link)) : foreach ($Link as $row) : ?>
-                        <div class="col-lg-3 col-md-6">
-                            <a class="link-card" href="<?= $row['box_url'] ?>" target="_blank">
-                                <div class="link-icon"><i class="fa <?= $row['box_icon'] ?>"></i></div>
-                                <span class="link-text"><?= $row['box_name'] ?></span>
-                            </a>
-                        </div>
-                    <?php endforeach; endif; ?>
+                            <div class="col-lg-3 col-md-6">
+                                <a class="link-card" href="<?= $row['box_url'] ?>" target="_blank">
+                                    <div class="link-icon"><i class="fa <?= $row['box_icon'] ?>"></i></div>
+                                    <span class="link-text"><?= $row['box_name'] ?></span>
+                                </a>
+                            </div>
+                    <?php endforeach;
+                    endif; ?>
                 </div>
             </div>
         </div>
     </div>
     <div class="container px-4 mb-5 justify-content-center">
-    <div class="page-header-custom" data-aos="fade-up">
+        <div class="page-header-custom" data-aos="fade-up">
             <h1>จำนวนนักศึกษา</h1>
         </div>
         <div class="stats-section-home w-100" data-aos="fade-up">
@@ -1509,7 +1579,8 @@
                         <div class="home-stat-number Count"><?= $personel_count['voc_count_all'] ?></div>
                         <div class="stat-divider"></div>
                         <div class="home-stat-label">ผู้เรียนทั้งหมด</div>
-                        <div class="home-stat-sub">ข้อมูล ณ <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
+                        <div class="home-stat-sub">ข้อมูล ณ
+                            <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
                     </div>
                 </div>
                 <!-- Item 2 -->
@@ -1518,95 +1589,101 @@
                         <div class="home-stat-icon">
                             <i class="fa fa-graduation-cap"></i>
                         </div>
-                        <div class="home-stat-number Count"><?= $personel_count['voc_count'] ?></div>
+                        <div class="home-stat-number Count"><?= $personel_count['voc_count'] + $personel_count['voc_residue_count'] ?></div>
                         <div class="stat-divider"></div>
                         <div class="home-stat-label">ระดับ ปวช.</div>
-                        <div class="home-stat-sub">ข้อมูล ณ <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
+                        <div class="home-stat-sub">ข้อมูล ณ
+                            <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
                     </div>
                 </div>
                 <!-- Item 3 -->
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                     <div class="home-stat-card">
                         <div class="home-stat-icon">
-                            <i class="fa fa-user-tie"></i>
+                            <i class="fas fa-user-tie"></i>
                         </div>
-                        <div class="home-stat-number Count"><?= $personel_count['hvoc_count'] ?></div>
+                        <div class="home-stat-number Count"><?= $personel_count['hvoc_count'] + $personel_count['hvoc_residue_count'] ?></div>
                         <div class="stat-divider"></div>
                         <div class="home-stat-label">ระดับ ปวส.</div>
-                        <div class="home-stat-sub">ข้อมูล ณ <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
+                        <div class="home-stat-sub">ข้อมูล ณ
+                            <?php echo $date_thai->dateFormat(date('Y-m-d'), 'thaidot') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
 
-    <?php if (!empty($news)) { ?>
-        <div class="container py-5 px-4 justify-content-center">
-            <div class="page-header-custom text-center" data-aos="fade-up">
-                <h1>ข่าวประกาศจากวิทยาลัยฯ</h1>
-            </div>
-            <div class="row g-4">
-                <?php foreach ($news as $row) { ?>
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="news-card-wrapper">
-                            <div class="news-image-container">
-                                <img class="news-image" alt="<?php echo $row['title'] ?>" src="<?php echo base_url($row['image_path']) ?>">
-                            </div>
-                            <div class="news-content">
-                                <h2 class="news-title"><?php echo $row['title'] ?></h2>
-                                <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="news-btn">
-                                    อ่านเพิ่มเติม <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </div>
+<?php if (!empty($news)) { ?>
+    <div class="container py-5 px-4 justify-content-center">
+        <div class="page-header-custom text-center" data-aos="fade-up">
+            <h1>ข่าวประกาศจากวิทยาลัยฯ</h1>
+        </div>
+        <div class="row g-4">
+            <?php foreach ($news as $row) { ?>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-card-wrapper">
+                        <div class="news-image-container">
+                            <img class="news-image" alt="<?php echo $row['title'] ?>"
+                                src="<?php echo base_url($row['image_path']) ?>">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title"><?php echo $row['title'] ?></h2>
+                            <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="news-btn">
+                                อ่านเพิ่มเติม <i class="fa fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
-                <?php } ?>
-                <div class="col-12 text-center mt-5" data-aos="fade-up" data-aos-delay="300">
-                    <button onclick="goNew()" class="btn-view-all">
-                        ดูประกาศทั้งหมด
-                    </button>
                 </div>
-            </div>
-        </div>
-    <?php } ?>
-
-    
-
-    <div class="container px-4">
-        <div class="ita-banner-section" data-aos="fade-up">
-            <div class="ita-particles">
-                <span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="ita-glass-card">
-                <h2 class="ita-title">
-                    เปิดประตูสู่ความโปร่งใส : Open to Transparency
-                    <span class="ita-subtitle">ITA : Integrity and Transparency Assessment</span>
-                </h2>
-                <a target="_blank" href="<?= $Link_ITA['box_url'] ?>" class="btn-ita-shine">
-                    รายละเอียดเพิ่มเติม คลิก!
-                </a>
+            <?php } ?>
+            <div class="col-12 text-center mt-5" data-aos="fade-up" data-aos-delay="300">
+                <button onclick="goNew()" class="btn-view-all">
+                    ดูประกาศทั้งหมด
+                </button>
             </div>
         </div>
     </div>
-    <?php if (!empty($congratulate)) { ?>
-        <div class="container py-5 px-4 justify-content-center">
-            <div class="page-header-custom" data-aos="fade-up">
-                <h1>แสดงความยินดี คณะครูและบุคลากรฯ</h1>
-            </div>
-            <div class="row g-4 justify-content-center gallery">
-                <?php foreach ($congratulate as $row) { ?>
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="gallery-card my-image" data-src="<?= base_url($row['image_path']) ?>">
-                            <div class="gallery-image-wrapper">
-                                <img class="imgzoom-thumbnail" src="<?= base_url($row['image_path']) ?>" alt="Congratulate Image">
-                            </div>
+<?php } ?>
+
+
+
+<div class="container px-4">
+    <div class="ita-banner-section" data-aos="fade-up">
+        <div class="ita-particles">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="ita-glass-card">
+            <h2 class="ita-title">
+                เปิดประตูสู่ความโปร่งใส : Open to Transparency
+                <span class="ita-subtitle">ITA : Integrity and Transparency Assessment</span>
+            </h2>
+            <a target="_blank" href="<?= @$Link_ITA['box_url'] ?>" class="btn-ita-shine">
+                รายละเอียดเพิ่มเติม คลิก!
+            </a>
+        </div>
+    </div>
+</div>
+<?php if (!empty($congratulate)) { ?>
+    <div class="container py-5 px-4 justify-content-center">
+        <div class="page-header-custom" data-aos="fade-up">
+            <h1>แสดงความยินดี คณะครูและบุคลากรฯ</h1>
+        </div>
+        <div class="row g-4 justify-content-center gallery">
+            <?php foreach ($congratulate as $row) { ?>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-card my-image" data-src="<?= base_url($row['image_path']) ?>">
+                        <div class="gallery-image-wrapper">
+                            <img class="imgzoom-thumbnail" src="<?= base_url($row['image_path']) ?>" alt="Congratulate Image">
                         </div>
                     </div>
-                <?php } ?>
-            </div>
+                </div>
+            <?php } ?>
         </div>
-    <?php } ?>
+    </div>
+<?php } ?>
+<?php
+if (!empty($news_original)) {
+?>
     <div class="container pb-5 justify-content-center ">
         <div class="page-header-custom" data-aos="fade-up">
             <h1>ข่าวประชาสัมพันธ์ทั่วไป</h1>
@@ -1615,30 +1692,30 @@
             <?php
             if (!empty($news_original)) {
                 foreach ($news_original as $key => $row) {
-                    // Show first 6 items in horizontal layout
-                    if ($key < 6) { 
+                    if ($key < 6) {
             ?>
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
-                        <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="text-decoration-none">
-                            <div class="news-card-horizontal">
-                                <div class="news-horizontal-image">
-                                    <img src="<?= base_url($row['image_path']) ?>" alt="<?php echo $row['title'] ?>">
-                                </div>
-                                <div class="news-horizontal-content">
-                                    <div class="news-date-badge-v2">
-                                        <i class="fa fa-calendar-check-o"></i> <?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
+                            <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="text-decoration-none">
+                                <div class="news-card-horizontal">
+                                    <div class="news-horizontal-image">
+                                        <img src="<?= base_url($row['image_path']) ?>" alt="<?php echo $row['title'] ?>">
                                     </div>
-                                    <h3 class="news-horizontal-title"><?php echo $row['title'] ?></h3>
-                                    <p class="news-horizontal-desc">
-                                        <?php echo strip_tags($row['description']) ?>
-                                    </p>
-                                    <span class="news-read-more-btn">
-                                        อ่านต่อ <i class="fa fa-arrow-right"></i>
-                                    </span>
+                                    <div class="news-horizontal-content">
+                                        <div class="news-date-badge-v2">
+                                            <i class="fa fa-calendar-check-o"></i>
+                                            <?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+                                        </div>
+                                        <h3 class="news-horizontal-title"><?php echo $row['title'] ?></h3>
+                                        <p class="news-horizontal-desc">
+                                            <?php echo strip_tags($row['description']) ?>
+                                        </p>
+                                        <span class="news-read-more-btn">
+                                            อ่านต่อ <i class="fa fa-arrow-right"></i>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
             <?php
                     }
                 }
@@ -1646,7 +1723,55 @@
             ?>
         </div>
     </div>
-   
+<?php
+}
+?>
+<?php
+if (!empty($news_original)) {
+?>
+    <div class="container pb-5 justify-content-center ">
+        <div class="page-header-custom" data-aos="fade-up">
+            <h1>ข่าวประชาสัมพันธ์ทั่วไป</h1>
+        </div>
+        <div class="row g-5">
+            <?php
+            if (!empty($news_original)) {
+                foreach ($news_original as $key => $row) {
+                    if ($key < 6) {
+            ?>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
+                            <a href="<?php echo base_url('News/detail/' . $row['id']) ?>" class="text-decoration-none">
+                                <div class="news-card-horizontal">
+                                    <div class="news-horizontal-image">
+                                        <img src="<?= base_url($row['image_path']) ?>" alt="<?php echo $row['title'] ?>">
+                                    </div>
+                                    <div class="news-horizontal-content">
+                                        <div class="news-date-badge-v2">
+                                            <i class="fa fa-calendar-check-o"></i>
+                                            <?php echo $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+                                        </div>
+                                        <h3 class="news-horizontal-title"><?php echo $row['title'] ?></h3>
+                                        <p class="news-horizontal-desc">
+                                            <?php echo strip_tags($row['description']) ?>
+                                        </p>
+                                        <span class="news-read-more-btn">
+                                            อ่านต่อ <i class="fa fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+            <?php
+                    }
+                }
+            }
+            ?>
+        </div>
+    </div>
+<?php
+}
+?>
+
 <?php $this->endSection() ?>
 <?php $this->section('scripts'); ?>
 <script>

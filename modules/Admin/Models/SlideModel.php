@@ -58,7 +58,7 @@ class SlideModel extends Model
 
         $data = $builder->select('*')->where('id', $id)->get()->getRowArray();
         if (!empty($data['image_path'])) {
-            unlink($data['image_path']);
+            //unlink($data['image_path']);
         }
 
         $builder->where('id', $id)->delete();

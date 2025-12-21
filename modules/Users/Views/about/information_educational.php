@@ -55,7 +55,8 @@
         left: 50%;
         width: 4px;
         height: 100%;
-        background: rgba(128, 0, 0, 0.1); /* Subtle Red Trace */
+        background: rgba(128, 0, 0, 0.1);
+        /* Subtle Red Trace */
         transform: translateX(-50%);
         border-radius: 2px;
     }
@@ -82,7 +83,8 @@
         background: #fff;
         width: 45%;
         border-radius: 15px;
-        border-top: 4px solid var(--vc-gold); /* Gold Top Border */
+        border-top: 4px solid var(--vc-gold);
+        /* Gold Top Border */
         position: relative;
         transition: all 0.3s ease;
     }
@@ -97,7 +99,8 @@
         line-height: 1.4;
         text-transform: uppercase;
         font-weight: 700;
-        color: var(--vc-primary); /* Red Title */
+        color: var(--vc-primary);
+        /* Red Title */
         letter-spacing: 1px;
         margin-bottom: 15px;
         border-bottom: 2px solid rgba(255, 215, 0, 0.3);
@@ -117,7 +120,8 @@
         color: #fff;
         font-size: 1.2rem;
         font-weight: 600;
-        background: var(--vc-primary); /* Red Background */
+        background: var(--vc-primary);
+        /* Red Background */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -151,7 +155,7 @@
         left: 50%;
         top: 30px;
         transform: translateX(-50%);
-        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.8), 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.8), 0 10px 20px rgba(0, 0, 0, 0.1);
         z-index: 3;
     }
 
@@ -164,7 +168,8 @@
     .timeline__event__icon::after,
     .timeline__event:nth-child(2n + 1) .timeline__event__icon::before,
     .timeline__event:nth-child(2n + 1) .timeline__event__icon::after {
-        display: none; /* Removed old lines for cleaner look */
+        display: none;
+        /* Removed old lines for cleaner look */
     }
 
     /* Responsive */
@@ -230,7 +235,8 @@
                     </div>
                 </div>
                 <div class="col-lg-12" data-aos="fade-left">
-                    <div class="border-bottom border-3 mb-4" style="border-color: var(--vc-gold) !important; display: inline-block;">
+                    <div class="border-bottom border-3 mb-4"
+                        style="border-color: var(--vc-gold) !important; display: inline-block;">
                         <h1 style="color: var(--vc-primary); font-weight: 700;">ประวัติความเป็นมา</h1>
                     </div>
                     <div class="history-content">
@@ -250,7 +256,10 @@
                     </div>
                 </div>
                 <div class="col-lg-12 text-center">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/n6Bm-P7x0XI?si=2KRfUhjAs5OXQoL5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/n6Bm-P7x0XI?si=2KRfUhjAs5OXQoL5"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -270,9 +279,9 @@
                                 <div class="timeline__event__icon">
                                     <i class="fa fa-lightbulb-o"></i>
                                 </div>
-                                <div class="timeline__event__date">ปรัชญา</div>
+                                <div class="timeline__event__date text-dark">ปรัชญา</div>
                                 <div class="timeline__event__content">
-                                    <div class="timeline__event__title">ปรัชญา</div>
+                                    <div class="timeline__event__title text-dark">ปรัชญา</div>
                                     <div class="timeline__event__description">
                                         <p><?php echo $information['philosophy'] ?></p>
                                     </div>
@@ -281,11 +290,11 @@
 
                             <div class="timeline__event" data-aos="fade-up">
                                 <div class="timeline__event__icon">
-                                    <i class="fa fa-fingerprint"></i>
+                                    <i class='fas fa-fingerprint'></i>
                                 </div>
-                                <div class="timeline__event__date">อัตลักษณ์</div>
+                                <div class="timeline__event__date text-dark text-dark">อัตลักษณ์</div>
                                 <div class="timeline__event__content">
-                                    <div class="timeline__event__title">อัตลักษณ์</div>
+                                    <div class="timeline__event__title text-dark">อัตลักษณ์</div>
                                     <div class="timeline__event__description">
                                         <p><?php echo $information['identity'] ?></p>
                                     </div>
@@ -296,9 +305,9 @@
                                 <div class="timeline__event__icon">
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <div class="timeline__event__date">เอกลักษณ์</div>
+                                <div class="timeline__event__date text-dark">เอกลักษณ์</div>
                                 <div class="timeline__event__content">
-                                    <div class="timeline__event__title">เอกลักษณ์</div>
+                                    <div class="timeline__event__title text-dark">เอกลักษณ์</div>
                                     <div class="timeline__event__description">
                                         <p><?php echo $information['unique'] ?></p>
                                     </div>
@@ -309,9 +318,9 @@
                                 <div class="timeline__event__icon">
                                     <i class="fa fa-eye"></i>
                                 </div>
-                                <div class="timeline__event__date">วิสัยทัศน์</div>
+                                <div class="timeline__event__date text-dark">วิสัยทัศน์</div>
                                 <div class="timeline__event__content">
-                                    <div class="timeline__event__title">วิสัยทัศน์</div>
+                                    <div class="timeline__event__title text-dark">วิสัยทัศน์</div>
                                     <div class="timeline__event__description">
                                         <p><?php echo $information['vision'] ?></p>
                                     </div>
@@ -321,9 +330,9 @@
                                 <div class="timeline__event__icon">
                                     <i class="fa fa-rocket"></i>
                                 </div>
-                                <div class="timeline__event__date">พันธกิจ</div>
+                                <div class="timeline__event__date text-dark">พันธกิจ</div>
                                 <div class="timeline__event__content">
-                                    <div class="timeline__event__title">พันธกิจ</div>
+                                    <div class="timeline__event__title text-dark">พันธกิจ</div>
                                     <div class="timeline__event__description">
                                         <p>
                                             <?php echo $information['mission'] ?>
@@ -348,7 +357,10 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.4448199388485!2d99.16360617611326!3d19.863430481510086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30d0cd264441a7db%3A0x2f035cac3d650328!2z4Lin4Li04LiX4Lii4Liy4Lil4Lix4LiB4Liy4Lij4Lit4Liy4LiK4Li14Lie4Lid4Liy4LiH!5e0!3m2!1sen!2sth!4v1746429237699!5m2!1sen!2sth" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.4448199388485!2d99.16360617611326!3d19.863430481510086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30d0cd264441a7db%3A0x2f035cac3d650328!2z4Lin4Li04LiX4Lii4Liy4Lil4Lix4LiB4Liy4Lij4Lit4Liy4LiK4Li14Lie4Lid4Liy4LiH!5e0!3m2!1sen!2sth!4v1746429237699!5m2!1sen!2sth"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="col-lg-6">
                         <div class="text-center">

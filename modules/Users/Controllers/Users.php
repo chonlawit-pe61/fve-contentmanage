@@ -29,6 +29,7 @@ class Users extends BaseController
         $ip = $this->request->getIPAddress();
         $CommonModel->saveLogs('view', 'user', $ip, 0);
         $data['personel_count'] = $UserModel->getStateYearly();
+     
         $data['Link'] = $LinkModel->getLink('', 1);
         $data['Link_ITA'] = $LinkModel->getLinkITA();
         $data['news'] = $UserModel->getNewsList(1, 4);

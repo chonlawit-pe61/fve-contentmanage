@@ -12,7 +12,8 @@
         position: relative;
         background: linear-gradient(135deg, var(--vc-primary-dark) 0%, var(--vc-primary) 100%);
         color: #fff;
-        padding: 4rem 0 8rem; /* Extra padding bottom for overlap */
+        padding: 4rem 0 8rem;
+        /* Extra padding bottom for overlap */
         text-align: center;
         overflow: hidden;
     }
@@ -41,7 +42,7 @@
         font-size: 3rem;
         font-weight: 800;
         margin-bottom: 1rem;
-        text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .contact-subtitle {
@@ -53,7 +54,8 @@
     /* Floating Cards Container */
     .cards-container {
         max-width: 1200px;
-        margin: -60px auto 4rem; /* Negative margin for overlap */
+        margin: -60px auto 4rem;
+        /* Negative margin for overlap */
         padding: 0 20px;
         position: relative;
         z-index: 3;
@@ -70,7 +72,7 @@
         padding: 2rem 1.5rem;
         border-radius: 15px;
         text-align: center;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
         border-bottom: 4px solid transparent;
     }
@@ -78,7 +80,7 @@
     .contact-card:hover {
         transform: translateY(-10px);
         border-bottom-color: var(--vc-gold);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
 
     .card-icon {
@@ -112,7 +114,8 @@
         font-size: 0.95rem;
         color: #636e72;
         line-height: 1.5;
-        word-break: break-word; /* Prevent overflow */
+        word-break: break-word;
+        /* Prevent overflow */
     }
 
     /* Map Section */
@@ -125,7 +128,7 @@
     .map-wrapper {
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         border: 1px solid #eee;
     }
 
@@ -146,9 +149,11 @@
         .cards-grid {
             grid-template-columns: 1fr;
         }
+
         .contact-title {
             font-size: 2.2rem;
         }
+
         .cards-container {
             margin-top: -40px;
         }
@@ -161,15 +166,15 @@
 <!-- Wave Header -->
 <div class="wave-header">
     <div class="header-content" data-aos="fade-down">
-        <h1 class="contact-title text-white">ติดต่อเรา</h1>
-        <p class="contact-subtitle">วิทยาลัยการอาชีพฝาง พร้อมให้บริการและให้ข้อมูล ติดต่อเราได้ง่ายๆ ผ่านช่องทางที่คุณสะดวก</p>
+        <h1 class="contact-title text-dark">ติดต่อเรา</h1>
+        <p class="contact-subtitle text-dark">วิทยาลัยการอาชีพฝาง พร้อมให้บริการและให้ข้อมูล ติดต่อเราได้ง่ายๆ ผ่านช่องทางที่คุณสะดวก</p>
     </div>
 </div>
 
 <!-- Floating Cards -->
 <div class="cards-container">
     <div class="cards-grid">
-        
+
         <!-- Address -->
         <div class="contact-card" data-aos="fade-up" data-aos-delay="0">
             <div class="card-icon">
@@ -212,10 +217,7 @@
 <!-- Map Section -->
 <div class="map-section" data-aos="fade-up">
     <div class="map-wrapper">
-        <iframe class="map-frame" 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.8244667667445!2d100.32072777521522!3d19.463133481822787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30d7ecf4b161f33b%3A0x7e92a9161587fe36!2sChiang%20Kham%20Vocational%20College!5e0!3m2!1sen!2sth!4v1754981944007!5m2!1sen!2sth"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe style="width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.4448195013642!2d99.16618109999999!3d19.8634305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30d0cd264441a7db%3A0x2f035cac3d650328!2z4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiB4Liy4Lij4Lit4Liy4LiK4Li14Lie4Lid4Liy4LiH!5e0!3m2!1sth!2sth!4v1765813441896!5m2!1sth!2sth" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
 
