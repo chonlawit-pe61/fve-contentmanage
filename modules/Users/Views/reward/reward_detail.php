@@ -317,7 +317,7 @@
             <div class="article-meta">
                 <span><i class="far fa-calendar-alt"></i> <?= date('d F Y', strtotime($reward['create_at'])) ?></span>
                 <!-- Add Author if available -->
-                <span><i class="far fa-user"></i> ประชาสัมพันธ์</span>
+                <span><i class="far fa-user"></i> ผลงานและความสำเร็จ</span>
             </div>
         </header>
 
@@ -329,7 +329,7 @@
         }
         ?>
         <div class="hero-image-wrapper">
-            <img src="<?= $heroImage ?>" alt="<?= esc($reward['title']) ?>" class="article-hero-image" style="width: 100%; height: auto; object-fit: cover;">
+            <img src="<?= $heroImage ?>" alt="<?= esc($reward['title']) ?>" class="article-hero-image" style="width: 100%; height: 500px;">
         </div>
 
         <div class="article-body">

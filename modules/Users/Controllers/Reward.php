@@ -15,7 +15,7 @@ class Reward extends BaseController
     public function reward_detail($id = '')
     {
         $RewardModel = new RewardModel();
-        $data['reward'] = $RewardModel->rewardDetail();
+        $data['reward'] = $RewardModel->rewardDetail($id);
         $data['date_thai'] = $this->Date_thai;
         return view('Modules\Users\Views\reward\reward_detail.php', $data);
     }
