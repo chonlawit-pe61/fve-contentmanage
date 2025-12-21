@@ -1802,43 +1802,139 @@ if (!empty($news_original)) {
 <?php
 }
 ?>
+<style>
+    /* Container Background */
+    .reward-section-v2 {
+        padding: 100px 0;
+        background-color: #fcfcfc;
+    }
+
+    /* Trophy Style Card */
+    .reward-item-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 15px;
+        height: 100%;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid #eee;
+        text-align: center;
+        /* ปรับเป็นกึ่งกลางให้ดูเหมือนรางวัล */
+        position: relative;
+    }
+
+    .reward-item-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        border-color: #d4af37;
+        /* ขอบสีทองเมื่อ Hover */
+    }
+
+    /* Image Hexagon or Rounded */
+    .reward-img-holder {
+        width: 100%;
+        height: 250px;
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .reward-img-holder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .reward-item-card:hover .reward-img-holder img {
+        transform: scale(1.08);
+    }
+
+    /* Date Floating */
+    .reward-date-tag {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: rgba(255, 215, 0, 0.9);
+        /* สีทอง */
+        color: #000;
+        padding: 4px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: bold;
+        backdrop-filter: blur(5px);
+    }
+
+    .reward-title-v2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+        height: 3em;
+        /* ล็อคความสูงหัวข้อ */
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .reward-desc-v2 {
+        font-size: 0.9rem;
+        color: #777;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .reward-link-v2 {
+        display: inline-block;
+        padding: 10px 25px;
+        background: #f8f9fa;
+        color: #333;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: all 0.3s;
+        border: 1px solid #ddd;
+    }
+
+    .reward-item-card:hover .reward-link-v2 {
+        background: #333;
+        color: #fff;
+        border-color: #333;
+        text-decoration: none;
+    }
+</style>
+
 <?php if (!empty($reward)): ?>
-    <section class="reward-section">
-        <div class="container">
-            <div class="page-header-custom text-center text-lg-start" data-aos="fade-right">
-                <h1>ผลงานและความสำเร็จ</h1>
+    <section class="reward-section-v2">
+        <div class="container justify-content-center">
+            <div class="page-header-custom text-center mb-5" data-aos="fade-up">
+                <h1 class="display-5 fw-bold">ผลงานและความสำเร็จ</h1>
             </div>
 
             <div class="row g-4">
                 <?php foreach ($reward as $key => $row): if ($key < 6): ?>
-                        <div class="col-xl-6 col-lg-6" data-aos="zoom-in-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
-                            <a href="<?= base_url('Reward/detail/' . $row['id']) ?>" class="text-decoration-none">
-                                <div class="premium-reward-card">
-                                    <div class="reward-img-wrapper">
-                                        <img src="<?= base_url($row['image_path']) ?>" alt="<?= $row['title'] ?>">
-                                        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1));"></div>
-                                    </div>
-
-                                    <div class="reward-content-body">
-                                        <div>
-                                            <div class="reward-badge">
-                                                <i class="fa fa-calendar-o me-1"></i>
-                                                <?= $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
-                                            </div>
-                                            <h3 class="reward-title"><?= $row['title'] ?></h3>
-                                            <p class="reward-text">
-                                                <?= strip_tags($row['description']) ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="reward-footer">
-                                            <span class="btn-read-gold">
-                                                อ่านรายละเอียด <i class="fa fa-chevron-right"></i>
-                                            </span>
-                                        </div>
-                                    </div>
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
+                            <div class="reward-item-card">
+                                <div class="reward-date-tag">
+                                    <i class="fa fa-calendar-check-o"></i>
+                                    <?= $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
                                 </div>
-                            </a>
+
+                                <div class="reward-img-holder">
+                                    <img src="<?= base_url($row['image_path']) ?>" alt="<?= $row['title'] ?>">
+                                </div>
+
+                                <div class="reward-info">
+                                    <h3 class="reward-title-v2"><?= $row['title'] ?></h3>
+                                    <p class="reward-desc-v2">
+                                        <?= mb_strimwidth(strip_tags($row['description']), 0, 100, "...") ?>
+                                    </p>
+                                    <a href="<?= base_url('Reward/detail/' . $row['id']) ?>" class="reward-link-v2">
+                                        ดูรายละเอียดรางวัล <i class="fa fa-trophy ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                 <?php endif;
                 endforeach; ?>
