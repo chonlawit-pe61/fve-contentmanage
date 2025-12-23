@@ -42,6 +42,35 @@ class InformationModel extends Model
         }
         return $result;
     }
+    function getInformationAboutSuccessful($id = '')
+    {
+        $builder = $this->db->table('information_successful');
+        $builder->select('*');
+        if (!empty($id)) {
+            $builder->where('information_successful_id', $id);
+            $result = $builder->get()->getRowArray();
+        } else {
+            $result = $builder->get()->getResultArray();
+        }
+        return $result;
+    }
+    function saveInformationAboutSuccessful($input)
+    {
+        $builder = $this->db->table('information_successful');
+        if (!empty($input['file_name'])) {
+            $builder->set('information_successful_file_name', $input['file_name']);
+            $builder->set('information_successful_file', $input['file_path']);
+        }
+        $builder->set('data_year', $input['data_year']);
+        if (!empty($input['information_successful_id'])) {
+            $builder->where('information_successful_id', $input['information_successful_id']);
+            $builder->update();
+        } else {
+            $builder->insert();
+        }
+    }
+
+
     function deleteInformationPersonel($id = '')
     {
         $builder = $this->db->table('information_personel');
@@ -52,6 +81,12 @@ class InformationModel extends Model
     {
         $builder = $this->db->table('information_money');
         $builder->where('information_money_id', $id);
+        $builder->delete();
+    }
+    function deleteInformationAboutSuccessful($id = '')
+    {
+        $builder = $this->db->table('information_successful');
+        $builder->where('information_successful_id', $id);
         $builder->delete();
     }
 

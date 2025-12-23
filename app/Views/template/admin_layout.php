@@ -90,6 +90,15 @@ $control = explode('/', $url);
                         </li>
 
                         <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "information_about_successful") ? "active" : "" ?>" href="<?= base_url('admin/information/information_about_successful') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">ข้อมูลรางวัลความสำเร็จ</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
                             <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "slide") ? "active" : "" ?>" href="<?= base_url('admin/slide') ?>" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-slideshow"></i>

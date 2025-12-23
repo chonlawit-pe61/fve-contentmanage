@@ -150,4 +150,53 @@ class Information extends BaseController
         $information_money_id = $input['information_money_id'];
         $this->informationModel->deleteInformationMoney($information_money_id);
     }
+    public function information_about_successful()
+    {
+        $data['InformationSuccessful'] = $this->informationModel->getInformationAboutSuccessful();
+        return view("Modules\Admin\Views\Information\information_about_successful", $data);
+    }
+    public function information_about_successful_form()
+    {
+        if (!empty($_GET['information_successful_id'])) {
+            $information_successful_id = @$_GET['information_successful_id'];
+            $data['InformationSuccessful'] = $this->informationModel->getInformationAboutSuccessful($information_successful_id);
+        } else {
+            $data['InformationSuccessful'] = [];
+        }
+
+        return view("Modules\Admin\Views\Information\information_about_successful_form", $data);
+    }
+    public function ajaxDeleteInformationAboutSuccessful()
+    {
+        $input = $this->request->getPost();
+        $information_successful_id = $input['information_successful_id'];
+        $this->informationModel->deleteInformationAboutSuccessful($information_successful_id);
+    }
+
+    public function saveInformationAboutSuccessful()
+    {
+        $input = $this->request->getPost();
+        $file = $this->request->getFiles();
+
+        $targetDirectoryFile = 'public/uploads/information';
+        if (!is_dir($targetDirectoryFile)) {
+            mkdir($targetDirectoryFile, 0755, true);
+        }
+        if (!empty($file)) {
+            $fileUploads = $file['file_personel'];
+            if ($fileUploads->isValid()) {
+                $randomName = $fileUploads->getRandomName();
+                $data['fileName'] = $fileUploads->getName();
+
+                $data['randomName'] = $randomName;
+                $data['fileType'] = $fileUploads->getClientMimeType();
+                $data['fileSize'] = $fileUploads->getSize();
+                $fileUploads->move($targetDirectoryFile, $randomName);
+                $input['file_path'] = $targetDirectoryFile . '/' . $randomName;
+                $input['file_name'] = $data['fileName'];
+            }
+        }
+        $this->informationModel->saveInformationAboutSuccessful($input);
+        return redirect()->to(base_url('admin/information/information_about_successful'));
+    }
 }

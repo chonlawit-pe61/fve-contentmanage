@@ -94,6 +94,11 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
         $routes->get('information_about_money_form', 'Information::information_about_money_form');
         $routes->post('saveInformationMoney', 'Information::saveInformationMoney');
         $routes->post('ajaxDeleteinformation_about_money', 'Information::ajaxDeleteinformation_about_money');
+
+        $routes->get('information_about_successful', 'Information::information_about_successful');
+        $routes->get('information_about_successful_form', 'Information::information_about_successful_form');
+        $routes->post('saveInformationAboutSuccessful', 'Information::saveInformationAboutSuccessful');
+        $routes->post('ajaxDeleteInformationAboutSuccessful', 'Information::ajaxDeleteInformationAboutSuccessful');
     });
 
     $routes->group('law', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
@@ -162,6 +167,7 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
         $routes->get('/information_about_manage', 'About::information_about_manage');
         $routes->get('/information_about_personel', 'About::information_about_personel');
         $routes->get('/information_about_money', 'About::information_about_money');
+        $routes->get('/information_about_successful', 'About::information_about_successful');
     });
     $routes->group('Organization', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('organization_personal/(:any)', 'Organization::organization_personal/$1');

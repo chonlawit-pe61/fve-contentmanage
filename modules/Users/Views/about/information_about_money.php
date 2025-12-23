@@ -159,7 +159,7 @@
             <h4 class="mb-4" style="color: #ffd700; font-weight: 300;">วิทยาลัยการอาชีพฝาง</h4>
             <div class="d-inline-block px-4 py-2" style="background: rgba(255,255,255,0.1); border-radius: 50px; backdrop-filter: blur(5px);">
                 <p class="contact-subtitle text-white-50 mb-0">
-                    <i class="far fa-calendar-alt me-2 text-warning"></i>อัปเดตข้อมูลล่าสุดเมื่อ: 23 มกราคม 2567
+                    <i class="far fa-calendar-alt me-2 text-warning"></i>อัปเดตข้อมูลล่าสุดเมื่อ: <?php echo date('d F Y'); ?>
                 </p>
             </div>
         </div>
@@ -178,8 +178,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($information_personel)): ?>
-                            <?php foreach ($information_personel as $key => $value): ?>
+                        <?php if (!empty($information_money)): ?>
+                            <?php foreach ($information_money as $key => $value): ?>
                                 <tr>
                                     <th class="text-center">
                                         <span class="text-dark "><?= sprintf("%02d", $key + 1) ?></span>
@@ -188,11 +188,11 @@
                                         <span class="year-badge"><?= $value['data_year'] + 543 ?></span>
                                     </td>
                                     <td>
-                                        <div class="fw-bold text-dark mb-1" style="font-size: 1.05rem;"><?= $value['information_personel_file_name'] ?></div>
+                                        <div class="fw-bold text-dark mb-1" style="font-size: 1.05rem;"><?= $value['information_money_file_name'] ?></div>
 
                                     </td>
                                     <td class="text-center">
-                                        <a href="<?= base_url($value['information_personel_file']) ?>"
+                                        <a href="<?= base_url($value['information_money_file']) ?>"
                                             target="_blank"
                                             class="btn-view-file">
                                             <i class="fas fa-eye"></i> ดูไฟล์

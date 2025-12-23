@@ -46,7 +46,10 @@ class About extends BaseController
     }
     public function information_law()
     {
+        $AboutModel = new AboutModel();
         $data['date_thai'] = $this->Date_thai;
+        $data['law_types'] = $AboutModel->getLawTypes();
+        $data['file_laws'] = $AboutModel->getLawFile();
         return view('Modules\Users\Views\about\information_law.php', $data);
     }
     public function information_about_manage()
@@ -71,5 +74,13 @@ class About extends BaseController
         $data['information_personel'] = $AboutModel->getInformationPersonel();
 
         return view('Modules\Users\Views\about\information_about_personel.php', $data);
+    }
+    public function information_about_successful()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $AboutModel = new AboutModel();
+        $data['information_successful'] = $AboutModel->getInformationSuccessful();
+
+        return view('Modules\Users\Views\about\information_about_successful.php', $data);
     }
 }

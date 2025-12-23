@@ -29,7 +29,7 @@ class Database extends Config
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => 'root',
-		'database' => 'content_management',
+		'database' => 'fve-contentmanage',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pconnect' => true,

@@ -257,7 +257,7 @@
                     <img class="sar-logo img-fluid" src="<?php echo base_url('public/img/logofve_t.png') ?>" alt="Logo">
                     <div class="title-wrapper">
                         <div class="sar-title"><?php echo $publicDocument['title'] ?></div>
-                        <div class="sar-subtitle">วิทยาลัยเทคนิคเชียงคํา</div>
+                        <div class="sar-subtitle">วิทยาลัยการอาชีพฝาง</div>
                     </div>
                 </div>
             </div>
