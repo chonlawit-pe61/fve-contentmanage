@@ -32,6 +32,7 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
     $routes->group('organization', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
         $routes->get('/', 'Organization::index');
         $routes->post('save-organize', 'Organization::saveOrganize');
+        $routes->post('delete-organization', 'Organization::deleteOrganization');
     });
 
     $routes->group('member', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
@@ -99,6 +100,23 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
         $routes->get('information_about_successful_form', 'Information::information_about_successful_form');
         $routes->post('saveInformationAboutSuccessful', 'Information::saveInformationAboutSuccessful');
         $routes->post('ajaxDeleteInformationAboutSuccessful', 'Information::ajaxDeleteInformationAboutSuccessful');
+
+
+        $routes->get('information_about_regulations', 'Information::information_about_regulations');
+        $routes->get('information_about_regulations_form', 'Information::information_about_regulations_form');
+        $routes->post('saveInformationAboutRegulations', 'Information::saveInformationAboutRegulations');
+        $routes->post('ajaxDeleteInformationAboutRegulations', 'Information::ajaxDeleteInformationAboutRegulations');
+
+
+        $routes->get('information_about_course', 'Information::information_about_course');
+        $routes->get('information_about_course_form', 'Information::information_about_course_form');
+        $routes->post('saveInformationAboutCourse', 'Information::saveInformationAboutCourse');
+        $routes->post('ajaxDeleteInformationAboutCourse', 'Information::ajaxDeleteInformationAboutCourse');
+
+
+        // information_about_team
+        $routes->get('information_about_team', 'Information::information_about_team');
+        $routes->post('saveInformationAboutTeam', 'Information::saveInformationAboutTeam');
     });
 
     $routes->group('law', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
@@ -168,6 +186,7 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
         $routes->get('/information_about_personel', 'About::information_about_personel');
         $routes->get('/information_about_money', 'About::information_about_money');
         $routes->get('/information_about_successful', 'About::information_about_successful');
+        $routes->get('/information_about_regulations', 'About::information_about_regulations');
     });
     $routes->group('Organization', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('organization_personal/(:any)', 'Organization::organization_personal/$1');

@@ -83,4 +83,29 @@ class About extends BaseController
 
         return view('Modules\Users\Views\about\information_about_successful.php', $data);
     }
+
+    public function information_about_regulations()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $AboutModel = new AboutModel();
+        $data['information_regulations'] = $AboutModel->getInformationRegulations();
+
+        return view('Modules\Users\Views\about\information_about_regulations.php', $data);
+    }
+    public function information_about_team()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $AboutModel = new AboutModel();
+        $data['information_team'] = $AboutModel->getInformationTeam();
+
+        return view('Modules\Users\Views\about\information_about_team.php', $data);
+    }
+    public function information_about_course()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $AboutModel = new AboutModel();
+        $data['information_course'] = $AboutModel->getInformationCourse();
+
+        return view('Modules\Users\Views\about\information_about_course.php', $data);
+    }
 }

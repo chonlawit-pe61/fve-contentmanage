@@ -196,54 +196,21 @@
         <div class="py-5">
             <!-- Header -->
             <div class="text-center mb-5" data-aos="fade-down">
-                <h1 class="section-title">คณะผู้บริหาร <br>
+                <h1 class="section-title">โครงสร้างการบริหาร <br>
                     <span style="font-size: 0.6em; font-weight: 500; color: #666; text-transform: none;">วิทยาลัยการอาชีพฝาง</span>
                 </h1>
             </div>
-
-            <!-- Content -->
-            <?php if (!empty($personal)): ?>
-
-                <!-- 1. Director Section (Top, Center, Big) -->
-                <?php
-                $director = $personal[0];
-                $dir_img = (!empty($director['image_path']) && file_exists(ROOTPATH . $director['image_path'])) ? base_url($director['image_path']) : base_url('public/img/blank-member.jpg');
-                ?>
-                <div class="director-wrapper text-center">
-                    <div class="executive-card director-card" data-aos="zoom-in" data-aos-duration="1000">
-                        <div class="img-frame">
-                            <img class="img-personal" src="<?= $dir_img ?>" alt="<?= $director['first_name'] ?>">
-                        </div>
-                        <div class="card-info">
-                            <h4 class="executive-name"><?= $director['prename'] . $director['first_name'] . ' ' . $director['last_name'] ?></h4>
-                            <span class="executive-position"><?= $director['org_name'] ?></span>
-                        </div>
+            <?php
+            if (!empty($information_team)) {
+            ?>
+                <div class="row">
+                    <div class="col-lgl-12">
+                        <img src="<?= base_url($information_team['information_team_file']) ?>" alt="" class="img-fluid">
                     </div>
                 </div>
-
-                <!-- 2. Other Executives (Grid) -->
-                <div class="executives-row">
-                    <?php foreach ($personal as $key => $row): ?>
-                        <?php if ($key == 0) continue; // Skip Director 
-                        ?>
-                        <?php
-                        $img = (!empty($row['image_path']) && file_exists(ROOTPATH . $row['image_path'])) ? base_url($row['image_path']) : base_url('public/img/blank-member.jpg');
-                        ?>
-                        <div class="exec-col" data-aos="fade-up" data-aos-delay="<?= ($key % 4) * 100 + 100 ?>">
-                            <div class="executive-card">
-                                <div class="img-frame">
-                                    <img class="img-personal" src="<?= $img ?>" alt="<?= $row['first_name'] ?>">
-                                </div>
-                                <div class="card-info">
-                                    <h5 class="executive-name"><?= $row['prename'] . $row['first_name'] . ' ' . $row['last_name'] ?></h5>
-                                    <span class="executive-position"><?= $row['org_name'] ?></span>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-
-            <?php endif; ?>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </div>

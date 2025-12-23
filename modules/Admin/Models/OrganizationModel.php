@@ -10,13 +10,13 @@ class OrganizationModel extends Model
     protected $primaryKey = "";
     protected $allowedFields = [];
 
-    function getOrganization($parent_id=0)
+    function getOrganization($parent_id = 0)
     {
         $builder = $this->db->table($this->table);
         $builder->where("$this->table.parent_id", $parent_id);
         $organizations = $builder->get()->getResultArray();
 
-        foreach($organizations as &$org) {
+        foreach ($organizations as &$org) {
             $org['children'] = $this->getOrganization($org['id']);
         }
         return $organizations;
@@ -50,9 +50,27 @@ class OrganizationModel extends Model
     }
 
     // ตำแหน่งบริหาร
-    function get_organize_level() {
+    function get_organize_level()
+    {
         $builder = $this->db->table('tbl_org_level');
         $result = $builder->select("*")->get()->getResultArray();
         return $result;
+    }
+
+    function deleteOrganization($input)
+    {
+
+        $builder = $this->db->table('organization');
+        $builder->select("*");
+        $builder->where('parent_id', $input['id']);
+        $check_parent = $builder->get()->getResultArray();
+
+        if (!empty($check_parent)) {
+            $builder->where("parent_id", $input['id']);
+            $builder->delete();
+        }
+        $builder->where("id", $input['id']);
+        $builder->delete();
+        return $input['id'];
     }
 }

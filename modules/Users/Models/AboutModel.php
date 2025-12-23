@@ -56,7 +56,14 @@ class AboutModel extends Model
         $data = $builder->get()->getResultArray();
         return $data;
     }
-
+    function getInformationRegulations()
+    {
+        $builder = $this->db->table('information_regulations');
+        $builder->select('*');
+        $builder->orderBy('data_year', 'DESC');
+        $data = $builder->get()->getResultArray();
+        return $data;
+    }
     function getInformationMoney()
     {
         $builder = $this->db->table('information_money');
@@ -104,5 +111,22 @@ class AboutModel extends Model
             }
         }
         return $tmp;
+    }
+    function getInformationTeam()
+    {
+        $builder = $this->db->table('information_team');
+        $builder->select('*');
+        $builder->where('information_team_id', 1);
+        $data = $builder->get()->getRowArray();
+        return $data;
+    }
+
+    function getInformationCourse()
+    {
+        $builder = $this->db->table('information_course');
+        $builder->select('*');
+        $builder->orderBy('data_year', 'DESC');
+        $data = $builder->get()->getResultArray();
+        return $data;
     }
 }

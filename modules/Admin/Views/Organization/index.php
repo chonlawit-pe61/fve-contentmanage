@@ -14,9 +14,15 @@
             $tools .= "<button type='button' class='btn btn-sm btn-warning mx-1' onclick='openEditModal({$org['id']}, {$org['parent_id']}, `{$org['name']}`)'>
                 <i class='ti ti-pencil'></i> แก้ไข
             </button>";
+            $tools .= "<button type='button' class='btn btn-sm btn-danger mx-1' onclick='deleteOrganization({$org['id']})'>
+                <i class='ti ti-trash'></i> ลบ
+            </button>";
         } else {
             $tools = "<button type='button' class='btn btn-sm btn-warning mx-1' onclick='openEditModal({$org['id']}, {$org['parent_id']}, `{$org['name']}`)'>
                 <i class='ti ti-pencil'></i> แก้ไข
+            </button>";
+            $tools .= "<button type='button' class='btn btn-sm btn-danger mx-1' onclick='deleteOrganization({$org['id']})'>
+                <i class='ti ti-trash'></i> ลบ
             </button>";
         }
 
@@ -48,7 +54,7 @@
                         <thead class="bg-primary-subtle text-primary">
                             <tr class="text-muted fw-semibold">
                                 <th>ชื่อหน่วนงาน</th>
-                                <th width="25%"></th>
+                                <th width="30%"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,6 +135,28 @@
 
 <?php $this->section('scripts'); ?>
 <script>
+    const deleteOrganization = (id) => {
+
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/organization/delete-organization') ?>",
+            data: {
+                id: id
+            },
+            success: function(response) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "ลบข้อมูลสำเร็จ",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    window.location.reload();
+                });
+            }
+        });
+    }
+
     function openAddModal(parent_id) {
         $("#add-parent-id").val(parent_id)
         $('#add-organize-modal').modal('show');

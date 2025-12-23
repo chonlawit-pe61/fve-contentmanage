@@ -165,7 +165,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container justify-content-center">
         <div class="custom-table-container mb-5 w-100">
             <div class="table-responsive">
                 <table class="table" id="personnelTable">

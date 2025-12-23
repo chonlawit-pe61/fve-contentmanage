@@ -97,6 +97,30 @@ $control = explode('/', $url);
                                 <span class="hide-menu">ข้อมูลรางวัลความสำเร็จ</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "information_about_regulations") ? "active" : "" ?>" href="<?= base_url('admin/information/information_about_regulations') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">ข้อมูลระเบียบวิทยาลัย</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "information_about_team") ? "active" : "" ?>" href="<?= base_url('admin/information/information_about_team') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">ข้อมูลโครงสร้างบริหาร</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "information_about_course") ? "active" : "" ?>" href="<?= base_url('admin/information/information_about_course') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">ข้อมูลหลักสูตร</span>
+                            </a>
+                        </li>
 
                         <li class="sidebar-item">
                             <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "slide") ? "active" : "" ?>" href="<?= base_url('admin/slide') ?>" aria-expanded="false">
@@ -230,14 +254,23 @@ $control = explode('/', $url);
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=การปฏิเสธความรับผิด'); ?>" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-settings-2"></i>
                                 </span>
                                 <span class="hide-menu">การปฏิเสธความรับผิด</span>
                             </a>
+                        </li> -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="<?= base_url('admin/configs/website?content_name=นโยบายไม่รับของขวัญและของกำนัลทุกชนิด'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-settings-2"></i>
+                                </span>
+                                <span class="hide-menu">นโยบายไม่รับของขวัญและของกำนัลทุกชนิด</span>
+                            </a>
                         </li>
+
 
                         <li class="sidebar-item ">
                             <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "Alert") ? "active" : "" ?>" href="<?= base_url('admin/Alert'); ?>" aria-expanded="false">

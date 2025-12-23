@@ -210,4 +210,99 @@ class InformationModel extends Model
             return $msg;
         }
     }
+
+    function getInformationAboutRegulations($id = '')
+    {
+        $builder = $this->db->table('information_regulations');
+        $builder->select('*');
+        if (!empty($id)) {
+            $builder->where('information_regulations_id', $id);
+            $result = $builder->get()->getRowArray();
+        } else {
+            $result = $builder->get()->getResultArray();
+        }
+        return $result;
+    }
+
+    function saveInformationAboutRegulations($input)
+    {
+        $builder = $this->db->table('information_regulations');
+        if (!empty($input['file_name'])) {
+            $builder->set('information_regulations_file_name', $input['file_name']);
+            $builder->set('information_regulations_file', $input['file_path']);
+        }
+        $builder->set('data_year', $input['data_year']);
+        if (!empty($input['information_regulations_id'])) {
+            $builder->where('information_regulations_id', $input['information_regulations_id']);
+            $builder->update();
+        } else {
+            $builder->insert();
+        }
+    }
+    function deleteInformationAboutRegulations($id = '')
+    {
+        $builder = $this->db->table('information_regulations');
+        $builder->where('information_regulations_id', $id);
+        $builder->delete();
+    }
+
+    function getInformationAboutTeam($id = '')
+    {
+        $builder = $this->db->table('information_team');
+        $builder->select('*');
+        $result = $builder->get()->getRowArray();
+        return $result;
+    }
+
+    function getInformationAboutCourse($id = '')
+    {
+        $builder = $this->db->table('information_course');
+        $builder->select('*');
+        if (!empty($id)) {
+            $builder->where('information_course_id', $id);
+            $result = $builder->get()->getRowArray();
+        } else {
+            $result = $builder->get()->getResultArray();
+        }
+        return $result;
+    }
+    function saveInformationAboutCourse($input)
+    {
+        $builder = $this->db->table('information_course');
+        if (!empty($input['file_name'])) {
+            $builder->set('information_course_file_name', $input['file_name']);
+            $builder->set('information_course_file', $input['file_path']);
+        }
+        $builder->set('data_year', $input['data_year']);
+        if (!empty($input['information_course_id'])) {
+            $builder->where('information_course_id', $input['information_course_id']);
+            $builder->update();
+        } else {
+            $builder->insert();
+        }
+    }
+
+    function deleteInformationAboutCourse($id = '')
+    {
+        $builder = $this->db->table('information_course');
+        $builder->where('information_course_id', $id);
+        $builder->delete();
+    }
+
+
+
+
+
+
+
+    function saveInformationAboutTeam($input)
+    {
+        $builder = $this->db->table('information_team');
+        if (!empty($input['file_name'])) {
+            $builder->set('information_team_file_name', $input['file_name']);
+            $builder->set('information_team_file', $input['file_path']);
+            $builder->where('information_team_id', 1);
+            $builder->update();
+        }
+    }
 }

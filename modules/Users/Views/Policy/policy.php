@@ -357,7 +357,7 @@
 <?php $this->section('content'); ?>
 <div data-aos="fade-up" class="bg_content">
     <div class="container py-6 px-5 flex-lg-column">
-        <div class="text-center">
+        <div class="text-center mt-5">
             <h1>
                 นโยบายเว็บไซต์ (Website Policy)
             </h1>

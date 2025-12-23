@@ -199,4 +199,144 @@ class Information extends BaseController
         $this->informationModel->saveInformationAboutSuccessful($input);
         return redirect()->to(base_url('admin/information/information_about_successful'));
     }
+
+    public function information_about_regulations()
+    {
+        $data['InformationRegulations'] = $this->informationModel->getInformationAboutRegulations();
+        return view("Modules\Admin\Views\Information\information_about_regulations", $data);
+    }
+
+    public function information_about_regulations_form()
+    {
+        if (!empty($_GET['information_regulations_id'])) {
+            $information_regulations_id = @$_GET['information_regulations_id'];
+            $data['InformationRegulations'] = $this->informationModel->getInformationAboutRegulations($information_regulations_id);
+        } else {
+            $data['InformationRegulations'] = [];
+        }
+
+        return view("Modules\Admin\Views\Information\information_about_regulations_form", $data);
+    }
+
+    public function ajaxDeleteInformationAboutRegulations()
+    {
+        $input = $this->request->getPost();
+        $information_regulations_id = $input['information_regulations_id'];
+        $this->informationModel->deleteInformationAboutRegulations($information_regulations_id);
+    }
+
+    public function saveInformationAboutRegulations()
+    {
+        $input = $this->request->getPost();
+        $file = $this->request->getFiles();
+
+        $targetDirectoryFile = 'public/uploads/information';
+        if (!is_dir($targetDirectoryFile)) {
+            mkdir($targetDirectoryFile, 0755, true);
+        }
+        if (!empty($file)) {
+            $fileUploads = $file['file_personel'];
+            if ($fileUploads->isValid()) {
+                $randomName = $fileUploads->getRandomName();
+                $data['fileName'] = $fileUploads->getName();
+
+                $data['randomName'] = $randomName;
+                $data['fileType'] = $fileUploads->getClientMimeType();
+                $data['fileSize'] = $fileUploads->getSize();
+                $fileUploads->move($targetDirectoryFile, $randomName);
+                $input['file_path'] = $targetDirectoryFile . '/' . $randomName;
+                $input['file_name'] = $data['fileName'];
+            }
+        }
+        $this->informationModel->saveInformationAboutRegulations($input);
+        return redirect()->to(base_url('admin/information/information_about_regulations'));
+    }
+
+
+    public function information_about_team()
+    {
+        $data['InformationTeam'] = $this->informationModel->getInformationAboutTeam();
+        return view("Modules\Admin\Views\Information\information_about_team", $data);
+    }
+
+    public function saveInformationAboutTeam()
+    {
+        $file = $this->request->getFiles();
+
+        $input = [];
+        $targetDirectoryFile = 'public/uploads/information';
+        if (!is_dir($targetDirectoryFile)) {
+            mkdir($targetDirectoryFile, 0755, true);
+        }
+
+        if (!empty($file)) {
+            $fileUploads = $file['file_personel'];
+            if ($fileUploads->isValid()) {
+                $randomName = $fileUploads->getRandomName();
+                $data['fileName'] = $fileUploads->getName();
+
+                $data['randomName'] = $randomName;
+                $data['fileType'] = $fileUploads->getClientMimeType();
+                $data['fileSize'] = $fileUploads->getSize();
+                $fileUploads->move($targetDirectoryFile, $randomName);
+                $input['file_path'] = $targetDirectoryFile . '/' . $randomName;
+                $input['file_name'] = $data['fileName'];
+            }
+        }
+        $this->informationModel->saveInformationAboutTeam($input);
+        return redirect()->to(base_url('admin/information/information_about_team'));
+    }
+
+
+    public function information_about_course()
+    {
+        $data['InformationCourse'] = $this->informationModel->getInformationAboutCourse();
+        return view("Modules\Admin\Views\Information\information_about_course", $data);
+    }
+
+    public function information_about_course_form()
+    {
+        if (!empty($_GET['information_course_id'])) {
+            $information_course_id = @$_GET['information_course_id'];
+            $data['InformationCourse'] = $this->informationModel->getInformationAboutCourse($information_course_id);
+        } else {
+            $data['InformationCourse'] = [];
+        }
+
+        return view("Modules\Admin\Views\Information\information_about_course_form", $data);
+    }
+
+    public function ajaxDeleteInformationAboutCourse()
+    {
+        $input = $this->request->getPost();
+        $information_course_id = $input['information_course_id'];
+        $this->informationModel->deleteInformationAboutCourse($information_course_id);
+    }
+
+    public function saveInformationAboutCourse()
+    {
+        $input = $this->request->getPost();
+        $file = $this->request->getFiles();
+
+        $targetDirectoryFile = 'public/uploads/information';
+        if (!is_dir($targetDirectoryFile)) {
+            mkdir($targetDirectoryFile, 0755, true);
+        }
+        if (!empty($file)) {
+            $fileUploads = $file['file_personel'];
+            if ($fileUploads->isValid()) {
+                $randomName = $fileUploads->getRandomName();
+                $data['fileName'] = $fileUploads->getName();
+
+                $data['randomName'] = $randomName;
+                $data['fileType'] = $fileUploads->getClientMimeType();
+                $data['fileSize'] = $fileUploads->getSize();
+                $fileUploads->move($targetDirectoryFile, $randomName);
+                $input['file_path'] = $targetDirectoryFile . '/' . $randomName;
+                $input['file_name'] = $data['fileName'];
+            }
+        }
+        $this->informationModel->saveInformationAboutCourse($input);
+        return redirect()->to(base_url('admin/information/information_about_course'));
+    }
 }

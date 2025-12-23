@@ -349,26 +349,29 @@ $control = explode('/', $url);
                                     <a class="dropdown-item" href="<?php echo base_url('/About/information_about_money') ?>">
                                         ข้อมูลงบประมาณฯ
                                     </a>
+                                    <a class="dropdown-item" href="<?php echo base_url('/About/information_about_course') ?>">
+                                        ข้อมูลหลักสูตรฯ
+                                    </a>
                                 </ul>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?php echo base_url('/About/information_about_manage') ?>">ผู้บริหารงานศึกษา</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="<?php echo base_url('/About/information_about_manage') ?>">โครงสร้างการบริหาร</a>
+                                <a class="dropdown-item" href="<?php echo base_url('/About/information_about_team') ?>">โครงสร้างการบริหาร</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?php echo base_url('/About/information_law') ?>">กฎหมายที่เกี่ยวข้อง</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="">ระเบียบวิทยาลัยการอาชีพฝาง</a>
+                                <a class="dropdown-item" href="<?php echo base_url('/About/information_about_regulations') ?>">ระเบียบวิทยาลัยการอาชีพฝาง</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?php echo base_url('/About/information_giftPolicy') ?>">นโยบายไม่รับของขวัญ</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a class="dropdown-item" href="">ความภาคภูมิใจ</a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a class="dropdown-item" href="<?php echo base_url('/About/information_about_successful') ?>">รางวัลความสำเร็จ</a>
                             </li>
@@ -523,7 +526,7 @@ $control = explode('/', $url);
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('contact') ?>">ITA<?= date("Y") ?></a>
+                        <a class="nav-link" href="<?php echo base_url('contact') ?>">ITA.<?= date("Y") ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a>
