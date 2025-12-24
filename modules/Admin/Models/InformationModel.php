@@ -305,4 +305,59 @@ class InformationModel extends Model
             $builder->update();
         }
     }
+
+    function getInformationAboutEquipment($id = '')
+    {
+        $builder = $this->db->table('information_equipment');
+        $builder->select('*');
+        if (!empty($id)) {
+            $builder->where('information_equipment_id', $id);
+            $result = $builder->get()->getRowArray();
+        } else {
+            $result = $builder->get()->getResultArray();
+        }
+        return $result;
+    }
+
+    function saveInformationAboutEquipment($input)
+    {
+        $builder = $this->db->table('information_equipment');
+        if (!empty($input['file_name'])) {
+            $builder->set('information_equipment_file_name', $input['file_name']);
+            $builder->set('information_equipment_file', $input['file_path']);
+        }
+        $builder->set('data_year', $input['data_year']);
+        if (!empty($input['information_equipment_id'])) {
+            $builder->where('information_equipment_id', $input['information_equipment_id']);
+            $builder->update();
+        } else {
+            $builder->insert();
+        }
+    }
+
+    function deleteInformationAboutEquipment($id = '')
+    {
+        $builder = $this->db->table('information_equipment');
+        $builder->where('information_equipment_id', $id);
+        $builder->delete();
+    }
+
+    function getInformationAboutMap($id = '')
+    {
+        $builder = $this->db->table('information_map');
+        $builder->select('*');
+        $result = $builder->get()->getRowArray();
+        return $result;
+    }
+
+    function saveInformationAboutMap($input)
+    {
+        $builder = $this->db->table('information_map');
+        if (!empty($input['file_name'])) {
+            $builder->set('information_map_file_name', $input['file_name']);
+            $builder->set('information_map_file', $input['file_path']);
+            $builder->where('information_map_id', 1);
+            $builder->update();
+        }
+    }
 }

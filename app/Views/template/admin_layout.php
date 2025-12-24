@@ -121,6 +121,31 @@ $control = explode('/', $url);
                                 <span class="hide-menu">ข้อมูลหลักสูตร</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "information_about_equipment") ? "active" : "" ?>" href="<?= base_url('admin/information/information_about_equipment') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">ข้อมูลครุภัณฑ์</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "information_about_map") ? "active" : "" ?>" href="<?= base_url('admin/information/information_about_map') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">แผนผังภายในวิทยาลัย</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "publish_educational_development") ? "active" : "" ?>" href="<?= base_url('admin/publish/publish_educational_development') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">แผนพัฒนาสถานศึกษา</span>
+                            </a>
+                        </li>
 
                         <li class="sidebar-item">
                             <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "slide") ? "active" : "" ?>" href="<?= base_url('admin/slide') ?>" aria-expanded="false">

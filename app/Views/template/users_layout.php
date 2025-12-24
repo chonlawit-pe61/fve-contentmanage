@@ -352,6 +352,18 @@ $control = explode('/', $url);
                                     <a class="dropdown-item" href="<?php echo base_url('/About/information_about_course') ?>">
                                         ข้อมูลหลักสูตรฯ
                                     </a>
+                                    <a class="dropdown-item" href="<?php echo base_url('/About/information_about_equipment') ?>">
+                                        ข้อมูลครุภัณฑ์
+                                    </a>
+                                    <a class="dropdown-item" href="<?php echo base_url('/About/information_about_map') ?>">
+                                        ข้อมูลอาคารสถานที่
+                                    </a>
+                                    <a target="_blank" class="dropdown-item" href="https://www.doe.go.th/prd/">
+                                        ข้อมูลตลาดแรงงาน
+                                    </a>
+                                    <a target="_blank" class="dropdown-item" href="https://www.chiangmai.go.th/newweb/">
+                                        ข้อมูลพื้นฐานของจังหวัด
+                                    </a>
                                 </ul>
                             </li>
                             <li>
@@ -488,6 +500,18 @@ $control = explode('/', $url);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('news') ?>">ข่าวสาร</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            เผยแพร่
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dataDropdown">
+                            <li>
+                                <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/educational_development') ?>">
+                                    แผนพัฒนาสถานศึกษา
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -114,9 +114,25 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
         $routes->post('ajaxDeleteInformationAboutCourse', 'Information::ajaxDeleteInformationAboutCourse');
 
 
+        $routes->get('information_about_equipment', 'Information::information_about_equipment');
+        $routes->get('information_about_equipment_form', 'Information::information_about_equipment_form');
+        $routes->post('saveInformationAboutEquipment', 'Information::saveInformationAboutEquipment');
+        $routes->post('ajaxDeleteInformationAboutEquipment', 'Information::ajaxDeleteInformationAboutEquipment');
+
+
         // information_about_team
         $routes->get('information_about_team', 'Information::information_about_team');
         $routes->post('saveInformationAboutTeam', 'Information::saveInformationAboutTeam');
+
+        // information_about_map
+        $routes->get('information_about_map', 'Information::information_about_map');
+        $routes->post('saveInformationAboutMap', 'Information::saveInformationAboutMap');
+    });
+    $routes->group('publish', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
+        $routes->get('publish_educational_development', 'Publish::publish_educational_development');
+        $routes->get('publish_educational_development_form', 'Publish::publish_educational_development_form');
+        $routes->post('savePublishEducationalDevelopment', 'Publish::savePublishEducationalDevelopment');
+        $routes->post('ajaxDeletePublishEducationalDevelopment', 'Publish::ajaxDeletePublishEducationalDevelopment');
     });
 
     $routes->group('law', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
@@ -207,6 +223,8 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
         $routes->get('/information_about_money', 'About::information_about_money');
         $routes->get('/information_about_successful', 'About::information_about_successful');
         $routes->get('/information_about_regulations', 'About::information_about_regulations');
+        $routes->get('/information_about_equipment', 'About::information_about_equipment');
+        $routes->get('/information_about_map', 'About::information_about_map');
     });
     $routes->group('Organization', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('organization_personal/(:any)', 'Organization::organization_personal/$1');
@@ -233,7 +251,9 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
     $routes->group('Reward', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('detail/(:any)', 'Reward::reward_detail/$1');
     });
-
+    $routes->group('publish', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
+        $routes->get('educational_development', 'Publish::publishEducationalDevelopment');
+    });
     $routes->get('ita', 'Ita::index', ['namespace' => '\Modules\Users\Controllers']);
 });
 

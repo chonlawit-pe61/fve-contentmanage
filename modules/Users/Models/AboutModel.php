@@ -120,10 +120,27 @@ class AboutModel extends Model
         $data = $builder->get()->getRowArray();
         return $data;
     }
+    function getInformationMap()
+    {
+        $builder = $this->db->table('information_map');
+        $builder->select('*');
+        $builder->where('information_map_id', 1);
+        $data = $builder->get()->getRowArray();
+        return $data;
+    }
 
     function getInformationCourse()
     {
         $builder = $this->db->table('information_course');
+        $builder->select('*');
+        $builder->orderBy('data_year', 'DESC');
+        $data = $builder->get()->getResultArray();
+        return $data;
+    }
+
+    function getInformationAboutEquipment()
+    {
+        $builder = $this->db->table('information_equipment');
         $builder->select('*');
         $builder->orderBy('data_year', 'DESC');
         $data = $builder->get()->getResultArray();
