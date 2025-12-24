@@ -186,6 +186,15 @@ $control = explode('/', $url);
                         </li>
 
                         <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "ita") ? "active" : "" ?>" href="<?= base_url('admin/ita'); ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-search"></i>
+                                </span>
+                                <span class="hide-menu">ITA: ประจำปี</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="<?= base_url('admin/Document'); ?>" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-folder-minus"></i>

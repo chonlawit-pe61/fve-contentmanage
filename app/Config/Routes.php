@@ -173,6 +173,26 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
         $routes->post('saveLink', 'Link::saveLink');
         $routes->post('deleteLink', 'Link::deleteLink');
     });
+
+    $routes->group('ita', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
+        $routes->get('/', 'Ita::index');
+        $routes->get('topics/(:num)', 'Ita::topics/$1');
+
+        $routes->get('manage_topic', 'Ita::manage_topic');
+        $routes->get('manage_topic/(:num)', 'Ita::manage_topic/$1');
+        $routes->post('save_topic', 'Ita::save_topic');
+        $routes->get('delete_topic/(:num)', 'Ita::delete_topic/$1');
+
+        $routes->get('subtopics/(:num)', 'Ita::subtopics/$1');
+        $routes->get('manage_subtopic', 'Ita::manage_subtopic');
+        $routes->get('manage_subtopic/(:num)', 'Ita::manage_subtopic/$1');
+        $routes->post('save_subtopic', 'Ita::save_subtopic');
+        $routes->get('delete_subtopic/(:num)', 'Ita::delete_subtopic/$1');
+
+        $routes->get('links/(:num)', 'Ita::links/$1');
+        $routes->post('save_link', 'Ita::save_link');
+        $routes->get('delete_link/(:num)', 'Ita::delete_link/$1');
+    });
 });
 $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
     $routes->get('/', 'Users::index');
@@ -213,6 +233,8 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
     $routes->group('Reward', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('detail/(:any)', 'Reward::reward_detail/$1');
     });
+
+    $routes->get('ita', 'Ita::index', ['namespace' => '\Modules\Users\Controllers']);
 });
 
 // We get a performance increase by specifying the default

@@ -526,7 +526,7 @@ $control = explode('/', $url);
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('contact') ?>">ITA.<?= date("Y") ?></a>
+                        <a class="nav-link" href="<?php echo base_url('ita') ?>">ITA.<?= date("Y") ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a>
