@@ -100,6 +100,15 @@ class About extends BaseController
 
         return view('Modules\Users\Views\about\information_about_team.php', $data);
     }
+
+    public function information_about_map()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $AboutModel = new AboutModel();
+        $data['information_map'] = $AboutModel->getInformationMap();
+
+        return view('Modules\Users\Views\about\information_about_map.php', $data);
+    }
     public function information_about_course()
     {
         $data['date_thai'] = $this->Date_thai;
@@ -107,5 +116,14 @@ class About extends BaseController
         $data['information_course'] = $AboutModel->getInformationCourse();
 
         return view('Modules\Users\Views\about\information_about_course.php', $data);
+    }
+
+    public function information_about_equipment()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $AboutModel = new AboutModel();
+        $data['information_equipment'] = $AboutModel->getInformationAboutEquipment();
+
+        return view('Modules\Users\Views\about\information_about_equipment.php', $data);
     }
 }

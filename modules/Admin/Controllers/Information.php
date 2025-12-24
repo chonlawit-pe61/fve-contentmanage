@@ -339,4 +339,114 @@ class Information extends BaseController
         $this->informationModel->saveInformationAboutCourse($input);
         return redirect()->to(base_url('admin/information/information_about_course'));
     }
+
+
+    public function information_about_equipment()
+    {
+        $data['InformationEquipment'] = $this->informationModel->getInformationAboutEquipment();
+        return view("Modules\Admin\Views\Information\information_about_equipment", $data);
+    }
+
+
+    public function information_about_equipment_form()
+    {
+        if (!empty($_GET['information_equipment_id'])) {
+            $information_equipment_id = @$_GET['information_equipment_id'];
+            $data['InformationEquipment'] = $this->informationModel->getInformationAboutEquipment($information_equipment_id);
+        } else {
+            $data['InformationEquipment'] = [];
+        }
+
+        return view("Modules\Admin\Views\Information\information_about_equipment_form", $data);
+    }
+
+
+    public function ajaxDeleteInformationAboutEquipment()
+    {
+        $input = $this->request->getPost();
+        $information_equipment_id = $input['information_equipment_id'];
+        $this->informationModel->deleteInformationAboutEquipment($information_equipment_id);
+    }
+
+    public function saveInformationAboutEquipment()
+    {
+        $input = $this->request->getPost();
+        $file = $this->request->getFiles();
+
+        $targetDirectoryFile = 'public/uploads/information';
+        if (!is_dir($targetDirectoryFile)) {
+            mkdir($targetDirectoryFile, 0755, true);
+        }
+        if (!empty($file)) {
+            $fileUploads = $file['file_personel'];
+            if ($fileUploads->isValid()) {
+                $randomName = $fileUploads->getRandomName();
+                $data['fileName'] = $fileUploads->getName();
+
+                $data['randomName'] = $randomName;
+                $data['fileType'] = $fileUploads->getClientMimeType();
+                $data['fileSize'] = $fileUploads->getSize();
+                $fileUploads->move($targetDirectoryFile, $randomName);
+                $input['file_path'] = $targetDirectoryFile . '/' . $randomName;
+                $input['file_name'] = $data['fileName'];
+            }
+        }
+        $this->informationModel->saveInformationAboutEquipment($input);
+        return redirect()->to(base_url('admin/information/information_about_equipment'));
+    }
+
+    public function information_about_map()
+    {
+        $data['InformationMap'] = $this->informationModel->getInformationAboutMap();
+        return view("Modules\Admin\Views\Information\information_about_map", $data);
+    }
+
+    public function information_about_map_form()
+    {
+        if (!empty($_GET['information_map_id'])) {
+            $information_map_id = @$_GET['information_map_id'];
+            $data['InformationMap'] = $this->informationModel->getInformationAboutMap($information_map_id);
+        } else {
+            $data['InformationMap'] = [];
+        }
+
+        return view("Modules\Admin\Views\Information\information_about_map_form", $data);
+    }
+
+
+
+    public function ajaxDeleteInformationAboutMap()
+    {
+        $input = $this->request->getPost();
+        $information_map_id = $input['information_map_id'];
+        $this->informationModel->deleteInformationAboutMap($information_map_id);
+    }
+
+    public function saveInformationAboutMap()
+    {
+        $file = $this->request->getFiles();
+
+        $input = [];
+        $targetDirectoryFile = 'public/uploads/information';
+        if (!is_dir($targetDirectoryFile)) {
+            mkdir($targetDirectoryFile, 0755, true);
+        }
+
+        if (!empty($file)) {
+            $fileUploads = $file['file_personel'];
+            if ($fileUploads->isValid()) {
+                $randomName = $fileUploads->getRandomName();
+                $data['fileName'] = $fileUploads->getName();
+
+                $data['randomName'] = $randomName;
+                $data['fileType'] = $fileUploads->getClientMimeType();
+                $data['fileSize'] = $fileUploads->getSize();
+                $fileUploads->move($targetDirectoryFile, $randomName);
+                $input['file_path'] = $targetDirectoryFile . '/' . $randomName;
+                $input['file_name'] = $data['fileName'];
+            }
+        }
+        $this->informationModel->saveInformationAboutMap($input);
+        return redirect()->to(base_url('admin/information/information_about_map'));
+    }
 }

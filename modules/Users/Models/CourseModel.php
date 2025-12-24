@@ -29,7 +29,6 @@ class CourseModel extends Model
         $builder->where('course_id', $id);
         $builder->orderBy('tbl_course_level.id', 'DESC');
         $data = $builder->get()->getResultArray();
-
         return $data;
     }
 }
