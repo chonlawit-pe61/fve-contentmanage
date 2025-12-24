@@ -502,7 +502,7 @@ $control = explode('/', $url);
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('contact') ?>">ITA2025</a>
+                        <a class="nav-link" href="<?php echo base_url('ita') ?>">ITA</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('contact') ?>">ติดต่อเรา</a>
