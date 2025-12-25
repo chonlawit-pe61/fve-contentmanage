@@ -184,7 +184,7 @@ $control = explode('/', $url);
                                 <span class="d-flex">
                                     <i class="ti ti-users"></i>
                                 </span>
-                                <span class="hide-menu">เอกสารบทความงานวิจัย</span>
+                                <span class="hide-menu">แบบฟรอม พัสดุ และการเงิน</span>
                             </a>
                         </li>
 

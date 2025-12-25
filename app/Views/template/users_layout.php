@@ -404,7 +404,7 @@ $control = explode('/', $url);
                                     if (!empty($org_4)) {
                                         foreach ($org_4 as $row) {
                                     ?>
-                                            <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id'] . '/1') ?>"><?php echo $row['name'] ?></a></li>
                                     <?php
                                         }
                                     }
@@ -418,7 +418,7 @@ $control = explode('/', $url);
                                     if (!empty($org_5)) {
                                         foreach ($org_5 as $row) {
                                     ?>
-                                            <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id'] . '/2') ?>"><?php echo $row['name'] ?></a></li>
                                     <?php
                                         }
                                     }
@@ -433,7 +433,7 @@ $control = explode('/', $url);
                                     if (!empty($org_6)) {
                                         foreach ($org_6 as $row) {
                                     ?>
-                                            <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id'] . '/3') ?>"><?php echo $row['name'] ?></a></li>
                                     <?php
                                         }
                                     }
@@ -448,7 +448,7 @@ $control = explode('/', $url);
                                     if (!empty($org_7)) {
                                         foreach ($org_7 as $row) {
                                     ?>
-                                            <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id']) ?>"><?php echo $row['name'] ?></a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url('Organization/' . $row['id'] . '/4') ?>"><?php echo $row['name'] ?></a></li>
                                     <?php
                                         }
                                     }
@@ -523,7 +523,7 @@ $control = explode('/', $url);
                                     รายงานแผนปฏิบัติการประจำปี
                                 </a>
                                 <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/repository') ?>">
-                                    เอกสารบทความงานวิจัย
+                                    แบบฟรอม พัสดุ และการเงิน
                                 </a>
 
                             </li>

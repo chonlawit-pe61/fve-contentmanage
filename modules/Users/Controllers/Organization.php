@@ -14,9 +14,12 @@ class Organization extends BaseController
     {
         $this->userModel = new UserModel();
     }
-    public function organization($id = '')
+    public function organization($id = '', $parent_id = '')
     {
         $OrganizationModel = new OrganizationModel();
+        if (!empty($parent_id)) {
+            $data['parent_id'] = $parent_id;
+        }
         $data['org'] = $OrganizationModel->getOrganizationWithParentAndChildren($id);
         $data['date_thai'] = $this->Date_thai;
         return view('Modules\Users\Views\organization\organization.php', $data);

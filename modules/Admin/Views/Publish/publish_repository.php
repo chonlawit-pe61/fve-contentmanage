@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12 my-2">
                 <h3>
-                    เอกสารบทความงานวิจัย
+                    แบบฟรอม พัสดุ และการเงิน
                 </h3>
             </div>
             <div class="col-12 my-2">

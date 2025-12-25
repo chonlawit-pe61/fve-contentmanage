@@ -8,12 +8,12 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 my-2">
-                    <h3>เอกสารบทความงานวิจัย</h3>
+                    <h3>แบบฟรอม พัสดุ และการเงิน</h3>
                 </div>
                 <div class="col-12 my-2">
                     <nav class="py-2" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '/'">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?= base_url('admin/publish/publish_repository') ?>">เอกสารบทความงานวิจัย</a></li>
+                            <li class="breadcrumb-item"><a href="<?= base_url('admin/publish/publish_repository') ?>">แบบฟรอม พัสดุ และการเงิน</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 <?= (@$publish_repository['id']) ? 'แก้ไขข้อมูล' : 'เพิ่มข้อมูล' ?>
                             </li>

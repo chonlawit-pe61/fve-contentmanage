@@ -207,7 +207,7 @@
     <!-- Title Section -->
     <div class="header-container mt-4" data-aos="fade-down">
         <div class="container" style="display: unset;">
-            <h1 class="page-heading">เอกสารบทความงานวิจัย</h1>
+            <h1 class="page-heading">แบบฟรอม พัสดุ และการเงิน</h1>
             <p class="page-subheading">วิทยาลัยการอาชีพฝาง</p>
         </div>
     </div>

@@ -258,7 +258,7 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
     });
     $routes->group('Organization', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('organization_personal/(:any)', 'Organization::organization_personal/$1');
-        $routes->get('(:any)', 'Organization::organization/$1');
+        $routes->get('(:any)/(:any)', 'Organization::organization/$1/$2');
     });
     $routes->group('policy', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('/', 'Policy::policy');

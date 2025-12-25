@@ -129,6 +129,14 @@ class OrganizationModel extends Model
         $data = $builder->get()->getResultArray();
         return $data;
     }
+    function getOrganizationById($id = 0)
+    {
+        $builder = $this->db->table('organization');
+        $builder->select('*');
+        $builder->where('id', $id);
+        $data = $builder->get()->getRowArray();
+        return $data;
+    }
     function getPersonalOrganization($member_id)
     {
         $builder = $this->db->table('member');

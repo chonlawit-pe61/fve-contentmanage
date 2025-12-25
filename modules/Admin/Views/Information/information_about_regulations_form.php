@@ -3,7 +3,7 @@
 <?php $this->section('content'); ?>
 <div class="card shadow shadow-lg">
     <form action="<?= base_url('admin/information/saveInformationAboutRegulations') ?>" method="POST" autocomplete="off" enctype="multipart/form-data" class="once-only">
-        <input type="hidden" name="information_money_id" value="<?= (@$InformationMoney['information_money_id']) ? $InformationMoney['information_money_id'] : '' ?>">
+        <input type="hidden" name="information_regulations_id" value="<?= (@$InformationRegulations['information_regulations_id']) ? $InformationRegulations['information_regulations_id'] : '' ?>">
         <div class="card-body">
             <div class="row">
                 <div class="col-12 my-2">
@@ -20,7 +20,7 @@
                                 </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <?= (@$InformationMoney['information_money_id']) ? 'แก้ไขข้อมูล' : 'เพิ่มข้อมูล' ?>
+                                <?= (@$InformationRegulations['information_regulations_id']) ? 'แก้ไขข้อมูล' : 'เพิ่มข้อมูล' ?>
                             </li>
                         </ol>
                     </nav>
@@ -36,7 +36,7 @@
                     ?>
                     <select name="data_year" class="form-select" aria-label="Default select example">
                         <?php for ($year = $startYear; $year <= $endYear; $year++): ?>
-                            <option <?php echo @$InformationMoney['data_year'] == $year ? 'selected' : '' ?> value="<?= $year ?>">
+                            <option <?php echo @$InformationRegulations['data_year'] == $year ? 'selected' : '' ?> value="<?= $year ?>">
                                 <?= $year + 543 ?>
                             </option>
                         <?php endfor; ?>
@@ -46,9 +46,9 @@
                     <label for="title" class="form-label">ลิงค์</label>
                     <input type="file" name="file_personel" class="form-control">
                     <?php
-                    if (!empty(@$InformationMoney['information_money_file'])) {
+                    if (!empty(@$InformationRegulations['information_regulations_file'])) {
                     ?>
-                        <a class="btn btn-primary mt-3" href="<?= base_url(@$InformationMoney['information_money_file']) ?>" target="_blank">ดูไฟล์</a>
+                        <a class="btn btn-primary mt-3" href="<?= base_url(@$InformationRegulations['information_regulations_file']) ?>" target="_blank">ดูไฟล์</a>
                     <?php
                     }
                     ?>
@@ -59,7 +59,7 @@
                     <button type="submit" class="btn btn-success mx-1 btn-submit">
                         <i class="ti ti-device-floppy"></i> บันทึก
                     </button>
-                    <a href="<?= base_url('admin/information/information_about_money') ?>" class="btn btn-warning mx-1">
+                    <a href="<?= base_url('admin/information/information_about_regulations') ?>" class="btn btn-warning mx-1">
                         <i class="ti ti-chevron-left"></i> กลับ
                     </a>
                 </div>
