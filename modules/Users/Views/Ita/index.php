@@ -105,90 +105,82 @@
         box-shadow: 0 4px 15px rgba(128, 0, 0, 0.3);
     }
 
-    /* Accordion Custom Styling */
-    .ita-accordion-item {
-        border: none;
-        margin-bottom: 1.5rem;
-        background: transparent;
-    }
-
-    .ita-header button {
-        background: #fff;
-        border-radius: 15px !important;
-        padding: 1.5rem 2rem;
+    /* Table Styles */
+    .ita-table-container {
+        border-radius: 15px;
+        overflow: hidden;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(0, 0, 0, 0.02);
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #333;
-        transition: all 0.3s ease;
+        background: #fff;
     }
 
-    .ita-header button:not(.collapsed) {
+    .ita-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 0;
+    }
+
+    .ita-table thead th {
         background: #990000;
         color: #fff;
-        box-shadow: 0 10px 30px rgba(153, 0, 0, 0.2);
-    }
-
-    .ita-header button::after {
-        transition: all 0.3s;
-    }
-
-    .ita-header button:not(.collapsed)::after {
-        filter: brightness(0) invert(1);
-    }
-
-    .ita-body {
-        background: #fff;
-        margin-top: 10px;
-        border-radius: 15px;
-        padding: 2rem;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-    }
-
-    .subtopic-title {
-        color: #990000;
+        padding: 1.2rem;
         font-weight: 600;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
+        text-align: left;
+        border: none;
     }
 
-    .subtopic-item {
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px dashed #eee;
+    .ita-table tbody td {
+        padding: 1.2rem;
+        border-bottom: 1px solid #f0f0f0;
+        vertical-align: top;
+        color: #444;
     }
 
-    .subtopic-item:last-child {
+    .ita-table tbody tr:last-child td {
         border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
     }
 
-    .link-item {
-        display: block;
-        padding: 8px 15px;
+    .ita-table tbody tr:hover {
+        background-color: #fafafa;
+    }
+
+    .topic-row {
+        background-color: #fff5f5;
+        font-weight: 700;
+        color: #800000;
+        border-left: 5px solid #990000;
+    }
+
+    .topic-cell {
+        font-size: 1.1rem;
+    }
+
+    .subtopic-cell {
+        padding-left: 3rem !important;
+    }
+
+    .link-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 12px;
         background: #f8f9fa;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        color: #555;
+        color: #333;
+        border: 1px solid #ddd;
+        border-radius: 6px;
         text-decoration: none;
+        font-size: 0.9rem;
         transition: all 0.2s;
-        border-left: 3px solid transparent;
+        margin-bottom: 5px;
+        margin-right: 5px;
     }
 
-    .link-item:hover {
-        background: #fffbe6;
-        color: #990000;
-        border-left: 3px solid #ffc107;
-        transform: translateX(5px);
+    .link-btn:hover {
+        background: #990000;
+        color: #fff;
+        border-color: #990000;
     }
 
-    .link-item i {
-        margin-right: 10px;
-        color: #ffc107;
+    .link-btn i {
+        margin-right: 6px;
     }
 
     /* Animation */
@@ -227,55 +219,66 @@
             </div>
         <?php endif; ?>
 
-        <!-- Topics List -->
+        <!-- Topics List Table -->
         <?php if (!empty($topics)) : ?>
-            <div class="accordion" id="itaAccordion">
-                <?php foreach ($topics as $index => $topic) : ?>
-                    <div class="accordion-item ita-accordion-item" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
-                        <h2 class="accordion-header ita-header" id="heading<?= $topic['id'] ?>">
-                            <button class="accordion-button <?= ($index !== 0) ? 'collapsed' : '' ?>"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapse<?= $topic['id'] ?>"
-                                aria-expanded="<?= ($index === 0) ? 'true' : 'false' ?>"
-                                aria-controls="collapse<?= $topic['id'] ?>">
-                                <?= $index + 1 ?>. <?= $topic['name'] ?>
-                            </button>
-                        </h2>
-                        <div id="collapse<?= $topic['id'] ?>"
-                            class="accordion-collapse collapse <?= ($index === 0) ? 'show' : '' ?>"
-                            aria-labelledby="heading<?= $topic['id'] ?>"
-                            data-bs-parent="#itaAccordion">
-                            <div class="accordion-body ita-body">
-                                <?php if (!empty($topic['subtopics'])) : ?>
-                                    <?php foreach ($topic['subtopics'] as $subtopic) : ?>
-                                        <div class="subtopic-item">
-                                            <div class="subtopic-title">
-                                                <i class="ti ti-folder me-2"></i><?= $subtopic['name'] ?>
-                                            </div>
-                                            <?php if (!empty($subtopic['description'])) : ?>
-                                                <p class="text-muted small ms-4 mb-2"><?= $subtopic['description'] ?></p>
-                                            <?php endif; ?>
+            <div class="ita-table-container" data-aos="fade-up">
+                <table class="ita-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;" class="text-center">ข้อ</th>
+                            <th style="width: 30%;" class="text-center">ข้อมูล</th>
+                            <th style="width: 30%;" class="text-center">รายละเอียด</th>
+                            <th style="width: 30%;" class="text-center">การเผยแพร่</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($topics as $index => $topic) : ?>
+                            <!-- Topic Row -->
+                            <tr class="topic-row">
+                                <td colspan="4" class="topic-cell">
+                                    <?= $index + 1 ?>. <?= $topic['name'] ?>
+                                </td>
+                            </tr>
 
+                            <!-- Subtopics -->
+                            <?php if (!empty($topic['subtopics'])) : ?>
+                                <?php foreach ($topic['subtopics'] as $subIndex => $subtopic) : ?>
+                                    <tr>
+                                        <td class="subtopic-cell">
+                                            <strong><?= $index + 1 ?>.<?= $subIndex + 1 ?></strong>
+                                        </td>
+                                        <td class="">
+                                            <strong><?= $subtopic['name'] ?></strong>
+                                        </td>
+                                        <td class="">
+                                            <?php if (!empty($subtopic['description'])) : ?>
+                                                <p class="mb-0 text-muted small mt-1"><?= $subtopic['description'] ?></p>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
                                             <?php if (!empty($subtopic['links'])) : ?>
-                                                <div class="ms-4">
+                                                <div class="d-flex flex-wrap">
                                                     <?php foreach ($subtopic['links'] as $link) : ?>
-                                                        <a href="<?= $link['url'] ?>" target="_blank" class="link-item">
+                                                        <a href="<?= $link['url'] ?>" target="_blank" class="link-btn">
                                                             <i class="ti ti-link"></i>
-                                                            <?= !empty($link['description']) ? $link['description'] : $link['url'] ?>
+                                                            <?= !empty($link['description']) ? $link['description'] : 'เปิดลิ้งค์' ?>
                                                         </a>
                                                     <?php endforeach; ?>
                                                 </div>
+                                            <?php else : ?>
+                                                <span class="text-muted small">- ไม่พบข้อมูล -</span>
                                             <?php endif; ?>
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php else : ?>
-                                    <div class="text-center text-muted py-3">กำลังดำเนินการอัปเดตข้อมูล</div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <tr>
+                                    <td colspan="2" class="text-center text-muted py-3">กำลังดำเนินการอัปเดตข้อมูล</td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         <?php else : ?>
             <div class="text-center py-5" data-aos="fade-up">
