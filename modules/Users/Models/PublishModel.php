@@ -52,4 +52,26 @@ class PublishModel extends Model
         $data = $builder->get()->getResultArray();
         return $data;
     }
+
+    function getPublishRepositoryType()
+    {
+        $builder = $this->db->table('tbl_repository_type');
+        $builder->select('tbl_repository_type.*');
+        $builder->join('repository', 'repository.type_id = tbl_repository_type.id', 'INNER');
+        $builder->groupBy('tbl_repository_type.id');
+        $data = $builder->get()->getResultArray();
+        return $data;
+    }
+
+    function getPublishRepository()
+    {
+        $builder = $this->db->table('repository');
+        $builder->select('*');
+        $data = $builder->get()->getResultArray();
+        $temp = [];
+        foreach ($data as $key => $value) {
+            $temp[$value['type_id']][] = $value;
+        }
+        return $temp;
+    }
 }

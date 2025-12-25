@@ -42,4 +42,13 @@ class Publish extends BaseController
         $data['publishSummaryReport'] = $this->publishModel->getPublishSummaryReport();
         return view('Modules\Users\Views\publish\publish_summary_report.php', $data);
     }
+    public function publishRepository()
+    {
+        $data['date_thai'] = $this->Date_thai;
+        $data['repositoryType'] = $this->publishModel->getPublishRepositoryType();
+
+        $data['publishRepository'] = $this->publishModel->getPublishRepository();
+
+        return view('Modules\Users\Views\publish\publish_repository.php', $data);
+    }
 }

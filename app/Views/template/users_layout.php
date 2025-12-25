@@ -522,6 +522,10 @@ $control = explode('/', $url);
                                 <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/summary_report') ?>">
                                     รายงานแผนปฏิบัติการประจำปี
                                 </a>
+                                <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/repository') ?>">
+                                    เอกสารบทความงานวิจัย
+                                </a>
+
                             </li>
                         </ul>
                     </li>

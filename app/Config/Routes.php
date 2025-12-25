@@ -156,6 +156,13 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
         $routes->get('publish_summary_report_form', 'Publish::publish_summary_report_form');
         $routes->post('savePublishSummaryReport', 'Publish::savePublishSummaryReport');
         $routes->post('ajaxDeletePublishSummaryReport', 'Publish::ajaxDeletePublishSummaryReport');
+
+
+
+        $routes->get('publish_repository', 'Publish::publish_repository');
+        $routes->get('publish_repository_form', 'Publish::publish_repository_form');
+        $routes->post('savePublishRepository', 'Publish::savePublishRepository');
+        $routes->post('ajaxDeletePublishRepository', 'Publish::ajaxDeletePublishRepository');
     });
 
     $routes->group('law', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
@@ -280,6 +287,7 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
         $routes->get('sar', 'Publish::publishSar');
         $routes->get('external_quality_report', 'Publish::publishExternalQualityReport');
         $routes->get('summary_report', 'Publish::publishSummaryReport');
+        $routes->get('repository', 'Publish::publishRepository');
     });
     $routes->get('ita', 'Ita::index', ['namespace' => '\Modules\Users\Controllers']);
 });

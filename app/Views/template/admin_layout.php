@@ -179,6 +179,14 @@ $control = explode('/', $url);
                                 <span class="hide-menu">สรุปรายงานผลแผนปฏิบัติการประจำปี</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "publish_repository") ? "active" : "" ?>" href="<?= base_url('admin/publish/publish_repository') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">เอกสารบทความงานวิจัย</span>
+                            </a>
+                        </li>
 
 
 

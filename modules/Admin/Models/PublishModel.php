@@ -198,4 +198,70 @@ class PublishModel extends Model
         $builder->where('publish_summary_report_id', $id);
         $builder->delete();
     }
+
+
+    function getPublishRepository($id = '')
+    {
+        $builder = $this->db->table('repository');
+        $builder->select('*');
+        if (!empty($id)) {
+            $builder->where('id', $id);
+            $result = $builder->get()->getRowArray();
+        } else {
+            $result = $builder->get()->getResultArray();
+        }
+        return $result;
+    }
+
+    function getPublishRepositoryType($id = '')
+    {
+        $builder = $this->db->table('tbl_repository_type');
+        $builder->select('*');
+        if (!empty($id)) {
+            $builder->where('id', $id);
+            $result = $builder->get()->getRowArray();
+        } else {
+            $result = $builder->get()->getResultArray();
+        }
+        return $result;
+    }
+    function deletePublishRepository($id = '')
+    {
+        $builder = $this->db->table('repository');
+        $builder->where('id', $id);
+        $builder->delete();
+    }
+
+    function savePublishRepository($input)
+    {
+        $builder = $this->db->table('repository');
+
+        if (!empty($input['type_id'])) {
+            $builder->set('type_id', $input['type_id']);
+        }
+
+        if (!empty($input['title'])) {
+            $builder->set('title', $input['title']);
+        }
+
+        if (!empty($input['file_path'])) {
+            $builder->set('file_path', $input['file_path']);
+        }
+
+        if (!empty($input['set_file_null'])) {
+            $builder->set('file_path', null);
+        }
+
+        if (!empty($input['id'])) {
+            $builder->set('update_at', date('Y-m-d H:i:s'));
+            $builder->where('id', $input['id']);
+            $builder->update();
+            $id = $input['id'];
+        } else {
+            $builder->set('create_at', date('Y-m-d H:i:s'));
+            $builder->set('update_at', date('Y-m-d H:i:s'));
+            $builder->insert();
+            $id = $this->db->insertID();
+        }
+    }
 }

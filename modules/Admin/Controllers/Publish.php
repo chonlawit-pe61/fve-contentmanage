@@ -230,12 +230,6 @@ class Publish extends BaseController
 
 
 
-
-
-
-
-
-
     public function publish_summary_report()
     {
         $data['publish_summary_report'] = $this->publishModel->getPublishSummaryReport();
@@ -286,5 +280,58 @@ class Publish extends BaseController
         }
         $this->publishModel->savePublishSummaryReport($input);
         return redirect()->to(base_url('admin/publish/publish_summary_report'));
+    }
+
+
+    public function publish_repository()
+    {
+        $data['publish_repository'] = $this->publishModel->getPublishRepository();
+        return view("Modules\Admin\Views\Publish\publish_repository", $data);
+    }
+    public function publish_repository_form()
+    {
+        if (!empty($_GET['publish_repository_id'])) {
+            $publish_repository_id = @$_GET['publish_repository_id'];
+            $data['publish_repository'] = $this->publishModel->getPublishRepository($publish_repository_id);
+        } else {
+            $data['publish_repository'] = [];
+        }
+        $data['publish_repository_types'] = $this->publishModel->getPublishRepositoryType();
+
+        return view("Modules\Admin\Views\Publish\publish_repository_form", $data);
+    }
+
+    public function ajaxDeletePublishRepository()
+    {
+        $input = $this->request->getPost();
+        $publish_repository_id = $input['id'];
+        $this->publishModel->deletePublishRepository($publish_repository_id);
+    }
+
+    public function savePublishRepository()
+    {
+        $input = $this->request->getPost();
+        $file = $this->request->getFiles();
+
+        $targetDirectoryFile = 'public/uploads/publish_repository';
+        if (!is_dir($targetDirectoryFile)) {
+            mkdir($targetDirectoryFile, 0777, true);
+        }
+        if (!empty($file)) {
+            $fileUploads = $file['file'];
+            if ($fileUploads->isValid()) {
+                $randomName = $fileUploads->getRandomName();
+                $data['fileName'] = $fileUploads->getName();
+
+                $data['randomName'] = $randomName;
+                $data['fileType'] = $fileUploads->getClientMimeType();
+                $data['fileSize'] = $fileUploads->getSize();
+                $fileUploads->move($targetDirectoryFile, $randomName);
+                $input['file_path'] = $targetDirectoryFile . '/' . $randomName;
+                $input['file_name'] = $data['fileName'];
+            }
+        }
+        $this->publishModel->savePublishRepository($input);
+        return redirect()->to(base_url('admin/publish/publish_repository'));
     }
 }
