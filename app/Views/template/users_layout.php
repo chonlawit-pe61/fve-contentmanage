@@ -510,6 +510,18 @@ $control = explode('/', $url);
                                 <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/educational_development') ?>">
                                     แผนพัฒนาสถานศึกษา
                                 </a>
+                                <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/year') ?>">
+                                    แผนปฏิบัติการประจำปี
+                                </a>
+                                <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/sar') ?>">
+                                    รายงานการประเมินตนเอง
+                                </a>
+                                <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/external_quality_report') ?>">
+                                    รายงานการประเมินคุณภาพภายนอก
+                                </a>
+                                <a class="dropdown-item" style="text-wrap: auto;" href="<?= base_url('publish/summary_report') ?>">
+                                    รายงานแผนปฏิบัติการประจำปี
+                                </a>
                             </li>
                         </ul>
                     </li>

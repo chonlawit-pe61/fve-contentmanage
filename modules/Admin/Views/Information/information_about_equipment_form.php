@@ -2,8 +2,8 @@
 
 <?php $this->section('content'); ?>
 <div class="card shadow shadow-lg">
-    <form action="<?= base_url('admin/information/saveInformationAboutCourse') ?>" method="POST" autocomplete="off" enctype="multipart/form-data" class="once-only">
-        <input type="hidden" name="information_course_id" value="<?= (@$InformationCourse['information_course_id']) ? $InformationCourse['information_course_id'] : '' ?>">
+    <form action="<?= base_url('admin/information/saveInformationAboutEquipment') ?>" method="POST" autocomplete="off" enctype="multipart/form-data" class="once-only">
+        <input type="hidden" name="information_equipment_id" value="<?= (@$InformationEquipment['information_equipment_id']) ? $InformationEquipment['information_equipment_id'] : '' ?>">
         <div class="card-body">
             <div class="row">
                 <div class="col-12 my-2">
@@ -15,12 +15,12 @@
                     <nav class="py-2" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '/'">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="<?= base_url('admin/information/information_about_course') ?>">
+                                <a href="<?= base_url('admin/information/information_about_equipment') ?>">
                                     ข้อมูลหลักสูตร
                                 </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <?= (@$InformationCourse['information_course_id']) ? 'แก้ไขข้อมูล' : 'เพิ่มข้อมูล' ?>
+                                <?= (@$InformationEquipment['information_equipment_id']) ? 'แก้ไขข้อมูล' : 'เพิ่มข้อมูล' ?>
                             </li>
                         </ol>
                     </nav>
@@ -36,7 +36,7 @@
                     ?>
                     <select name="data_year" class="form-select" aria-label="Default select example">
                         <?php for ($year = $startYear; $year <= $endYear; $year++): ?>
-                            <option <?php echo @$InformationCourse['data_year'] == $year ? 'selected' : '' ?> value="<?= $year ?>">
+                            <option <?php echo @$InformationEquipment['data_year'] == $year ? 'selected' : '' ?> value="<?= $year ?>">
                                 <?= $year + 543 ?>
                             </option>
                         <?php endfor; ?>
@@ -46,9 +46,9 @@
                     <label for="title" class="form-label">ลิงค์</label>
                     <input type="file" name="file_personel" class="form-control">
                     <?php
-                    if (!empty(@$InformationCourse['information_course_file'])) {
+                    if (!empty(@$InformationEquipment['information_equipment_file'])) {
                     ?>
-                        <a class="btn btn-primary mt-3" href="<?= base_url(@$InformationCourse['information_course_file']) ?>" target="_blank">ดูไฟล์</a>
+                        <a class="btn btn-primary mt-3" href="<?= base_url(@$InformationEquipment['information_equipment_file']) ?>" target="_blank">ดูไฟล์</a>
                     <?php
                     }
                     ?>
@@ -59,7 +59,7 @@
                     <button type="submit" class="btn btn-success mx-1 btn-submit">
                         <i class="ti ti-device-floppy"></i> บันทึก
                     </button>
-                    <a href="<?= base_url('admin/information/information_about_course') ?>" class="btn btn-warning mx-1">
+                    <a href="<?= base_url('admin/information/information_about_equipment') ?>" class="btn btn-warning mx-1">
                         <i class="ti ti-chevron-left"></i> กลับ
                     </a>
                 </div>

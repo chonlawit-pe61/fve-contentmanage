@@ -148,6 +148,43 @@ $control = explode('/', $url);
                         </li>
 
                         <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "publish_year") ? "active" : "" ?>" href="<?= base_url('admin/publish/publish_year') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-calendar"></i>
+                                </span>
+                                <span class="hide-menu">แผนปฏิบัติการประจำปี</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "sar") ? "active" : "" ?>" href="<?= base_url('admin/publish/publish_sar') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">รายงานการประเมินตนเอง</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "sar") ? "active" : "" ?>" href="<?= base_url('admin/publish/publish_external_quality_report') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">รายงานการประเมินคุณภาพภายนอก</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "sar") ? "active" : "" ?>" href="<?= base_url('admin/publish/publish_summary_report') ?>" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-users"></i>
+                                </span>
+                                <span class="hide-menu">สรุปรายงานผลแผนปฏิบัติการประจำปี</span>
+                            </a>
+                        </li>
+
+
+
+
+
+                        <li class="sidebar-item">
                             <a class="sidebar-link <?= ($control[0] == "admin" && $control[1] == "slide") ? "active" : "" ?>" href="<?= base_url('admin/slide') ?>" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-slideshow"></i>

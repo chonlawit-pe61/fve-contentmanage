@@ -2,25 +2,25 @@
 
 <?php $this->section('content'); ?>
 <div class="card shadow shadow-lg">
-    <form action="<?= base_url('admin/publish/savePublishEducationalDevelopment') ?>" method="POST" autocomplete="off" enctype="multipart/form-data" class="once-only">
-        <input type="hidden" name="publish_educational_development_id" value="<?= (@$publish_educational_development['publish_educational_development_id']) ? $publish_educational_development['publish_educational_development_id'] : '' ?>">
+    <form action="<?= base_url('admin/publish/savePublishSar') ?>" method="POST" autocomplete="off" enctype="multipart/form-data" class="once-only">
+        <input type="hidden" name="publish_sar_id" value="<?= (@$publish_sar['publish_sar_id']) ? $publish_sar['publish_sar_id'] : '' ?>">
         <div class="card-body">
             <div class="row">
                 <div class="col-12 my-2">
                     <h3>
-                        แผนพัฒนาสถานศึกษา
+                        รายงานการประเมินตนเอง
                     </h3>
                 </div>
                 <div class="col-12 my-2">
                     <nav class="py-2" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '/'">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="<?= base_url('admin/publish/publish_educational_development') ?>">
-                                    ข้อมูลหลักสูตร
+                                <a href="<?= base_url('admin/publish/publish_sar') ?>">
+                                    รายงานการประเมินตนเอง
                                 </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <?= (@$publish_educational_development['publish_educational_development_id']) ? 'แก้ไขข้อมูล' : 'เพิ่มข้อมูล' ?>
+                                <?= (@$publish_sar['publish_sar_id']) ? 'แก้ไขข้อมูล' : 'เพิ่มข้อมูล' ?>
                             </li>
                         </ol>
                     </nav>
@@ -36,7 +36,7 @@
                     ?>
                     <select name="data_year" class="form-select" aria-label="Default select example">
                         <?php for ($year = $startYear; $year <= $endYear; $year++): ?>
-                            <option <?php echo @$publish_educational_development['data_year'] == $year ? 'selected' : '' ?> value="<?= $year ?>">
+                            <option <?php echo @$publish_sar['data_year'] == $year ? 'selected' : '' ?> value="<?= $year ?>">
                                 <?= $year + 543 ?>
                             </option>
                         <?php endfor; ?>
@@ -46,9 +46,9 @@
                     <label for="title" class="form-label">ลิงค์</label>
                     <input type="file" name="file_personel" class="form-control">
                     <?php
-                    if (!empty(@$publish_educational_development['publish_educational_development_file'])) {
+                    if (!empty(@$publish_sar['publish_sar_file'])) {
                     ?>
-                        <a class="btn btn-primary mt-3" href="<?= base_url(@$publish_educational_development['publish_educational_development_file']) ?>" target="_blank">ดูไฟล์</a>
+                        <a class="btn btn-primary mt-3" href="<?= base_url(@$publish_sar['publish_sar_file']) ?>" target="_blank">ดูไฟล์</a>
                     <?php
                     }
                     ?>
@@ -59,7 +59,7 @@
                     <button type="submit" class="btn btn-success mx-1 btn-submit">
                         <i class="ti ti-device-floppy"></i> บันทึก
                     </button>
-                    <a href="<?= base_url('admin/publish/publish_educational_development') ?>" class="btn btn-warning mx-1">
+                    <a href="<?= base_url('admin/publish/publish_sar') ?>" class="btn btn-warning mx-1">
                         <i class="ti ti-chevron-left"></i> กลับ
                     </a>
                 </div>

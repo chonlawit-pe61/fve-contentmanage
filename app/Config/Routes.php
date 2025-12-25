@@ -133,6 +133,29 @@ $routes->group('admin', ['namespace' => '\Modules\Admin\Controllers'], function 
         $routes->get('publish_educational_development_form', 'Publish::publish_educational_development_form');
         $routes->post('savePublishEducationalDevelopment', 'Publish::savePublishEducationalDevelopment');
         $routes->post('ajaxDeletePublishEducationalDevelopment', 'Publish::ajaxDeletePublishEducationalDevelopment');
+
+
+        $routes->get('publish_year', 'Publish::publish_year');
+        $routes->get('publish_year_form', 'Publish::publish_year_form');
+        $routes->post('savePublishYear', 'Publish::savePublishYear');
+        $routes->post('ajaxDeletePublishYear', 'Publish::ajaxDeletePublishYear');
+
+
+        $routes->get('publish_sar', 'Publish::publish_sar');
+        $routes->get('publish_sar_form', 'Publish::publish_sar_form');
+        $routes->post('savePublishSar', 'Publish::savePublishSar');
+        $routes->post('ajaxDeletePublishSar', 'Publish::ajaxDeletePublishSar');
+
+
+        $routes->get('publish_external_quality_report', 'Publish::publish_external_quality_report');
+        $routes->get('publish_external_quality_report_form', 'Publish::publish_external_quality_report_form');
+        $routes->post('savePublishExternalQualityReport', 'Publish::savePublishExternalQualityReport');
+        $routes->post('ajaxDeletePublishExternalQualityReport', 'Publish::ajaxDeletePublishExternalQualityReport');
+
+        $routes->get('publish_summary_report', 'Publish::publish_summary_report');
+        $routes->get('publish_summary_report_form', 'Publish::publish_summary_report_form');
+        $routes->post('savePublishSummaryReport', 'Publish::savePublishSummaryReport');
+        $routes->post('ajaxDeletePublishSummaryReport', 'Publish::ajaxDeletePublishSummaryReport');
     });
 
     $routes->group('law', ['namespace' => '\Modules\Admin\Controllers', 'filter' => 'adminGuard'], function ($routes) {
@@ -253,6 +276,10 @@ $routes->group('/', ['namespace' => '\Modules\Users\Controllers'], function ($ro
     });
     $routes->group('publish', ['namespace' => '\Modules\Users\Controllers'], function ($routes) {
         $routes->get('educational_development', 'Publish::publishEducationalDevelopment');
+        $routes->get('year', 'Publish::publishYear');
+        $routes->get('sar', 'Publish::publishSar');
+        $routes->get('external_quality_report', 'Publish::publishExternalQualityReport');
+        $routes->get('summary_report', 'Publish::publishSummaryReport');
     });
     $routes->get('ita', 'Ita::index', ['namespace' => '\Modules\Users\Controllers']);
 });
