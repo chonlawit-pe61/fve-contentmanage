@@ -135,8 +135,59 @@
         display: inline-block;
         position: relative;
         padding-bottom: 5px;
+        margin-bottom: 12px;
     }
 
+
+    /* --- Contact Info Styles --- */
+    .card-contact {
+        margin-top: 10px;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        padding-top: 15px;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+    }
+
+    .executive-card:hover .card-contact {
+        opacity: 1;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 5px;
+        transition: transform 0.2s;
+        word-break: break-all;
+    }
+
+    .contact-item:hover {
+        transform: translateX(5px);
+        color: var(--primary-color);
+    }
+
+    .contact-icon {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        background: rgba(212, 175, 55, 0.15);
+        /* Light Gold */
+        color: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        font-size: 0.8rem;
+        transition: all 0.3s;
+    }
+
+    .contact-item:hover .contact-icon {
+        background: var(--accent-color);
+        color: #fff;
+    }
 
     .director-card {
         max-width: 600px;
@@ -173,6 +224,18 @@
         /* Light red pill bg */
         padding: 8px 25px;
         border-radius: 50px;
+    }
+
+    .director-card .card-contact {
+        margin-top: 20px;
+        padding-top: 20px;
+        font-size: 1.1rem;
+    }
+
+    .director-card .contact-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 
     /* Responsive Grid */
@@ -217,6 +280,24 @@
                         <div class="card-info">
                             <h4 class="executive-name"><?= $director['prename'] . $director['first_name'] . ' ' . $director['last_name'] ?></h4>
                             <span class="executive-position"><?= $director['org_name'] ?></span>
+
+                            <!-- Contact Info for Director -->
+                            <?php if (!empty($director['phone']) || !empty($director['email'])): ?>
+                                <div class="card-contact">
+                                    <?php if (!empty($director['phone'])): ?>
+                                        <div class="contact-item">
+                                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                                            <span class="contact-text"><?= $director['phone'] ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($director['email'])): ?>
+                                        <div class="contact-item">
+                                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                            <span class="contact-text"><?= $director['email'] ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -237,6 +318,25 @@
                                 <div class="card-info">
                                     <h5 class="executive-name"><?= $row['prename'] . $row['first_name'] . ' ' . $row['last_name'] ?></h5>
                                     <span class="executive-position"><?= $row['org_name'] ?></span>
+
+                                    <!-- Contact Info for Executives -->
+                                    <?php if (!empty($row['phone']) || !empty($row['email'])): ?>
+                                        <div class="card-contact">
+                                            <?php if (!empty($row['phone'])): ?>
+                                                <div class="contact-item">
+                                                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                                                    <span class="contact-text"><?= $row['phone'] ?></span>
+                                                </div>
+                                            <?php endif; ?>
+                                            <?php if (!empty($row['email'])): ?>
+                                                <div class="contact-item">
+                                                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                                    <span class="contact-text"><?= $row['email'] ?></span>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
+
                                 </div>
                             </div>
                         </div>
