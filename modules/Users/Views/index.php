@@ -1479,7 +1479,7 @@
         </button>
     </div>
     <div class="container py-5" style="">
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             <!-- Service Card 01 -->
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <a target="_blank" href="https://drive.google.com/drive/folders/1cns9nmI5wSM3FZymjaSuZX2cXmTUblaB" class="text-decoration-none">
@@ -1532,7 +1532,7 @@
             </div>
 
             <!-- Service Card 04 -->
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <!-- <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
                 <a href="#" class="text-decoration-none">
                     <div class="custom-card">
                         <div class="icon-wrapper">
@@ -1546,7 +1546,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
             <!-- Dynamic Links -->
             <div class="col-12 mt-4" data-aos="fade-up" data-aos-delay="500">
