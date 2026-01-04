@@ -32,9 +32,10 @@ class OrganizationModel extends Model
         // ───── ดึงรองผู้อำนวยการจาก parent ─────
         if (!empty($org['parent_id'])) {
             $memberBuilder = $this->db->table('member');
-            $memberBuilder->select('* , member.id as personal_id');
+            $memberBuilder->select('* , member.id as personal_id , tbl_prename.name as prename');
             $parent = $memberBuilder
                 ->join('member_organization', 'member_organization.member_id = member.id', 'left')
+                ->join('tbl_prename', 'tbl_prename.id = member.prename_id', 'left')
                 ->join('tbl_org_level', 'tbl_org_level.id = member_organization.org_level_id', 'left')
                 ->where('member_organization.org_id', $org['parent_id'])
                 ->get()->getRowArray();
@@ -48,7 +49,8 @@ class OrganizationModel extends Model
                 $jsData[] = [
                     'id' => $parentIdForSubGroups,
                     'parentId' => $orgNodeId,
-                    'name' => 'นาย' . ' ' . $parent['first_name'] . ' ' . $parent['last_name'],
+                    'prename' => $parent['prename'],
+                    'name' => $parent['first_name'] . ' ' . $parent['last_name'],
                     'title' => $parent['position'],
                     'img' => $file_img,
                     'personal_id' => $parent['personal_id'],
@@ -58,8 +60,9 @@ class OrganizationModel extends Model
 
         // ───── ดึงสมาชิกทั้งหมด ─────
         $members = $this->db->table('member')
-            ->select('member.*, member_organization.org_level_id, tbl_org_level.name as level_name')
+            ->select('member.*, member_organization.org_level_id, tbl_org_level.name as level_name,tbl_prename.name as prename')
             ->join('member_organization', 'member_organization.member_id = member.id', 'left')
+            ->join('tbl_prename', 'tbl_prename.id = member.prename_id', 'left')
             ->join('tbl_org_level', 'tbl_org_level.id = member_organization.org_level_id', 'left')
             ->where('member_organization.org_id', $id)
             ->orderBy('member_organization.org_level_id', 'asc')
@@ -100,8 +103,9 @@ class OrganizationModel extends Model
                 $file_img = base_url('public/img/blank-member.jpg');
             }
             $groupMap[$groupKey]['people'][] = [
-                'name' => 'นาย ' . $m['first_name'] . ' ' . $m['last_name'],
+                'name' => $m['first_name'] . ' ' . $m['last_name'],
                 'title' => $m['position'],
+                'prename' => $m['prename'],
                 'img' => $file_img,
                 'personal_id' => $m['id'],
             ];
@@ -127,14 +131,6 @@ class OrganizationModel extends Model
         $builder->select('*');
         $builder->where('parent_id', $id);
         $data = $builder->get()->getResultArray();
-        return $data;
-    }
-    function getOrganizationById($id = 0)
-    {
-        $builder = $this->db->table('organization');
-        $builder->select('*');
-        $builder->where('id', $id);
-        $data = $builder->get()->getRowArray();
         return $data;
     }
     function getPersonalOrganization($member_id)

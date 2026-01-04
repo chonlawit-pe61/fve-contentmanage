@@ -262,7 +262,7 @@ if (isset($org) && is_array($org)) {
                                             <img class="img-personal" src="<?= $head['img'] ?>" alt="<?= $head['name'] ?>">
                                         </div>
                                         <div class="card-info">
-                                            <h4 class="executive-name"><?= $head['name'] ?></h4>
+                                            <h4 class="executive-name"><?= $head['prename']  . ' ' . $head['name'] ?></h4>
                                             <span class="executive-position"><?= $head['title'] ?></span>
                                         </div>
                                     </div>
@@ -290,7 +290,7 @@ if (isset($org) && is_array($org)) {
                                                 <img class="img-personal" src="<?= $person['img'] ?>" alt="<?= $person['name'] ?>">
                                             </div>
                                             <div class="card-info">
-                                                <h5 class="executive-name"><?= $person['name'] ?></h5>
+                                                <h5 class="executive-name"><?= $person['prename']  . ' ' . $person['name'] ?></h5>
                                                 <span class="executive-position"><?= $person['title'] ?></span>
                                             </div>
                                         </div>

@@ -1566,7 +1566,7 @@
     </div>
     <div class="container px-4 mb-5 justify-content-center">
         <div class="page-header-custom" data-aos="fade-up">
-            <h1>จำนวนนักศึกษา</h1>
+            <h1>จำนวนนักศึกษา ปีการศึกษา <?= $data_year['edu_year'] + 543 ?></h1>
         </div>
         <div class="stats-section-home w-100" data-aos="fade-up">
             <div class="row justify-content-center g-4">
@@ -1655,6 +1655,7 @@
     .news-date-badge {
         position: absolute;
         top: 12px;
+        width: fit-content;
         left: 12px;
         background: rgba(255, 255, 255, 0.95);
         padding: 6px 12px;
@@ -1693,31 +1694,33 @@
     }
 </style>
 <?php if (!empty($news)) { ?>
-    <div class="row g-4 justify-content-center">
-        <div class="page-header-custom" data-aos="fade-up">
-            <h1>ข่าวประกาศจากวิทยาลัยฯ</h1>
-        </div>
-        <?php foreach ($news as $key => $row) { ?>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
-                <div class="news-card-wrapper h-100">
-                    <div class="news-image-container">
-                        <img class="news-image" alt="<?= $row['title'] ?>" src="<?= base_url($row['image_path']) ?>">
-                        <div class="news-date-badge">
-                            <i class="far fa-calendar-alt me-1"></i>
-                            <?= $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <div class="page-header-custom" data-aos="fade-up">
+                <h1>ข่าวประกาศจากวิทยาลัยฯ</h1>
+            </div>
+            <?php foreach ($news as $key => $row) { ?>
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
+                    <div class="news-card-wrapper h-100">
+                        <div class="news-image-container">
+                            <img class="news-image" alt="<?= $row['title'] ?>" src="<?= base_url($row['image_path']) ?>">
+                            <div class="news-date-badge">
+                                <i class="far fa-calendar-alt me-1"></i>
+                                <?= $date_thai->dateFormat($row['create_at'], 'thainottime') ?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="news-content">
-                        <h2 class="news-title"><?= $row['title'] ?></h2>
-                        <div class="mt-3 pt-3 border-top d-flex justify-content-end">
-                            <a href="<?= base_url('News/detail/' . $row['id']) ?>" class="news-btn text-decoration-none fw-bold">
-                                อ่านเพิ่มเติม <i class="fas fa-chevron-right ms-1" style="font-size: 0.8rem;"></i>
-                            </a>
+                        <div class="news-content">
+                            <h2 class="news-title"><?= $row['title'] ?></h2>
+                            <div class="mt-3 pt-3 border-top d-flex justify-content-end">
+                                <a href="<?= base_url('News/detail/' . $row['id']) ?>" class="news-btn text-decoration-none fw-bold">
+                                    อ่านเพิ่มเติม <i class="fas fa-chevron-right ms-1" style="font-size: 0.8rem;"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
+            <?php } ?>
+        </div>
     </div>
 <?php } ?>
 

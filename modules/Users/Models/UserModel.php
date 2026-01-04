@@ -97,4 +97,13 @@ class UserModel extends Model
 
         return $data;
     }
+    function get_edu_year()
+    {
+        $builder = $this->db->table('state_yearly');
+        $builder->select("edu_year");
+        $builder->where('is_show', 1);
+        $builder->groupBy('edu_year');
+        $year = $builder->get()->getRowArray();
+        return $year;
+    }
 }
