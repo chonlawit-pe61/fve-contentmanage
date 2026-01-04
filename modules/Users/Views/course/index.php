@@ -279,8 +279,8 @@ if (!empty($TED)) {
                     <div class="col-12">
                         <?php foreach ($groupedTED as $levelName => $members): ?>
                             <div class="group-section mb-5" data-aos="fade-up">
-                                <h3 class="group-title"><?= $levelName ?></h3>
-                                <div class="executives-row">
+                                <h3 class="group-title <?= ($levelName === 'หัวหน้าแผนก') ? 'd-none' : '' ?>"><?= $levelName ?></h3>
+                                <div class="executives-row" style="justify-content: <?= ($levelName === 'หัวหน้าแผนก') ? 'center' : 'start' ?> !important;">
                                     <?php foreach ($members as $key => $row): ?>
                                         <?php
                                         $img_path = (!empty($row['image_path']) && file_exists(ROOTPATH . $row['image_path']))
@@ -306,6 +306,12 @@ if (!empty($TED)) {
                                                         <!-- Contact Info -->
                                                         <?php if (!empty($row['phone']) || !empty($row['email'])): ?>
                                                             <div class="card-contact">
+                                                                <?php if (!empty($row['position'])): ?>
+                                                                    <div class="contact-item">
+                                                                        <div class="contact-icon"><i class="fas fa-user-tie"></i></div>
+                                                                        <span class="contact-text"><?= $row['position'] ?></span>
+                                                                    </div>
+                                                                <?php endif; ?>
                                                                 <?php if (!empty($row['phone'])): ?>
                                                                     <div class="contact-item">
                                                                         <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
