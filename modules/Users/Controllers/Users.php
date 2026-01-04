@@ -43,6 +43,7 @@ class Users extends BaseController
 
         $data['information'] = $AboutModel->getInformationEducational();
         $data['alert'] = $AlertModel->getListAlert();
+
         // $data['file_type_2'] = $UserModel->getPublicDocument(2);
         // $data['file_type_3'] = $UserModel->getPublicDocument(3);
         // $data['file_type_4'] = $UserModel->getPublicDocument(4);

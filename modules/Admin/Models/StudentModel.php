@@ -33,10 +33,14 @@ class StudentModel extends Model
 
     function save_state_yearly($input)
     {
+
         $table = "state_yearly";
         $builder = $this->db->table($table);
 
         //deleted 
+        $builder->set('is_show', 0);
+        $builder->update();
+
         $builder->where('edu_year', $input['edu_year'])->delete();
 
         foreach ($input['course'] as $course_id => $record) {
@@ -81,10 +85,21 @@ class StudentModel extends Model
             } else {
                 $builder->set('hvoc_residue_value', 0);
             }
+            $builder->set('is_show', $input['is_show']);
 
             $builder->set('course_id', $course_id);
             $builder->set('edu_year', $input['edu_year']);
             $builder->insert();
         }
+    }
+    function check_show($edu_year)
+    {
+        $builder = $this->db->table('state_yearly');
+        $builder->select("is_show");
+        $builder->where('edu_year', $edu_year);
+        $builder->where('is_show', 1);
+        $builder->groupBy('edu_year');
+        $result = $builder->get()->getRowArray();
+        return $result;
     }
 }

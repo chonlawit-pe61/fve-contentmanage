@@ -17,16 +17,17 @@ class Student extends BaseController
         $this->courseModel = new CourseModel();
     }
 
-    public function state_yearly () {
+    public function state_yearly()
+    {
         $search = $this->request->getGet();
 
-        if(!empty($search['edu_year'])) {
+        if (!empty($search['edu_year'])) {
             $search_year = $search['edu_year'];
-        }else{
+        } else {
             $search_year = date('Y');
         }
 
-
+        $data['check_show'] = $this->studentModel->check_show($search_year);
         $data['course'] = $this->courseModel->getCourse();
         $data['course_type'] = $this->courseModel->getCourseType();
         $data['data'] = $this->studentModel->get_state_year($search_year);
@@ -34,7 +35,8 @@ class Student extends BaseController
         return view('Modules\Admin\Views\Student\yearly_form', $data);
     }
 
-    public function save_state_yearly() {
+    public function save_state_yearly()
+    {
         $input = $this->request->getPost();
         // echo "<pre>"; 
         // print_r($input); die;

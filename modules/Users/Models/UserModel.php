@@ -80,6 +80,11 @@ class UserModel extends Model
     function getStateYearly($id = '')
     {
         $builder = $this->db->table('state_yearly');
+
+        $builder->select("edu_year");
+        $builder->where('is_show', 1);
+        $builder->groupBy('edu_year');
+        $year = $builder->get()->getRowArray();
         $builder->select("
            SUM(voc_1_value) + SUM(voc_2_value) + SUM(voc_3_value) AS voc_count,
            SUM(voc_residue_value) as voc_residue_count,
@@ -87,7 +92,7 @@ class UserModel extends Model
            SUM(hvoc_residue_value) as hvoc_residue_count,
            SUM(voc_1_value) + SUM(voc_2_value) + SUM(voc_3_value) + SUM(voc_residue_value) + SUM(hvoc_1_value) + SUM(hvoc_2_value) + SUM(hvoc_residue_value) AS voc_count_all
         ");
-        $builder->where('edu_year', date('Y'));
+        $builder->where('edu_year', !empty($year['edu_year']) ? $year['edu_year'] : date('Y'));
         $data =  $builder->get()->getRowArray();
 
         return $data;

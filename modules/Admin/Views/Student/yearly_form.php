@@ -93,6 +93,14 @@
                         <?php } ?>
                     </select>
                 </div>
+                <div class="col-md-3 my-2">
+                    <label for="is_show" class="form-label">สถานะ <span class="text-danger">*</span></label>
+                    <select name="is_show" id="is_show" class="form-select" required>
+                        <option value="">-- เลือก --</option>
+                        <option value="1" <?= (!empty($check_show['is_show']) && $check_show['is_show'] == 1) ? 'selected' : '' ?>>แสดง</option>
+                        <option value="0" <?= (!empty($check_show['is_show']) && $check_show['is_show'] == 0) ? 'selected' : '' ?>>ไม่แสดง</option>
+                    </select>
+                </div>
                 <div class="col-12 my-2">
                     <div class="table-responsive">
                         <table class="table table-bordered">
