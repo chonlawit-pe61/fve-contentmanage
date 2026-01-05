@@ -33,9 +33,9 @@
                     <label for="title" class="form-label">หัวข้อลิ้งค์ <span class="text-danger">*</span></label>
                     <input type="text" id="title" name="box_name" class="form-control" value="<?= @$Link['box_name'] ?>" required>
                 </div>
-                <div class="col-md-8 mb-4">
-                    <label for="description" class="form-label">icon</label>
-                    <select name="box_icon" required class="form-select select_font_4 form-select" aria-label="Default select example" data-live-search="true">
+                <div class="col-md-6 mb-4">
+                    <label for="icon" class="form-label">icon</label>
+                    <select id="icon" name="box_icon" required class="form-select select_font_4 form-select" aria-label="Default select example" data-live-search="true">
                         <option value="">เลือก icon</option>
                         <?php
                         if (!empty($icon)) {
@@ -47,6 +47,10 @@
                         }
                         ?>
                     </select>
+                </div>
+                <div class="col-md-2 my-3 text-center">
+                    <label class="form-label" for="icon-preview">icon preview</label>
+                    <p><i id="icon-preview" class=""></i></p>
                 </div>
                 <div class="col-md-8 mb-4">
                     <label for="title" class="form-label">ลิ้งค์ <span class="text-danger">*</span></label>
@@ -72,6 +76,19 @@
 <script>
     $(document).ready(function() {
         $('.form-select').select2();
+
+        // Icon Preview Logic
+        function updateIconPreview() {
+            var iconClass = $('#icon').val();
+            $('#icon-preview').attr('class', 'fa ' + iconClass + ' fa-2x');
+        }
+
+        $('#icon').on('change', function() {
+            updateIconPreview();
+        });
+
+        // Initialize on load
+        updateIconPreview();
     });
 </script>
 <?php $this->endSection(); ?>
