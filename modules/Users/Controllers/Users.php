@@ -34,7 +34,7 @@ class Users extends BaseController
         $data['personel_count'] = $UserModel->getStateYearly();
         $data['Link'] = $LinkModel->getLink('', 1);
         $data['Link_ITA'] = $LinkModel->getLinkITA();
-        $data['news'] = $UserModel->getNewsList(1, 4);
+        $data['news'] = $UserModel->getNewsListData( 12);
         $data['reward'] = $UserModel->getRewardList('', 4);
 
         $data['congratulate'] = $UserModel->getNewsList(2, 6);

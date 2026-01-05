@@ -1695,10 +1695,13 @@
 </style>
 <?php if (!empty($news)) { ?>
     <div class="container">
-        <div class="row g-4 justify-content-center">
-            <div class="page-header-custom" data-aos="fade-up">
+        <div class="d-flex justify-content-center w-100">
+            <div class="page-header-custom text-center" data-aos="fade-up">
                 <h1>ข่าวประกาศจากวิทยาลัยฯ</h1>
             </div>
+        </div>
+        <div class="row g-4 justify-content-start">
+
             <?php foreach ($news as $key => $row) { ?>
                 <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="<?= 100 * ($key + 1) ?>">
                     <div class="news-card-wrapper h-100">
@@ -1946,6 +1949,72 @@ if (!empty($news_original)) {
     </section>
 <?php endif; ?>
 
+<style>
+    /* ปรับแต่งความโค้งและเงาของ Modal */
+    #announcementModal .modal-content {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        /* ป้องกันรูปภาพล้นขอบโค้ง */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ปรับแต่ง Header */
+    #announcementModal .modal-header {
+        background-color: #fff;
+        z-index: 10;
+    }
+
+    /* ปรับแต่ง Carousel */
+    #announcementModal .carousel-item img {
+        max-height: 70vh;
+        /* จำกัดความสูงไม่ให้ยาวเกินหน้าจอ */
+        object-fit: contain;
+        /* ให้รูปภาพแสดงครบถ้วน */
+        background-color: #f8f9fa;
+    }
+
+    /* ตกแต่งปุ่มปิด */
+    #announcementModal .btn-close {
+        background-color: #eee;
+        border-radius: 50%;
+        padding: 0.5rem;
+        transition: 0.3s;
+    }
+
+    #announcementModal .btn-close:hover {
+        background-color: #ddd;
+    }
+
+    /* ปรับแต่ง Footer ให้ดูสะอาดตา */
+    #announcementModal .modal-footer {
+        background-color: #fff;
+        padding-bottom: 15px;
+    }
+</style>
+<style>
+    /* บังคับให้ Modal Dialog อยู่ตรงกลางแนวตั้งเสมอ */
+    #announcementModal .modal-dialog {
+        display: flex;
+        align-items: flex-start;
+        min-height: calc(100% - 3.5rem);
+        /* สำหรับ Bootstrap 5 */
+    }
+
+    /* จัดการรูปภาพไม่ให้ดันหน้าจอจนเพี้ยน */
+    #announcementModal .carousel-item img {
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        /* ไม่ให้สูงเกิน 80% ของหน้าจอ */
+        object-fit: contain;
+    }
+
+    /* ซ่อน scrollbar ของตัว modal เองถ้าไม่จำเป็น */
+    .modal-open {
+        overflow: hidden;
+    }
+</style>
 
 <!-- Announcement Modal -->
 <?php if (!empty($alert)): ?>

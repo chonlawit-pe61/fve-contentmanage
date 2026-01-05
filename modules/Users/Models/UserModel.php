@@ -36,8 +36,21 @@ class UserModel extends Model
         $builder = $this->db->table('news');
         $builder->select("*");
         if ($id > 0) {
-            $builder->where("category_id", $id);
+            $builder->whereIn("category_id", [$id]);
         }
+        if ($limit > 0) {
+            $builder->limit($limit);
+        }
+        $builder->orderBy('create_at', 'desc');
+        $result = $builder->get()->getResultArray();
+
+        return $result;
+    }
+    function getNewsListData($limit = 0)
+    {
+        $builder = $this->db->table('news');
+        $builder->select("*");
+        $builder->whereIn("category_id", [1, 3, 5]);
         if ($limit > 0) {
             $builder->limit($limit);
         }
